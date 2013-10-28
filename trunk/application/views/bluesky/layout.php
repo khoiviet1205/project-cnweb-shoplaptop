@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="http://localhost/CI_SHOPLAPTOP/public/bluesky/css/style.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost/project_cnweb/public/bluesky/css/style.css" rel="stylesheet" type="text/css" />
 <title> <?php echo $title; ?></title>
 </head>
 
