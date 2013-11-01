@@ -18,6 +18,7 @@ body{
 	padding-top:10px;
 	float:right;
 }
+
 #top_menu ul{
 	list-style-type:none;
 	margin:0px;
@@ -47,6 +48,9 @@ body{
 	padding-top:6px;
 }
 
+.nangcao{
+	height:35px;
+}
 #top_dathang{
 	background:url(../icon/top_dathang.png) no-repeat;
 	height:36px;
@@ -54,11 +58,42 @@ body{
 	padding-left:7px;
 	padding-top:5px;
 }
+/* ty gia*/
+.tygia{
+	float:right;
+	width:220px;
+}
+.tygia a{
+	color:#000000;
+}
+.tygia a:hover{
+	color:#FF6600;
+}
+.rss{
+	padding-left:17px;
+	background:url(../tygia/rss.gif) no-repeat 0px center;
+}
+.rssnews{
+	padding-left:547px;
+	background:url(../tygia/rss.gif) no-repeat 527px center;
+}
+.tygiain{
+	padding-left:20px;
+	background:url(../tygia/tygia.gif) no-repeat 3px center;
+}
+.giavangin{
+	padding-left:17px;
+	background:url(../tygia/giavang.gif) no-repeat 0px center;
+}
+
 .left_dathang{
 	float:left;
 	width:190px;
 }
-
+.chaynews{
+	float:left;
+	width:550px;
+}
 /* contenr*/
 .left_content{
 	float:left;
@@ -95,4 +130,81 @@ body{
 	color: #313131;
 	font: 11px Arial, Helvetica, sans-serif;
 	font-size:14px;
+}
+h1{
+	font-size:12px;
+	background:url(../icon/menu_left.png) no-repeat;
+	height:28px;
+	line-height:25px;
+	padding-left:10px;
+	color:#FFFFFF;
+}
+h2{
+	font-size:12px;
+	background:url(../icon/thanhsanpham.png) no-repeat;
+	height:28px;
+	line-height:25px;
+	padding-left:10px;
+	color:#FFFFFF;
+}
+#menu_sanpham ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+}
+#menu_sanpham ul a{
+	text-decoration:none;
+	padding-left:10px;
+	width:158px;
+	display:block;
+	line-height:23px;
+	/*background:#FFFFFF url(icon/arrow.gif) no-repeat 11px 7px;*/
+	background-color:#FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	color:#000000;
+	overflow:auto;
+	font-weight:bold;
+	border-right:1px solid #CCCCCC;
+
+}
+
+/*SUB MENU LEFT*/
+#menu_sanpham li{
+position: relative;
+
+}
+#menu_sanpham li ul{ /*SUB MENU STYLE*/
+	position: absolute;
+	width: 168px; /*WIDTH OF SUB MENU ITEMS*/
+	left: 0px;
+	top: 0px;
+	visibility:hidden;
+	z-index:100000;
+	
+}
+
+#menu_sanpham .arrowdiv{
+position:absolute;
+right:3px;
+top:0px;
+background: url(../icon/arrow.gif) no-repeat center right;
+}
+/* Holly Hack for IE \*/
+* html #menu_sanpham li { float: left; height: 1%; z-index:10000 }
+* html #menu_sanpham li a { height: 1%; }
+/* End */
+
+.side-box{
+	color: #2d2d2d;
+	background-color: #ffffff;
+	border: #c5d1d8 1px solid;
+	padding: 8px 1px 0px 9px;
+}
+.giolamviec{
+	margin-bottom:5px;
+    background:#FFF;
+    border:1px solid #C0C0C0;
+    padding:1px;
 }
