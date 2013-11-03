@@ -31,7 +31,7 @@ h2 {font-size:24px}
 -webkit-transition: all .2s ease;
 -o-transition: all .2s ease
 }
-#featured, #latest, #related,  #popularbrands, #newslettersignup { margin:0 auto 0 auto }
+#featured, #latest, #selling, #related,  #popularbrands, #newslettersignup { margin:0 auto 0 auto }
 
 input:focus:invalid, textarea:focus:invalid, select:focus:invalid { color: #96979d; }
 /* ------------ Header ------------ */
@@ -124,7 +124,7 @@ ul.categorymenu > li ul > li img { margin:3px; max-width:none }
 /* ------------ Featured Proudcts ------------ */
 #categorymenu { margin:40px 0 50px 0 }
 
-#featured:after, #latest:after, #related:after, #category:after, #popularbrands:after, #newslettersignup .container:after  {clear: both;
+#featured:after, #latest:after, #selling:after, #related:after, #category:after, #popularbrands:after, #newslettersignup .container:after  {clear: both;
  visibility: hidden;
 	display: block;
 	content: "";
@@ -153,11 +153,11 @@ ul.categorymenu > li ul > li img { margin:3px; max-width:none }
 .thumbnail .price .priceold { font-size:13px; color:#5e626b; text-decoration:line-through; color:#96979d; }
 
 
-#featured .thumbnails li:hover .thumbnail img, #latest .thumbnails li:hover .thumbnail img, #related .thumbnails li:hover .thumbnail img, #category .thumbnails li:hover .thumbnail img, .thumbnails.list li:hover .thumbnail img { transform: scale(1.2, 1.2); -ms-transform: scale(1.2, 1.2); /* IE 9 */ -webkit-transform: scale(1.2, 1.2); /* Safari and Chrome */ -o-transform: scale(1.2, 1.2); /* Opera */ -moz-transform: scale(1.2, 1.2); /* Firefox */ transition: all 0.8s; -ms-transition: all 0.8s; /* IE 9 */ -moz-transition: all 0.8s; /* Firefox 4 */ -webkit-transition: all 0.8s; /* Safari and Chrome */ -o-transition: all 0.8s; /* Opera */ }
+#featured .thumbnails li:hover .thumbnail img, #latest .thumbnails li:hover .thumbnail img, #selling .thumbnails li:hover .thumbnail img, #related .thumbnails li:hover .thumbnail img, #category .thumbnails li:hover .thumbnail img, .thumbnails.list li:hover .thumbnail img { transform: scale(1.2, 1.2); -ms-transform: scale(1.2, 1.2); /* IE 9 */ -webkit-transform: scale(1.2, 1.2); /* Safari and Chrome */ -o-transform: scale(1.2, 1.2); /* Opera */ -moz-transform: scale(1.2, 1.2); /* Firefox */ transition: all 0.8s; -ms-transition: all 0.8s; /* IE 9 */ -moz-transition: all 0.8s; /* Firefox 4 */ -webkit-transition: all 0.8s; /* Safari and Chrome */ -o-transition: all 0.8s; /* Opera */ }
 
-#featured .thumbnails li .thumbnail, #latest .thumbnails li .thumbnail, #related .thumbnails li .thumbnail, #category .thumbnails li .thumbnail, .thumbnails.list li .thumbnail  { overflow:hidden}
+#featured .thumbnails li .thumbnail, #latest .thumbnails li .thumbnail, #selling .thumbnails li .thumbnail, #related .thumbnails li .thumbnail, #category .thumbnails li .thumbnail, .thumbnails.list li .thumbnail  { overflow:hidden}
 
-#featured .thumbnails li .thumbnail img, #latest .thumbnails li .thumbnail img, #related .thumbnails li .thumbnail img, #category .thumbnails li .thumbnail img, .thumbnails.list li .thumbnail img  {
+#featured .thumbnails li .thumbnail img, #latest .thumbnails li .thumbnail img, #selling .thumbnails li .thumbnail img, #related .thumbnails li .thumbnail img, #category .thumbnails li .thumbnail img, .thumbnails.list li .thumbnail img  {
 transition: all 0.8s; -ms-transition: all 0.8s; /* IE 9 */ -moz-transition: all 0.8s; /* Firefox 4 */ -webkit-transition: all 0.8s; /* Safari and Chrome */ -o-transition: all 0.8s; /* Opera */}
 
 
@@ -583,7 +583,7 @@ margin:0 auto
 }
 .otherddetails .otherddetailspart .innerclass h2 {font-size:18px}
 
-#featured .thumbnails li:hover .thumbnail img, #latest .thumbnails li:hover .thumbnail img, #related .thumbnails li:hover .thumbnail img, #category .thumbnails li:hover .thumbnail img, .thumbnails.list li:hover .thumbnail img { transform: none; -ms-transform: none; /* IE 9 */ -webkit-transform: none; /* Safari and Chrome */ -o-transform: none; /* Opera */ -moz-transform:none; /* Firefox */ transition: all 0.8s; -ms-transition: all 0.8s; /* IE 9 */ -moz-transition: all 0.8s; /* Firefox 4 */ -webkit-transition: all 0.8s; /* Safari and Chrome */ -o-transition: all 0.8s; /* Opera */ }
+#featured .thumbnails li:hover .thumbnail img, #latest .thumbnails li:hover .thumbnail img, #selling .thumbnails li:hover .thumbnail img, #related .thumbnails li:hover .thumbnail img, #category .thumbnails li:hover .thumbnail img, .thumbnails.list li:hover .thumbnail img { transform: none; -ms-transform: none; /* IE 9 */ -webkit-transform: none; /* Safari and Chrome */ -o-transform: none; /* Opera */ -moz-transform:none; /* Firefox */ transition: all 0.8s; -ms-transition: all 0.8s; /* IE 9 */ -moz-transition: all 0.8s; /* Firefox 4 */ -webkit-transition: all 0.8s; /* Safari and Chrome */ -o-transition: all 0.8s; /* Opera */ }
 .newcustomer, .returncustomer {width:85%; margin-bottom:10px}
 .checkoutstep  .span4 {width:auto}
 
