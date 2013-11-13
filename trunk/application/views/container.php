@@ -288,11 +288,13 @@
   <section id="latest" class="row">
     <div class="container">
       <h1 class="heading1"><span class="maintext">Sản Phẩm Phổ Thông</span><span class="subtext"> Xem Tất Cả Sản Phẩm Mới Nhất</span></h1>
+      <?php if(!empty($itemssppb)) { ?>
       <ul class="thumbnails">
+      	<?php foreach($itemssppb as $item) : ?>
         <li class="span3">
-          <a class="prdocutname" href="product.html">Lenovo G460</a>
+          <a class="prdocutname" href="product.html"><?php echo $item['name_sp']; ?></a>
           <div class="thumbnail">
-            <a href="#"><img alt="" src="publics/img/product1a.jpg"></a>
+            <a href="#"><img alt="" src="<?php echo $item['img_sp']; ?>"></a>
             <div class="shortlinks">
               <a class="details" href="#">Chi Tiết</a>
               <a class="wishlist" href="#">Ưa Thích</a>
@@ -307,7 +309,11 @@
             </div>
           </div>
         </li>
+        <?php endforeach ?>
       </ul>
+       <?php }else{ ?>
+		Đang cập nhật...
+		<?php } ?>
     </div>
   </section>
   
