@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Mbase extends CI_Model{
 	private $tableName;
 	private $id="id";
@@ -21,6 +21,7 @@ class Mbase extends CI_Model{
 	
 	public function __construct(){
 		parent::__construct();
+		$this->load->database();
 	}
 	
 	// lay tat ca doi tuong
@@ -67,7 +68,104 @@ class Mbase extends CI_Model{
 		$this->db->where($columnName,$value);
 		$q = $this->db->get($this->getTableName());
 		return ($q->num_rows() == 0) ? FALSE : TRUE;
-	}	
+	}
+	
+		//phan trang
+	public function getAllPaging($number,$offset,$arraySearch,$columnName=NULL,$orderBy=NULL){
+		$this->db->select('*');
+		if(!empty($arraySearch)){
+			foreach($arraySearch as $k => $v){
+				$this->db->or_like($k,$v);
+			}
+		}
+		if($columnName != NULL && $orderBy != NULL){
+			$this->db->order_by($columnName,$orderBy);
+		}
+		$q	=	$this->db->get($this->getTableName(),$number,$offset);
+		return $q->result_array();
+	}
+	
+	//phan trang
+	public function getAllPagingWhere($number,$offset,$arraySearch,$columnName=NULL,$orderBy=NULL){
+		$this->db->select('*');
+		if(!empty($arraySearch)){
+			foreach($arraySearch as $k => $v){
+				$this->db->where($k,$v);
+			}
+		}
+		if($columnName != NULL && $orderBy != NULL){
+			$this->db->order_by($columnName,$orderBy);
+		}
+		$q	=	$this->db->get($this->getTableName(),$number,$offset);
+		return $q->result_array();
+	}
+	
+	//lay tat ca doi tuong order by 
+	public function getListOrderBy($columnName,$orderBy){
+		$this->db->order_by($columnName,$orderBy);
+		$q = $this->db->get($this->getTableName());
+		return $q->result_array();
+	}
+	
+	//lay danh sach doi tuong theo dieu kien 
+	public function getListByArrayWhere($arrayWhere){
+		foreach($arrayWhere as $k => $v){
+			$this->db->where($k,$v);
+		}
+		$q = $this->db->get($this->getTableName());
+		return $q->result_array();
+	}
+	
+	public function getListOrderByColumnLimit($select="*",$column="id",$orderBy="desc",$limit=10,$star=0){
+		$this->db->select($select);
+        $this->db->order_by($column,$orderBy);
+        $this->db->limit($limit,$star);
+		$q = $this->db->get($this->getTableName());
+		return $q->result_array();
+	}
+	
+	public function countAll(){
+		return $this->db->count_all_results($this->getTableName());
+	}
+	
+	public function countOrLike($arr){
+		foreach($arr as $k => $v){
+			$this->db->or_like($k,$v);
+		}
+		$q = $this->db->get($this->getTableName());
+		return $q->num_rows();
+	}
+	
+	public function countWhereArray($arr){
+		foreach($arr as $k => $v){
+			$this->db->where($k,$v);
+		}
+		$q = $this->db->get($this->getTableName());
+		return $q->num_rows();
+	}
+	
+	public function hint($kwSearch,$select="*",$limit=10){
+		$this->db->select($select);
+		$this->db->or_like("name",$kwSearch);
+		$this->db->or_like("alias",$kwSearch);
+        $this->db->order_by("name","ASC");
+        $this->db->limit($limit);
+		$q = $this->db->get($this->getTableName());
+		return $q->result_array();
+	}
+	
+	public function getListRandom($limit=10){
+		$this->db->order_by('id', 'RANDOM');
+	    $this->db->limit($limit);
+	    $query = $this->db->get($this->getTableName());
+	    return $query->result_array();
+	}
+	
+	// Get san pham cao cap
+	public function getspcc(){
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=6 order by id_sp DESC limit 0,8");
+		return $result->result_array();
+	}
 }
 
 
