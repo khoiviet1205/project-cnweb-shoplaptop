@@ -18,7 +18,8 @@
 	<?php $this->load->view("header")?>
 
 <!-- Container -->
-    <?php $this->load->view("container")?>
+    
+    <?php $this->load->view($template,$data); ?>
     
 <!-- Footer -->    
     <?php $this->load->view("footer") ?>
