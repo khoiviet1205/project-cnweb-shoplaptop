@@ -33,29 +33,6 @@
   </div>
   <div class="container">
     <div class="headerdetails">
-      <div class="pull-left">
-        <ul class="nav language pull-left">
-          <li class="dropdown hover">
-            <a href="#" class="dropdown-toggle" data-toggle="">Dong <b class="caret"></b></a>
-            <ul class="dropdown-menu currency">
-              <li><a href="#">Dong</a>
-              </li>
-              <li><a href="#">Dola </a>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown hover">
-            <a href="#" class="dropdown-toggle" data-toggle="">Tiếng Việt <b class="caret"></b></a>
-            <ul class="dropdown-menu language">
-              <li><a href="#">Tiếng Việt</a>
-              </li>
-              <li><a href="#">English</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        
-      </div>
       <div class="pull-right">
         <ul class="nav topcart pull-left">
           <li class="dropdown hover carticon ">
