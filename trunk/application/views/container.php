@@ -303,8 +303,8 @@
             <div class="pricetag">
               <span class="spiral"></span><a href="#" class="productcart">Thêm Vào</a>
               <div class="price">
-                <div class="pricenew">$4459.00</div>
-                <div class="priceold">$5000.00</div>
+                <div class="pricenew"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</div>
+                <div class="priceold"><?php echo number_format($item['price'],0,',','.'); ?></div>
               </div>
             </div>
           </div>
