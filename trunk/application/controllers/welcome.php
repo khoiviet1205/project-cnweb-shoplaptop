@@ -26,7 +26,7 @@ class Welcome extends Cpanel{
 		//$this->_data['data']['items'] = $this->Mproduct->getAll();
 		$this->_data['data']['items'] = $this->Mproduct->getAllPagingWhere($number,$offset,$arraySearch,$column,$orderBy);
 		$this->_data['data']['itemsspcc']=$this->Mbase->getspcc();
-		
+		$this->_data['data']['itemssppb']=$this->Mbase->getsppb();
 		$this->load->view("layout",$this->_data);
 	}
 
