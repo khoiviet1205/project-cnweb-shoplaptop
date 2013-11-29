@@ -172,6 +172,12 @@ class Mbase extends CI_Model{
 		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=5 order by id_sp DESC limit 0,8");
 		return $result->result_array();
 	}
+	
+	//Get san pham trung cap
+	public function getsptc(){
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=7 order by id_sp DESC limit 0,8");
+		return $result->result_array();
+	}
 }
 
 
