@@ -121,7 +121,7 @@
               </ul>
             </div>
           </li>
-          <li><a  href="category.html">Loại Sản Phẩm</a>
+          <li><a  href="category.html">Hãng Laptop</a>
           </li>
           <li><a href="shopping-cart.html">Giỏ Hàng</a>
           </li>
