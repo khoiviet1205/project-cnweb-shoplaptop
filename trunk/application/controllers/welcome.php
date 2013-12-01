@@ -20,12 +20,15 @@ class Welcome extends Cpanel{
 		//$this->_data['template']='../views/container.php';
 		//$data['title']="Shop Laptop";
 		$this->data['itemsspcc']=$this->Mbase->getspcc();
-		$this->_data['data']['itemssppb']=$this->Mbase->getsppb();
-		$this->_data['data']['itemssptc']=$this->Mbase->getsptc();
+		$this->data['data']['itemssppb']=$this->Mbase->getsppb();
+		$this->data['data']['itemssptc']=$this->Mbase->getsptc();
 		$this->load->view("layout",$this->data);
+		//$this->load->view("chitietsanpham",$this->data);
 	}
-	public function chitietsanpham(){
-		
+	public function chitietsanpham($param){
+		$this->data['title']="Shop Laptop";
+		$this->data['detail_product']=$this->Mbase->get_detail_product($param);
+		$this->data['sp_uachuong']=$this->Mbase->get_sp_uachuong();
+		$this->load->view("chitietsanpham",$this->data);
 	}
-	
 }
