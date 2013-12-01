@@ -189,6 +189,12 @@ class Mbase extends CI_Model{
 		$query=$this->db->get("product");
 		return $query->result_array();	
 	}
+	
+	//Get san pham ua chuong
+	public function get_sp_uachuong(){
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=4 order by id_sp DESC limit 0,4");
+		return $result->result_array();
+	}
 		
 }
 
