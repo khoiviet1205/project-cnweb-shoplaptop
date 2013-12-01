@@ -178,6 +178,18 @@ class Mbase extends CI_Model{
 		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=7 order by id_sp DESC limit 0,8");
 		return $result->result_array();
 	}
+	
+	//Get san pham theo ma so san pham
+	function get_detail_product($param)
+	{
+		$this->db->select("*");
+		//$this->db->join("news","news.new_id = new_details.new_id_detail");
+		$this->db->where("id_sp",$param);
+		//$this->db->where("news.new_type = new_details.new_detail_type");
+		$query=$this->db->get("product");
+		return $query->result_array();	
+	}
+		
 }
 
 
