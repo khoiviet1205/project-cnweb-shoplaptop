@@ -9,7 +9,7 @@
             <div class="navbar" id="topnav">
               <div class="navbar-inner">
                 <ul class="nav" >
-                  <li><a class="home active" href="#">Trang Chủ</a>
+                  <li><a class="home active" href="<?php echo base_url();?>">Trang Chủ</a>
                   </li>
                   <li><a class="myaccount" href="#">Tài Khoản</a>
                   </li>
@@ -90,7 +90,7 @@
     <div id="categorymenu">
       <nav class="subnav">
         <ul class="nav-pills categorymenu">
-          <li><a class="active"  href="#">Trang Chủ</a>
+          <li><a class="active"  href="<?php echo base_url();?>">Trang Chủ</a>
           </li>
           <li><a href="product.html">Sản Phẩm</a>
             <div>

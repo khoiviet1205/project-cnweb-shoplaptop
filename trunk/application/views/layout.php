@@ -95,28 +95,7 @@
   <!-- Section  End-->
   
   <!-- Popular Brands-->
-  <section id="popularbrands" class="container mt40">
-    <h1 class="heading1"><span class="maintext">Thương Hiệu Nổi Tiếng</span><span class="subtext"> Xem Tất Cả Thương Hiệu</span></h1>
-    <div class="brandcarousalrelative">
-      <ul id="brandcarousal">
-        <li><img src="publics/img/brand1.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand2.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand3.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand4.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand5.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand6.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand7.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand8.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand1.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand2.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand3.jpg" alt="" title=""/></li>
-        <li><img src="publics/img/brand4.jpg" alt="" title=""/></li>
-      </ul>
-      <div class="clearfix"></div>
-      <a id="prev" class="prev" href="#">&lt;</a>
-      <a id="next" class="next" href="#">&gt;</a>
-    </div>
-  </section>
+  <?php $this->load->view("thuonghieunoitieng") ?>
   
   <!-- Newsletter Signup-->
   <section id="newslettersignup" class="mt40">

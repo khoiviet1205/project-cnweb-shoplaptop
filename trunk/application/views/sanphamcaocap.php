@@ -10,7 +10,7 @@
           <div class="thumbnail">
             <a href="#"><img alt="" src="<?php echo $item['img_sp']; ?>"></a>
             <div class="shortlinks">
-              <a class="details" href="#">Chi Tiết</a>
+              <a class="details" href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id_sp'];?>">Chi Tiết</a>
               <a class="wishlist" href="#">Ưa Thích</a>
               <a class="compare" href="#">So Sánh</a>
             </div>
