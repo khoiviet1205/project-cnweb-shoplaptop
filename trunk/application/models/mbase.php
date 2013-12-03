@@ -163,7 +163,7 @@ class Mbase extends CI_Model{
 	
 	// Get san pham cao cap
 	public function getspcc(){
-		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=6 order by id_sp DESC limit 0,8");
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=6 order by id_sp DESC limit 0,4");
 		return $result->result_array();
 	}
 	
@@ -195,7 +195,15 @@ class Mbase extends CI_Model{
 		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=4 order by id_sp DESC limit 0,4");
 		return $result->result_array();
 	}
-		
+	
+	//Get tat ca san pham theo loai
+	function get_tatca_sp($param)
+	{
+		$this->db->select("*");
+		$this->db->where("id_loai",$param);
+		$query=$this->db->get("product");
+		return $query->result_array();	
+	}	
 }
 
 

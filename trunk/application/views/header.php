@@ -153,8 +153,6 @@
               </ul>
             </div>
           </li>
-          <li><a href="features.html">Tính Năng</a>
-          </li>
           <li><a href="contact.html">Liên Hệ</a>
           </li>         
         </ul>

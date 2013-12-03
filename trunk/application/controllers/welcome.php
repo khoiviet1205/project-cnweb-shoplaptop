@@ -31,4 +31,9 @@ class Welcome extends Cpanel{
 		$this->data['sp_uachuong']=$this->Mbase->get_sp_uachuong();
 		$this->load->view("chitietsanpham",$this->data);
 	}
+	public function tatcasanpham($param){
+		$this->data['title']="Shop Laptop";
+		$this->data['tatca_sp']=$this->Mbase->get_tatca_sp($param);
+		$this->load->view("tatcasanpham",$this->data);
+	}
 }

@@ -82,13 +82,13 @@
   <!-- Section  Banner Start-->
   <section class="container smbanner">
     <div class="row">
-      <div class="span3"><a href="#"><img src="img/smbanner.jpg" alt="" title=""></a>
+      <div class="span3"><a href="#"><img src="publics/img/smbanner1.jpg" alt="" title=""></a>
       </div>
-      <div class="span3"><a href="#"><img src="img/smbanner.jpg" alt="" title=""></a>
+      <div class="span3"><a href="#"><img src="publics/img/smbanner2.jpg" alt="" title=""></a>
       </div>
-      <div class="span3"><a href="#"><img src="img/smbanner.jpg" alt="" title=""></a>
+      <div class="span3"><a href="#"><img src="publics/img/smbanner3.jpg" alt="" title=""></a>
       </div>
-      <div class="span3"><a href="#"><img src="img/smbanner.jpg" alt="" title=""></a>
+      <div class="span3"><a href="#"><img src="publics/img/smbanner4.jpg" alt="" title=""></a>
       </div>
     </div>
   </section>

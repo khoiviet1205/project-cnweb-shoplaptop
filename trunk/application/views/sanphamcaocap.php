@@ -1,9 +1,9 @@
  <!-- Vip Product-->
   <section id="latest" class="row">
+   <?php if(!empty($itemsspcc)) { ?> 
     <div class="container">
-      <h1 class="heading1"><span class="maintext">Sản Phẩm Cao Cấp</span><span class="subtext"> Xem Tất Cả Sản Phẩm Mới Nhất</span></h1>
-      <?php if(!empty($itemsspcc)) { ?>     
-      <ul class="thumbnails">
+      <h1 class="heading1"><span class="maintext">Sản Phẩm Cao Cấp</span><span class="subtext" ><a href="<?php echo base_url();?>index.php/welcome/tatcasanpham/6"> Xem Tất Cả Sản Phẩm Cao Cấp</a></span></h1>
+       <ul class="thumbnails">
       	<?php foreach($itemsspcc as $item) : ?>
         <li class="span3">
           <a class="prdocutname" href="product.html"><?php echo $item['name_sp']; ?></a>
