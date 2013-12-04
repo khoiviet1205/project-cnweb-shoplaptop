@@ -1,4 +1,4 @@
- <!-- Vip Product-->
+ <!-- San pham cao cap-->
   <section id="latest" class="row">
    <?php if(!empty($itemsspcc)) { ?> 
     <div class="container">

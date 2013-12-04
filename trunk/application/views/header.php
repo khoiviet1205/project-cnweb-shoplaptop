@@ -13,9 +13,9 @@
                   </li>
                   <li><a class="myaccount" href="#">Tài Khoản</a>
                   </li>
-                  <li><a class="shoppingcart" href="#">Giỏ Hàng</a>
+                  <li><a class="shoppingcart" href="<?php echo base_url();?>index.php/welcome/giohang/">Giỏ Hàng</a>
                   </li>
-                  <li><a class="checkout" href="#">Thanh Toán</a>
+                  <li><a class="checkout" href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
                   </li>
                 </ul>
               </div>
@@ -92,52 +92,35 @@
         <ul class="nav-pills categorymenu">
           <li><a class="active"  href="<?php echo base_url();?>">Trang Chủ</a>
           </li>
-          <li><a href="product.html">Sản Phẩm</a>
+           <li><a href="product.html">LapTop</a>
             <div>
               <ul>
                 <li><a href="product.html">Lenovo</a>
                 </li>
                 <li><a href="product2.html">Dell</a>
                 </li>
-                <li><a href="#"> Asus</a>
+                <li><a href="#">Asus</a>
                 </li>
-                <li><a href="#">Acer <span class="label label-success">Sale</span>
-                  </a>
+                <li><a href="#">Acer</a>
                 </li>
                 <li><a href="#">HP </a>
                 </li>
-                <li><a href="#">Apple <span class="label label-warning">(25)</span>
-                  </a>
+                <li><a href="#">Apple</a>
                 </li>
-                <li><a href="#">Sony <span class="label label-info">(new)</span>
-                  </a>
+                <li><a href="#">Sony</a>
                 </li>
-                <li><a href="#">Toshiba </a>
-                </li>
-              </ul>
-              <ul>
-                <li><img style="display:block" src="img/proudctbanner.jpg" alt="" title="" >
+                <li><a href="#">Toshiba</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li><a  href="category.html">Hãng Laptop</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/giohang/">Giỏ Hàng</a>
           </li>
-          <li><a href="shopping-cart.html">Giỏ Hàng</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/giohang/">Thanh Toán</a>
           </li>
-          <li><a href="checkout.html">Thanh Toán</a>
-          </li>
-          <li><a href="compare.html">So Sánh</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/sosanh/">So Sánh</a>
           </li>          
           <li><a href="blog.html">Tin Tức</a>
-            <div>
-              <ul>
-                <li><a href="blog.html">Blog page</a>
-                </li>
-                <li><a href="bloglist.html">Blog List VIew</a>
-                </li>
-              </ul>
-            </div>
           </li>
           <li><a href="myaccount.html">Tài Khoản</a>
             <div>
@@ -153,7 +136,7 @@
               </ul>
             </div>
           </li>
-          <li><a href="contact.html">Liên Hệ</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/lienhe/">Liên Hệ</a>
           </li>         
         </ul>
       </nav>

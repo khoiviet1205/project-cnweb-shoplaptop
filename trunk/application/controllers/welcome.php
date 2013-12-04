@@ -17,11 +17,10 @@ class Welcome extends Cpanel{
 		$column = "id_sp";
 		$orderBy = "asc";
 		$this->data['title']="Shop Laptop";
-		//$this->_data['template']='../views/container.php';
-		//$data['title']="Shop Laptop";
+		$this->data['itemsspmn']=$this->Mbase->getspmn();
 		$this->data['itemsspcc']=$this->Mbase->getspcc();
-		$this->data['data']['itemssppb']=$this->Mbase->getsppb();
-		$this->data['data']['itemssptc']=$this->Mbase->getsptc();
+		$this->data['itemssppt']=$this->Mbase->getsppt();
+		$this->data['itemssptc']=$this->Mbase->getsptc();
 		$this->load->view("layout",$this->data);
 		//$this->load->view("chitietsanpham",$this->data);
 	}
@@ -35,5 +34,21 @@ class Welcome extends Cpanel{
 		$this->data['title']="Shop Laptop";
 		$this->data['tatca_sp']=$this->Mbase->get_tatca_sp($param);
 		$this->load->view("tatcasanpham",$this->data);
+	}
+	public function giohang(){
+		$this->data['title']="Giỏ Hàng";
+		$this->load->view("giohang",$this->data);
+	}
+	public function thanhtoan(){
+		$this->data['title']="Thanh Toán";
+		$this->load->view("thanhtoan",$this->data);
+	}
+	public function sosanh(){
+		$this->data['title']="So Sánh";
+		$this->load->view("sosanh",$this->data);
+	}
+	public function lienhe(){
+		$this->data['title']="Liên Hệ";
+		$this->load->view("lienhe",$this->data);
 	}
 }
