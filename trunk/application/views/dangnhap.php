@@ -35,6 +35,7 @@
 <?php
     $this->load->view("header");
 ?>
+<!-- Header End -->
 
 <div id="maincontainer">
   <section id="product">
@@ -60,7 +61,7 @@
               <p>Có tài khoản để tham gia các chương trình khuyến mãi, tri ân khách hàng...</p>
               <br>
               <br>
-              <a href="#" class="btn btn-orange">Đăng Ký</a>
+              <a href="<?php echo base_url();?>index.php/welcome/dangky/" class="btn btn-orange">Đăng Ký</a>
             </div>
           </section>
           <section class="returncustomer">

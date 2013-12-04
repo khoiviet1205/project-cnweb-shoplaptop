@@ -59,4 +59,8 @@ class Welcome extends Cpanel{
         $this->data['title']="Tin Tức";
         $this->load->view("tintuc",$this->data);        
     }
+    public function dangky(){
+        $this->data['title']="Đăng Ký";
+        $this->load->view("dangky",$this->data);
+    }
 }
