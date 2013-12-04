@@ -12,7 +12,7 @@ class Welcome extends Cpanel{
 		$this->layout();
 	}
 	function layout(){
-		//$this->_data['idCat']=NULL;
+		//$this->_data['idCat']=NULL; 
 		$arraySearch = array();
 		$column = "id_sp";
 		$orderBy = "asc";
@@ -51,8 +51,15 @@ class Welcome extends Cpanel{
 		$this->data['title']="Liên Hệ";
 		$this->load->view("lienhe",$this->data);
 	}
+<<<<<<< .mine
+    public function dangnhap(){
+        $this->data['title']="Đăng Nhập";
+        $this->load->view("dangnhap",$this->data);
+    }
+=======
     public function tintuc(){
         $this->data['title']="Tin Tức";
         $this->load->view("tintuc",$this->data);        
     }
+>>>>>>> .r52
 }

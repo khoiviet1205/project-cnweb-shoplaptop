@@ -127,7 +127,7 @@
               <ul>
                 <li><a href="myaccount.html">Tài Khoản</a>
                 </li>
-                <li><a href="login.html">Đăng Nhập</a>
+                <li><a class= "dangnhap" href="<?php echo base_url();?>index.php/welcome/dangnhap/">Đăng Nhập</a>
                 </li>
                 <li><a href="register.html">Đăng Ký</a>
                 </li>
