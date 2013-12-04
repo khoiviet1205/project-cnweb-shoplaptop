@@ -120,7 +120,7 @@
           </li>
           <li><a href="<?php echo base_url();?>index.php/welcome/sosanh/">So Sánh</a>
           </li>          
-          <li><a href="blog.html">Tin Tức</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/tintuc/">Tin Tức</a>
           </li>
           <li><a href="myaccount.html">Tài Khoản</a>
             <div>
