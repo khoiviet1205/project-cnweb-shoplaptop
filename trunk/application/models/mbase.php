@@ -160,6 +160,11 @@ class Mbase extends CI_Model{
 	    $query = $this->db->get($this->getTableName());
 	    return $query->result_array();
 	}
+	// Get san pham mua nhieu
+	public function getspmn(){
+		$result=$this->db->query("SELECT id_sp, count(*) AS SL FROM chitietdonhang GROUP BY id_sp ORDER BY SL DESC LIMIT 4");
+		return $result->result_array();
+	}
 	
 	// Get san pham cao cap
 	public function getspcc(){
@@ -167,15 +172,15 @@ class Mbase extends CI_Model{
 		return $result->result_array();
 	}
 	
-	//Get san pham pho bien
-	public function getsppb(){
-		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=5 order by id_sp DESC limit 0,8");
+	//Get san pham pho thong
+	public function getsppt(){
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=5 order by id_sp DESC limit 0,4");
 		return $result->result_array();
 	}
 	
 	//Get san pham trung cap
 	public function getsptc(){
-		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=7 order by id_sp DESC limit 0,8");
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=7 order by id_sp DESC limit 0,4");
 		return $result->result_array();
 	}
 	
