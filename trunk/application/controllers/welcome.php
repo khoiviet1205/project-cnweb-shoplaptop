@@ -51,4 +51,8 @@ class Welcome extends Cpanel{
 		$this->data['title']="Liên Hệ";
 		$this->load->view("lienhe",$this->data);
 	}
+    public function tintuc(){
+        $this->data['title']="Tin Tức";
+        $this->load->view("tintuc",$this->data);        
+    }
 }
