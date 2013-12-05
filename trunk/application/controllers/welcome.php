@@ -6,8 +6,9 @@ class Welcome extends Cpanel{
 	public function __construct(){
 		parent ::__construct();
 		$this->data['k']="";
-		$this->load->library(array('pagination','form_validation','email'));
-		$this->load->helper(array("url","date"));
+		$this->load->library('pagination');
+		$this->load->helper("url");
+        
 	}
 	public function index(){
 		$this->layout();
@@ -52,36 +53,11 @@ class Welcome extends Cpanel{
 		$this->data['title']="Liên Hệ";
 		$this->load->view("lienhe",$this->data);
 	}
-    public function dangnhap(){
-        $this->data['title']="Đăng Nhập";
-        $this->load->view("dangnhap",$this->data);
-    }
+    
     public function tintuc(){
         $this->data['title']="Tin Tức";
         $this->load->view("tintuc",$this->data);        
     }
-    //--- Dang ki thanh vien
-    function dangky()
-    {        
-        $this->data['title']="Đăng Ký";
-        $this->form_validation->set_rules("full_name","Họ tên","required|min_length[6]");
-        $this->form_validation->set_rules("password","Mật Khẩu","required|matches[repassword]");
-        $this->form_validation->set_rules("email","Email","required|valid_email");
-        $this->form_validation->set_rules("address","Địa chỉ","required");
-        $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[10]");
-        $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
-        $this->form_validation->set_message('valid_email','Email không hợp lệ !');
-        $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
-        $this->form_validation->set_message('matches','Xác thực mật khẩu sai !');
-        if($this->form_validation->run()==FALSE){
-            
-            $this->load->view("dangky",$this->data);
-        }
-        else
-        {
-                
-        }
-        
-    }
+    
    
 }

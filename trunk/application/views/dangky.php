@@ -98,7 +98,7 @@
                   <div class="controls">                
                     <?php 
                         echo form_input($full_name);
-                        echo form_error('full_name','<div class="error">','</div>');
+                        echo form_error('full_name','<div class="red">','</div>');
                     ?>
                   </div>  
         <div class="control-group">
@@ -106,23 +106,23 @@
                   <div class="controls">                
                     <?php 
                         echo form_input($email);
-                        echo form_error('email','<div class="error">','</div>');
+                        echo form_error('email','<div class="red">','</div>');
                     ?>
                   </div>       
         <div class="control-group">
                   <label class="control-label"><span class="red">*</span> Mật Khẩu:</label>
                   <div class="controls">                
                     <?php 
-                        echo form_input($password);
-                        echo form_error('password','<div class="error">','</div>');
+                        echo form_password($password);
+                        echo form_error('password','<div class="red">','</div>');
                     ?>
                   </div>  
         <div class="control-group">
                   <label class="control-label"><span class="red">*</span> Xác Thực Mật Khẩu:</label>
                   <div class="controls">                
                     <?php 
-                        echo form_input($repassword);
-                        echo form_error('repassword','<div class="error">','</div>');
+                        echo form_password($repassword);
+                        echo form_error('repassword','<div class="red">','</div>');
                     ?>
                   </div> 
         <div class="control-group">
@@ -130,7 +130,7 @@
                   <div class="controls">                
                     <?php 
                         echo form_input($address);
-                        echo form_error('address','<div class="error">','</div>');
+                        echo form_error('address','<div class="red">','</div>');
                     ?>
                   </div>
         <div class="control-group">
@@ -138,23 +138,28 @@
                   <div class="controls">                
                     <?php 
                         echo form_input($phone);
-                        echo form_error('phone','<div class="error">','</div>');
+                        echo form_error('phone','<div class="red">','</div>');
                     ?>
                   </div>        
         <div class="control-group">
                   <label class="control-label"><span class="red">*</span> Giới tính:</label>
                   <div class="controls">
-                    <input type="radio" value="nam" name="sex" checked="" class="input-xlarge"> Nam
+                    <input type="radio" value="1" name="gender" checked="" class="input-xlarge"> Nam                    
                     <?php
-                        echo "&nbsp&nbsp&nbsp&nbsp";
+                        echo "&nbsp&nbsp&nbsp&nbsp";                        
                     ?>
-                    <input type="radio" value="nu" name="sex" class="input-xlarge"> Nữ
+                    <input type="radio" value="2" name="gender" class="input-xlarge"> Nữ
                     
                   </div>
                 </div>
-        <label class="checkbox inline">
-                <input type="checkbox" value="option2" >
-              </label>
+        <div class="checkbox inline">
+                  
+                  <div class="controls" >                
+                    <?php 
+                        echo form_checkbox('checkbox', 'accept', FALSE);
+                        echo form_error('checkbox','<div class="red">','</div>');
+                    ?>
+                  </div> 
               Tôi đã đọc và đồng ý với <a href="#" >CÁC ĐIỀU KHOẢN Ở ĐÂY</a>
         <label>&nbsp;</label> <input class="btn btn-orange" type="submit" name="ok" value="Đăng Ký" /><br />
 

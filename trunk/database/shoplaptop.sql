@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2013 at 02:40 AM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Host: localhost
+-- Generation Time: Dec 05, 2013 at 07:40 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `shoplaptop`
 --
-CREATE DATABASE IF NOT EXISTS `shoplaptop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `shoplaptop`;
 
 -- --------------------------------------------------------
 
@@ -130,29 +128,29 @@ CREATE TABLE IF NOT EXISTS `chitietdonhang` (
 --
 
 INSERT INTO `chitietdonhang` (`id_ctdonhang`, `id_donhang`, `id_sp`, `sl`, `gia`) VALUES
-(119, 77, 73, 1, '21560000'),
-(118, 77, 60, 1, '9800000'),
-(117, 77, 39, 1, '11956000'),
-(116, 76, 73, 1, '21560000'),
-(115, 76, 60, 1, '9800000'),
-(114, 76, 39, 1, '11956000'),
-(113, 76, 27, 1, '12000000'),
-(112, 75, 27, 1, '12000000'),
-(111, 75, 26, 1, '10080000'),
-(110, 75, 25, 1, '9797000'),
-(109, 70, 72, 1, '10127700'),
-(108, 70, 71, 1, '24530000'),
-(107, 70, 62, 1, '14355000'),
-(106, 70, 48, 1, '17645000'),
-(105, 69, 26, 1, '10080000'),
-(104, 69, 20, 1, '20448000'),
-(120, 78, 70, 1, '18456000'),
-(121, 78, 71, 1, '24530000'),
-(122, 78, 72, 1, '10127700'),
-(123, 78, 74, 1, '21145000'),
-(124, 79, 24, 1, '14896000'),
-(125, 79, 26, 1, '10080000'),
-(126, 79, 74, 1, '21145000');
+(119, 77, 73, 1, 21560000),
+(118, 77, 60, 1, 9800000),
+(117, 77, 39, 1, 11956000),
+(116, 76, 73, 1, 21560000),
+(115, 76, 60, 1, 9800000),
+(114, 76, 39, 1, 11956000),
+(113, 76, 27, 1, 12000000),
+(112, 75, 27, 1, 12000000),
+(111, 75, 26, 1, 10080000),
+(110, 75, 25, 1, 9797000),
+(109, 70, 72, 1, 10127700),
+(108, 70, 71, 1, 24530000),
+(107, 70, 62, 1, 14355000),
+(106, 70, 48, 1, 17645000),
+(105, 69, 26, 1, 10080000),
+(104, 69, 20, 1, 20448000),
+(120, 78, 70, 1, 18456000),
+(121, 78, 71, 1, 24530000),
+(122, 78, 72, 1, 10127700),
+(123, 78, 74, 1, 21145000),
+(124, 79, 24, 1, 14896000),
+(125, 79, 26, 1, 10080000),
+(126, 79, 74, 1, 21145000);
 
 -- --------------------------------------------------------
 
@@ -237,17 +235,17 @@ CREATE TABLE IF NOT EXISTS `donhang` (
 --
 
 INSERT INTO `donhang` (`id_donhang`, `id_user`, `ngaydathang`, `thanhtien`, `id_pt`, `dagiaohang`, `ghichu`, `diachi`) VALUES
-(79, 21, '2011-09-25 00:00:00', '46121000', 1, 'N', 'lulu', 'lulu'),
-(78, 21, '2011-09-22 00:00:00', '74258700', 2, 'N', 'giao Ä‘Ãºng thá»i gian', 'NghÄ©a Tháº¯ng - TÆ° NghÄ©a - Quáº£ng NgÃ£i'),
-(77, 15, '2011-09-21 00:00:00', '43316000', 1, 'N', 'hjkhk', 'hjihy'),
-(76, 15, '2011-09-21 00:00:00', '55316000', 1, 'N', 'dfgfh', 'dfgdfh'),
-(75, 15, '2011-09-21 00:00:00', '31877000', 1, 'N', 'sdd', 'sd'),
-(74, 15, '2011-09-21 00:00:00', '31877000', 1, 'N', 'dff', 'wd'),
-(73, 15, '2011-09-21 00:00:00', '31877000', 1, 'N', 'sx', 'xsx'),
-(72, 15, '2011-09-21 00:00:00', '31877000', 2, 'N', 'df', 'dc'),
-(71, 15, '2011-09-21 00:00:00', '31877000', 1, 'N', 'dsf', 'ds'),
-(70, 15, '2011-09-20 00:00:00', '66657700', 1, 'N', 'phuong', 'phuong'),
-(69, 15, '2011-09-20 00:00:00', '30528000', 1, 'N', 'dgf', 'fhm');
+(79, 21, '2011-09-25 00:00:00', 46121000, 1, 'N', 'lulu', 'lulu'),
+(78, 21, '2011-09-22 00:00:00', 74258700, 2, 'N', 'giao Ä‘Ãºng thá»i gian', 'NghÄ©a Tháº¯ng - TÆ° NghÄ©a - Quáº£ng NgÃ£i'),
+(77, 15, '2011-09-21 00:00:00', 43316000, 1, 'N', 'hjkhk', 'hjihy'),
+(76, 15, '2011-09-21 00:00:00', 55316000, 1, 'N', 'dfgfh', 'dfgdfh'),
+(75, 15, '2011-09-21 00:00:00', 31877000, 1, 'N', 'sdd', 'sd'),
+(74, 15, '2011-09-21 00:00:00', 31877000, 1, 'N', 'dff', 'wd'),
+(73, 15, '2011-09-21 00:00:00', 31877000, 1, 'N', 'sx', 'xsx'),
+(72, 15, '2011-09-21 00:00:00', 31877000, 2, 'N', 'df', 'dc'),
+(71, 15, '2011-09-21 00:00:00', 31877000, 1, 'N', 'dsf', 'ds'),
+(70, 15, '2011-09-20 00:00:00', 66657700, 1, 'N', 'phuong', 'phuong'),
+(69, 15, '2011-09-20 00:00:00', 30528000, 1, 'N', 'dgf', 'fhm');
 
 -- --------------------------------------------------------
 
@@ -624,36 +622,38 @@ INSERT INTO `tinh` (`id_tinh`, `ten_tinh`, `duyet_tinh`) VALUES
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` char(32) NOT NULL,
-  `level` char(1) NOT NULL DEFAULT '1',
-  `fullname` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `id_nghe` int(10) NOT NULL,
-  `id_tinh` int(10) NOT NULL,
-  `id_huyen` int(10) NOT NULL,
-  `gender` char(1) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` char(32) NOT NULL,
+  `level` int(1) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `gender` int(1) NOT NULL,
   `phone` int(12) NOT NULL,
-  `dateregister` datetime NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  `active` int(1) DEFAULT NULL,
+  `add_date` datetime NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `fullname`, `address`, `id_nghe`, `id_tinh`, `id_huyen`, `gender`, `email`, `phone`, `dateregister`) VALUES
-(21, 'lulu', 'lulu', '2', 'lulu', 'lulu', 3, 21, 0, '1', 'lulu@gmail.com', 235, '2011-09-11 22:09:46'),
-(20, 'kiki', 'kiki', '1', 'kiki', 'kiki', 3, 15, 15, '1', 'kiki@gmail.com', 1454545, '2011-09-05 22:09:41'),
-(19, 'u', 'u', '1', 'ui', 'u', 3, 15, 15, '1', 'ui', 56, '2011-09-05 22:09:00'),
-(18, 'y', 'y', '1', 'y', 'y', 3, 14, 0, '1', 'y', 5, '2011-09-05 22:09:40'),
-(17, 'duyen', 'duyen', '1', 'duyen', 'duyen', 3, 15, 11, '1', 'duyen@gmail.com', 124, '2011-09-05 22:09:03'),
-(16, 'TÃ¬nh', 'tinh', '1', 'HÃ  Ngá»c TÃ¬nh', 'NghÄ©a Ká»³', 5, 10, 3, '1', 'tinh@gmail.com', 1345, '2011-09-11 22:09:50'),
-(15, 'phuong', 'phuong', '2', 'Nguyá»…n Táº¥n PhÆ°Æ¡ng', 'ThÃ´n An NhÆ¡n', 3, 21, 3, '1', 'tanphuong20@gmail.com', 1227340487, '2011-09-11 22:09:43'),
-(23, 'troc', 'troc', '1', 'troc', 'troc', 3, 14, 0, '1', 'troc@gmail.com', 34356, '2011-09-11 22:09:11'),
-(24, 'lolo', 'lolo', '1', '', 'lolo', 3, 14, 0, '1', 'tanphuong12345@gmail.comdf', 121231, '2011-09-16 12:09:55'),
-(25, 'ti', 'ti', '1', 'ti', 'ti', 3, 10, 0, '1', 'ti@gmail12345.com', 12154, '2011-09-16 12:09:12');
+INSERT INTO `user` (`id_user`, `email`, `password`, `level`, `full_name`, `address`, `gender`, `phone`, `salt`, `active`, `add_date`) VALUES
+(21, '', 'lulu', 0, 'lulu', 'lulu', 1, 235, '', NULL, '2011-09-11 22:09:46'),
+(20, '', 'kiki', 0, 'kiki', 'kiki', 1, 1454545, '', NULL, '2011-09-05 22:09:41'),
+(19, '', 'u', 0, 'ui', 'u', 1, 56, '', NULL, '2011-09-05 22:09:00'),
+(18, '', 'y', 0, 'y', 'y', 1, 5, '', NULL, '2011-09-05 22:09:40'),
+(17, '', 'duyen', 0, 'duyen', 'duyen', 1, 124, '', NULL, '2011-09-05 22:09:03'),
+(16, '', 'tinh', 0, 'HÃ  Ngá»c TÃ¬nh', 'NghÄ©a Ká»³', 1, 1345, '', NULL, '2011-09-11 22:09:50'),
+(15, '', 'phuong', 0, 'Nguyá»…n Táº¥n PhÆ°Æ¡ng', 'ThÃ´n An NhÆ¡n', 1, 1227340487, '', NULL, '2011-09-11 22:09:43'),
+(23, '', 'troc', 0, 'troc', 'troc', 1, 34356, '', NULL, '2011-09-11 22:09:11'),
+(24, '', 'lolo', 0, '', 'lolo', 1, 121231, '', NULL, '2011-09-16 12:09:55'),
+(25, '', 'ti', 0, 'ti', 'ti', 1, 12154, '', NULL, '2011-09-16 12:09:12'),
+(26, 'lta1292@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 2, 'letuananh', 'đh công nghệ thông tin', 1, 1656695295, 'iaAdj', 0, '2013-12-05 19:24:49'),
+(27, 'rrer@gmail.com', '202cb962ac59075b964b07152d234b70', 2, 'aaaaaa', 'phạm văn đồng', 2, 979797979, 'PBxam', 0, '2013-12-05 19:34:46'),
+(28, 'adad@gmail.com', 'caf1a3dfb505ffed0d024130f58c5cfa', 2, 'bbbbbbbbbb', 'gggggggggggg', 1, 2147483647, 'hSxtv', 0, '2013-12-05 19:36:43'),
+(29, 'asf@yahoo.com.vn', '202cb962ac59075b964b07152d234b70', 2, 'ccccccc', 'cccccccs', 1, 191919191, 'DZr5Q', 0, '2013-12-05 19:39:27');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
