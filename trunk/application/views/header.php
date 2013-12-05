@@ -129,7 +129,7 @@
                 </li>
                 <li><a class= "dangnhap" href="<?php echo base_url();?>index.php/welcome/dangnhap/">Đăng Nhập</a>
                 </li>
-                <li><a href="register.html">Đăng Ký</a>
+                <li><a class= "dangky" href="<?php echo base_url();?>index.php/welcome/dangky/">Đăng Ký</a>
                 </li>
                 <li><a href="wishlist.html">Ưa Thích</a>
                 </li>

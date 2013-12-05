@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $title ?></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="">
 <meta name="author" content="">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
@@ -36,7 +36,47 @@
     $this->load->view("header");
 ?>
 <!-- Header End -->
+<?php
+    //--- Giu gia tri cua form
+    $full_name = array(
+                        "name"  => "full_name",
+                        "id"    => "full_name",
+                        "size"  => "30",
+                        "value" => set_value("full_name")
+                    );
 
+    $password = array(
+                        'name'        => 'password',
+                        'id'          => 'lname',
+                        'size'        => '30',
+                        'value'       => set_value('password'),
+                    );
+
+    $repassword = array(
+                        'name'        => 'repassword',
+                        'id'          => 'lname',
+                        'size'        => '30',
+                        'value'       => set_value('repassword'),
+                    );
+    $address = array(
+                        'name'        => 'address',
+                        'id'          => 'address',
+                        'size'        => '30',
+                        'value'       => set_value('address'),
+                    );
+    $phone = array(
+                        'name'        => 'phone',
+                        'id'          => 'phone',
+                        'size'        => '30',
+                        'value'       => set_value('phone'),
+                    );
+    $email = array(
+                        'name'        => 'email',
+                        'id'          => 'email',
+                        'size'        => '30',
+                        'value'       => set_value('email'),
+                    );
+?>
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -48,77 +88,78 @@
         </li>
         <li class="active">Đăng ký tài khoản</li>
       </ul>
-      <div class="row">        
-        <!-- Register Account-->
-        <div class="span9">
-          <h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>
-          <form class="form-horizontal">
-            <h3 class="heading3">Thông tin cá nhân</h3>
-            <div class="registerbox">
-              <fieldset>
-                <div class="control-group">
+    
+     <form name="frmEdit" id="frmEdit" action="" method="post" enctype="multipart-formdata">
+        <fieldset>
+        <h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>
+        
+        <div class="control-group">
                   <label class="control-label"><span class="red">*</span> Họ tên:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
+                  <div class="controls">                
+                    <?php 
+                        echo form_input($full_name);
+                        echo form_error('full_name','<div class="error">','</div>');
+                    ?>
+                  </div>  
+        <div class="control-group">
                   <label class="control-label"><span class="red">*</span> Email:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
+                  <div class="controls">                
+                    <?php 
+                        echo form_input($email);
+                        echo form_error('email','<div class="error">','</div>');
+                    ?>
+                  </div>       
+        <div class="control-group">
+                  <label class="control-label"><span class="red">*</span> Mật Khẩu:</label>
+                  <div class="controls">                
+                    <?php 
+                        echo form_input($password);
+                        echo form_error('password','<div class="error">','</div>');
+                    ?>
+                  </div>  
+        <div class="control-group">
+                  <label class="control-label"><span class="red">*</span> Xác Thực Mật Khẩu:</label>
+                  <div class="controls">                
+                    <?php 
+                        echo form_input($repassword);
+                        echo form_error('repassword','<div class="error">','</div>');
+                    ?>
+                  </div> 
+        <div class="control-group">
+                  <label class="control-label"><span class="red">*</span> Địa Chỉ:</label>
+                  <div class="controls">                
+                    <?php 
+                        echo form_input($address);
+                        echo form_error('address','<div class="error">','</div>');
+                    ?>
                   </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Số điện thoại:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label"><span class="red">*</span> Địa chỉ:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
+        <div class="control-group">
+                  <label class="control-label"><span class="red">*</span> Điện Thoại:</label>
+                  <div class="controls">                
+                    <?php 
+                        echo form_input($phone);
+                        echo form_error('phone','<div class="error">','</div>');
+                    ?>
+                  </div>        
+        <div class="control-group">
                   <label class="control-label"><span class="red">*</span> Giới tính:</label>
                   <div class="controls">
-                    <input type="radio" value="nu" name="sex" checked="" class="input-xlarge"> Nữ
+                    <input type="radio" value="nam" name="sex" checked="" class="input-xlarge"> Nam
                     <?php
                         echo "&nbsp&nbsp&nbsp&nbsp";
                     ?>
-                    <input type="radio" value="nam" name="sex" class="input-xlarge"> Nam
+                    <input type="radio" value="nu" name="sex" class="input-xlarge"> Nữ
                     
                   </div>
                 </div>
-              </fieldset>
-            </div>
-            <h3 class="heading3">Mật Khẩu</h3>
-            <div class="registerbox">
-              <fieldset>
-                <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> Mật Khẩu:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label  class="control-label"><span class="red">*</span> Xác Thực Mật Khẩu:</label>
-                  <div class="controls">
-                    <input type="text"  class="input-xlarge">
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-            <div class="pull-right">
-              <label class="checkbox inline">
+        <label class="checkbox inline">
                 <input type="checkbox" value="option2" >
               </label>
-              I have read and agree to the <a href="#" >Privacy Policy</a>
-              &nbsp;
-              <input type="Submit" class="btn btn-orange" value="Continue">
-            </div>
-          </form>
+              Tôi đã đọc và đồng ý với <a href="#" >CÁC ĐIỀU KHOẢN Ở ĐÂY</a>
+        <label>&nbsp;</label> <input class="btn btn-orange" type="submit" name="ok" value="Đăng Ký" /><br />
+
+        </fieldset>
+    </form>
           <div class="clearfix"></div>
           <br>
         </div>        
@@ -127,7 +168,6 @@
     </div>
   </section>
 </div>
-
 <!-- Footer -->
 <?php
     $this->load->view("footer");
@@ -135,20 +175,20 @@
 <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/respond.min.js"></script>
-<script src="js/application.js"></script>
-<script src="js/bootstrap-tooltip.js"></script>
-<script defer src="js/jquery.fancybox.js"></script>
-<script defer src="js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="js/jquery.tweet.js"></script>
-<script  src="js/cloud-zoom.1.0.2.js"></script>
-<script  type="text/javascript" src="js/jquery.validate.js"></script>
-<script type="text/javascript"  src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
-<script type="text/javascript"  src="js/jquery.mousewheel.min.js"></script>
-<script type="text/javascript"  src="js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript"  src="js/jquery.ba-throttle-debounce.min.js"></script>
-<script defer src="js/custom.js"></script>
+<script src="<?php echo $path_js?>jquery.js"></script> 
+<script src="<?php echo $path_js?>bootstrap.js"></script> 
+<script src="<?php echo $path_js?>respond.min.js"></script> 
+<script src="<?php echo $path_js?>application.js"></script> 
+<script src="<?php echo $path_js?>bootstrap-tooltip.js"></script>
+<script defer src="<?php echo $path_js?>jquery.fancybox.js"></script>  
+<script defer src="<?php echo $path_js?>jquery.flexslider.js"></script> 
+<script type="text/javascript" src="<?php echo $path_js?>jquery.tweet.js"></script> 
+<script src="<?php echo $path_js?>cloud-zoom.1.0.2.js"></script> 
+<script type="text/javascript" src="<?php echo $path_js?>jquery.validate.js"></script> 
+<script type="text/javascript" src="<?php echo $path_js?>jquery.carouFredSel-6.1.0-packed.js"></script>
+<script type="text/javascript" src="<?php echo $path_js?>jquery.mousewheel.min.js"></script> 
+<script type="text/javascript" src="<?php echo $path_js?>jquery.touchSwipe.min.js"></script> 
+<script type="text/javascript" src="<?php echo $path_js?>jquery.ba-throttle-debounce.min.js"></script>
+<script src="<?php echo $path_js?>custom.js"></script>
 </body>
 </html>
