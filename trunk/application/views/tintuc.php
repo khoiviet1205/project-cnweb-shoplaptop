@@ -40,7 +40,7 @@
 <div id="maincontainer">
   <section id="product">
     <div class="container">
-    <!--  breadcrumb -->   
+       <!--  breadcrumb -->   
       <ul class="breadcrumb">
         <li>
           <a href="#">Home</a>
@@ -48,9 +48,10 @@
         </li>
         <li class="active">Blog</li>
       </ul>
-      <div class="row">        
+      <div class="row">
         <!-- Sidebar Start-->
-        <aside  class="span3">
+        <aside  class="span3">  
+         <!-- Category-->    
           <div class="sidewidt">
             <h2 class="heading2"><span>Blog Categories</span></h2>
             <ul class="nav nav-list categories">
@@ -70,6 +71,7 @@
                   </li>
                   <li><a href="product.html">Laptop</a>
                   </li>
+                 
                 </ul>
               </li>
               <li>
@@ -80,6 +82,7 @@
               </li>
             </ul>
           </div>
+           <!-- Other-->
           <div class="sidewidt">
             <h2 class="heading2"><span>Others</span></h2>
             <ul id="myTab" class="nav nav-tabs">
@@ -95,56 +98,48 @@
                 <ul>
                   <li>
                     <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">My Blog Title will appear here </a>
-                    <div class="pull-left">
+                    <a class="blogtitle" href="product.html">My Blog Title will appear here  </a>
+                    <div>                      
                       <span class="mr10"><i class="icon-calendar"></i> January 10, 2013 </span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 8 Comments</a>
-                      </span>
-                      <span class="mr10">
-                      <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a>
-                      </span>
-                    </div>
+                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 8 Comments</a> </span>
+                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
+                      </div>
                   </li>
                   <li>
                     <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">My Blog Title will appear here </a>
-                    <div class="pull-left">
+                    <a class="blogtitle" href="product.html">My Blog Title will appear here  </a>
+                    <div>                      
                       <span class="mr10"><i class="icon-calendar"></i> August 26, 2012 </span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 15 Comments</a>
-                      </span>
-                      <span class="mr10">
-                      <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a>
-                      </span>
-                    </div>
+                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 15 Comments</a> </span>
+                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
+                      </div>
                   </li>
+                  
+                  
                 </ul>
               </div>
               <div id="recent" class="tab-pane">
                 <ul>
                   <li>
                     <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">Lorem Ipsum Title appear here </a>
-                    <div class="pull-left">
+                    <a class="blogtitle" href="product.html">Lorem Ipsum Title appear here  </a>
+                    <div>                      
                       <span class="mr10"><i class="icon-calendar"></i> February 03, 2012</span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 3 Comments</a>
-                      </span>
-                      <span class="mr10">
-                      <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a>
-                      </span>
-                    </div>
+                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 3 Comments</a> </span>
+                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
+                      </div>
                   </li>
                   <li>
                     <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">My Blog Title will appear here </a>
-                    <div class="pull-left">
+                    <a class="blogtitle" href="product.html">My Blog Title will appear here  </a>
+                    <div>                      
                       <span class="mr10"><i class="icon-calendar"></i> January 3, 2013 </span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 6 Comments</a>
-                      </span>
-                      <span class="mr10">
-                      <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a>
-                      </span>
-                    </div>
+                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 6 Comments</a> </span>
+                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
+                      </div>
                   </li>
+                  
+                  
                 </ul>
               </div>
               <div id="comments" class="tab-pane">
@@ -158,16 +153,18 @@
                     <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
                     <a href="product.html">Your recent comment will appear here...</a>
                     <a class="usercomment" href="enavato.html"><i class="icon-edit"></i> User 2</a>
-                  </li>
-                  <li>
+                  </li><li>
                     <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
                     <a href="product.html">Your recent comment will appear here...</a>
                     <a class="usercomment" href="enavato.html"><i class="icon-edit"></i> User 3</a>
                   </li>
+                  
+                 
                 </ul>
               </div>
             </div>
           </div>
+           <!-- Tags-->
           <div class="sidewidt">
             <h2 class="heading2"><span>Tags</span></h2>
             <ul class="tags">
@@ -198,125 +195,64 @@
             </ul>
           </div>
         </aside>
-        <!-- Sidebar End-->
-        <div class="span9">
-         <!-- Blog start-->   
-          <section id="latestblog">         
-            <div class="blogdetail">
-              <h2 class="heading2"><span>BLog Title Appear</span></h2>
-              <div class="blogicons">
-                <div class="pull-left">
-                  <span class="mr10"><i class="icon-calendar"></i> August 26, 2012 </span>
-                  <span class="mr10"><a href="#"><i class="icon-comment"></i> 5 Comments</a>
-                  </span>
-                  <span class="mr10">
-                  <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a>
-                  </span>
-                </div>
-              </div>
-              <ul class="margin-none">
-                <li class="listblcok">
-                  <div class="mb20">
-                    <a class="fancyboxpopup thumbnail" href="img/product1big.jpg"><img src="img/productblog.jpg" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. </p>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. </p>
-                    <br>
-                    <br>
-                    <div class="author">by:<a href="#"> themeforest</a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <!-- Comment-->
-              <section class="commentsblog">
-                <h2 class="heading2"><span>Comments (2)</span></h2>
-                <ul class="comments">
-                  <li>
-                    <a class="avtar thumbnail" ><img src="img/avtar.jpg" alt=""></a>
-                    <div class="commentdetail">
-                      <a class="blogtitle" href="#">themeforest</a>
-                      <p> Hi, I am themeforest. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                      <p> I am themeforest. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                      <a href="#">http://www.themeforest.net</a>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="avtar thumbnail " ><img src="img/avtar.jpg" alt=""></a>
-                    <div class="commentdetail">
-                      <a class="blogtitle" href="#">themeforest</a>
-                      <p> Hi, I am themeforest. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                      <p> I am themeforest. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                      <a href="#">http://www.themeforest.net</a>
-                    </div>
-                  </li>
-                </ul>
-              </section>
-              <!-- Leave Comment-->
-              <section class="leavecomment">
-                <h2 class="heading2"><span>Leave a comment</span></h2>
-                <form method="post" class="form-horizontal commentform2" novalidate="novalidate">
-                  <fieldset>
-                    <div class="control-group">
-                      <label class="control-label" >Name <span class="required">*</span></label>
-                      <div class="controls">
-                        <input type="text" name="name" value="" id="name" class="required">
+        <!-- Sidebar End--> 
+         <!-- Blog listing-->      
+        <div class="span9 bloggrid">
+          <h1 class="heading1"><span class="maintext">Tin Mới Nhất</span></h1>   
+          <?php foreach($news as $row): ?>
+            <tr> 
+                <td><?php echo $row->id_news; ?></td>
+                <td><?php echo $row->title_news; ?></td>
+                <td><?php echo $row->full_news; ?></td>
+                <td><?php echo $row->info_news; ?></td>
+            </tr>
+            <?php endforeach; ?>
+        <!-- <ul class="thumbnails list row">
+                   <?php foreach($news as $new) : ?>
+                    <li>
+                      <div class="thumbnail">
+                        <div class="row">
+                          <div class="span3">                            
+                            <a href="#"><img alt="" src="<?php echo base_url();?>/<?php echo $new['img_news']; ?>"></a>
+                          </div>
+                          <div class="span6">
+                            <a class="news" href="#"><?php echo $new['title_news'] ?></a>                            
                       </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Email <span class="required">*</span></label>
-                      <div class="controls">
-                        <input type="email" name="email" value="" id="email" class="required email">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Url</label>
-                      <div class="controls">
-                        <input type="url" name="url" value="" id="url">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Your Comment</label>
-                      <div class="controls">
-                        <textarea name="messagee" id="message" cols="40" rows="6" class="required"></textarea>
-                      </div>
-                    </div>
-                    <div class="controls">
-                      <input type="submit" id="submit_id" value="Submit" class="btn btn-orange">
-                      <input type="reset" value="Reset" class="btn">
-                    </div>
-                  </fieldset>
-                </form>
-              </section>
-            </div>
-             <!-- Paging-->
-            <div class="row">
-              <div class="pagination pull-right">
-                <ul>
-                  <li><a href="#">Prev</a>
-                  </li>
-                  <li class="active">
-                    <a href="#">1</a>
-                  </li>
-                  <li><a href="#">2</a>
-                  </li>
-                  <li><a href="#">3</a>
-                  </li>
-                  <li><a href="#">4</a>
-                  </li>
-                  <li><a href="#">Next</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
+                    </li>     
+                    <?php endforeach ?>               
+                  </ul>
+          <h2><a href='single.php?pid={$pages['page_id']}'>{$pages['page_title']}</a></h2>
+                    <p><img class='img_feature' src='upload/images/{$pages['image_url']}'/>".the_excerpt(substr(html_entity_decode($pages['content']),0,400))." ... <p class='readmore'><a href='single.php?pid={$pages['page_id']}'>Read more</a></p></p> 
+                    <p class='meta'><strong>Posted by: </strong>{$pages['name']} | <strong>Posted on: </strong> {$pages['date']}</p>
+                    </div> --> 
+         <!-- Paging-->
+        <div class="row">
+          <div class="pagination pull-right">
+            <ul>
+              <li><a href="#">Prev</a>
+              </li>
+              <li class="active">
+                <a href="#">1</a>
+              </li>
+              <li><a href="#">2</a>
+              </li>
+              <li><a href="#">3</a>
+              </li>
+              <li><a href="#">4</a>
+              </li>
+              <li><a href="#">5</a>
+              </li>
+              <li><a href="#">6</a>
+              </li>
+              <li><a href="#">7</a>
+              </li>
+              <li><a href="#">8</a>
+              </li>
+              <li><a href="#">Next</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -324,79 +260,7 @@
 </div>
 
 <!-- Footer -->
-<footer id="footer">
-  <section class="footersocial">
-    <div class="container">
-      <div class="row">
-        <div class="span3 aboutus">
-          <h2>About Us </h2>
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>
-            <br>
-            t has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-        </div>
-        <div class="span3 contact">
-          <h2>Contact Us </h2>
-          <ul>
-            <li class="phone"> +123 456 7890, +123 456 7890</li>
-            <li class="mobile"> +123 456 7890, +123 456 78900</li>
-            <li class="email"> test@test.com</li>
-            <li class="email"> test@test.com</li>
-          </ul>
-        </div>
-        <div class="span3 twitter">
-          <h2>Twitter </h2>
-          <div id="twitter">
-          </div>
-        </div>
-        <div class="span3 facebook">
-          <h2>Facebook </h2>
-          <div id="fb-root"></div>
-          <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-          <script type="text/javascript">FB.init("");</script>
-          <script type="text/javascript">
-//<![CDATA[
-document.write('<fb:fan profile_id="80655071208" stream="0"	connections="6"	logobar="0" height="190px"	width="200"css="css/fb.css"></fb:fan> ');
-//]]>
-</script>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="footerlinks">
-    <div class="container">
-      <div class="info">
-        <ul>
-          <li><a href="#">Privacy Policy</a>
-          </li>
-          <li><a href="#">Terms &amp; Conditions</a>
-          </li>
-          <li><a href="#">Affiliates</a>
-          </li>
-          <li><a href="#">Newsletter</a>
-          </li>
-        </ul>
-      </div>
-      <div id="footersocial">
-        <a href="#" title="Facebook" class="facebook">Facebook</a>
-        <a href="#" title="Twitter" class="twitter">Twitter</a>
-        <a href="#" title="Linkedin" class="linkedin">Linkedin</a>
-        <a href="#" title="rss" class="rss">rss</a>
-        <a href="#" title="Googleplus" class="googleplus">Googleplus</a>
-        <a href="#" title="Skype" class="skype">Skype</a>
-        <a href="#" title="Flickr" class="flickr">Flickr</a>
-      </div>
-    </div>
-  </section>
-  <section class="copyrightbottom">
-    <div class="container">
-      <div class="row">
-        <div class="span6"> All images are copyright to their owners. </div>
-        <div class="span6 textright"> ShopSimple @ 2012 </div>
-      </div>
-    </div>
-  </section>
-  <a id="gotop" href="#">Back to top</a>
-</footer>
+<?php $this->load->view("footer") ?>
 <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
