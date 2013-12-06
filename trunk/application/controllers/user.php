@@ -4,28 +4,44 @@ class User extends CI_Controller{
     
     public function __construct(){
 		parent ::__construct();
-		$this->load->library(array('form_validation','email'));
+		$this->load->library(array('form_validation','email','session','my_auth'));
 		$this->load->helper(array("url","date","form","string"));
         
         $this->load->model("muser");
 	}
     public function index(){
-		$this->layout();
+		if(!$this->my_auth->is_Login())
+        {
+            redirect(base_url()."user_view/dangnhap");
+            exit();
+        }
+        else
+        {
+            $userid = $this->my_auth->userid;
+            $data['info'] = $this->muser->getInfo($userid);
+            
+            $this->my_layout->view("user_view/home",$data);
+        }
 	}
 	function layout(){
 		$this->data['title']="Đăng Nhập";
-		$this->load->view("dangnhap",$this->data);
+		$this->load->view("user_view/dangnhap",$this->data);
 	}
     public function dangnhap(){
         $this->data['title']="Đăng Nhập";
-        $this->load->view("dangnhap",$this->data);
+        $this->load->view("user_view/dangnhap",$this->data);
     }
-    public function dangky()
-    {        
+    public function dangky(){     
+        //--- Neu Login thi khong duoc dang ki
+        if($this->my_auth->is_Login()){
+            redirect(base_url()."user_view/home");
+            exit();
+        }
+        
         $this->data['title']="Đăng Ký";
         $this->form_validation->set_rules("full_name","Họ tên","required|min_length[6]");
         $this->form_validation->set_rules("password","Mật Khẩu","required|matches[repassword]");
-        $this->form_validation->set_rules("email","Email","required|valid_email");
+        $this->form_validation->set_rules("email","Email","required|valid_email|callback_checkEmail");
         $this->form_validation->set_rules("address","Địa chỉ","required");
         $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[10]");
         $this->form_validation->set_rules("checkbox","Đồng ý","required");
@@ -35,7 +51,7 @@ class User extends CI_Controller{
         $this->form_validation->set_message('matches','Xác thực mật khẩu sai !');
         if($this->form_validation->run()==FALSE){
             
-            $this->load->view("dangky",$this->data);
+            $this->load->view("user_view/dangky",$this->data);
         }
         else
         {
@@ -71,9 +87,20 @@ class User extends CI_Controller{
                 $this->my_email->config($mail);
                 $this->my_email->sendmail();*/
 
-                $this->load->view("dangky_thanhcong",$this->data);
+                $this->load->view("user_view/dangky_thanhcong",$this->data);
             }   
         }
         
+    }
+    //---- Kiem tra Email khi đăng kí
+    function checkEmail($email)
+    {
+        if($this->muser->checkEmail($email,$id)==TRUE){
+            return TRUE;
+        }
+        else{
+            $this->form_validation->set_message("checkEmail","Email này đã đăng ký !");
+            return FALSE;
+        }
     }
 }
