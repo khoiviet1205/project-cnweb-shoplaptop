@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>SimpleOne - A Responsive Html5 Ecommerce Template</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -199,33 +199,20 @@
          <!-- Blog listing-->      
         <div class="span9 bloggrid">
           <h1 class="heading1"><span class="maintext">Tin Mới Nhất</span></h1>   
-          <?php foreach($news as $row): ?>
-            <tr> 
-                <td><?php echo $row->id_news; ?></td>
-                <td><?php echo $row->title_news; ?></td>
-                <td><?php echo $row->full_news; ?></td>
-                <td><?php echo $row->info_news; ?></td>
-            </tr>
-            <?php endforeach; ?>
-        <!-- <ul class="thumbnails list row">
+         <ul class="thumbnails">
                    <?php foreach($news as $new) : ?>
                     <li>
-                      <div class="thumbnail">
-                        <div class="row">
-                          <div class="span3">                            
-                            <a href="#"><img alt="" src="<?php echo base_url();?>/<?php echo $new['img_news']; ?>"></a>
-                          </div>
-                          <div class="span6">
-                            <a class="news" href="#"><?php echo $new['title_news'] ?></a>                            
-                      </div>
+                    <div class='post_wrap' style='font:15px arial,sans-serif;'>
+                    <h2><a href='#'><?php echo $new['page_title'] ?></a></h2>
+                    <p><img class='img_feature' src="<?php echo $new['image_url'];?>"/>
+                    <p><?php echo $new['full_news'] = substr(($new['full_news']),0,400)?></p>
+                    <p class='readmore'><a href='#'>Read more</a></p></p> 
+                    <p class='meta'><strong>Posted by: </strong><?php echo $new['duyet_news'] ?> <strong>Posted on: </strong><?php echo $new['date_news']?></p>
+                    </div>                    
                     </li>     
                     <?php endforeach ?>               
-                  </ul>
-          <h2><a href='single.php?pid={$pages['page_id']}'>{$pages['page_title']}</a></h2>
-                    <p><img class='img_feature' src='upload/images/{$pages['image_url']}'/>".the_excerpt(substr(html_entity_decode($pages['content']),0,400))." ... <p class='readmore'><a href='single.php?pid={$pages['page_id']}'>Read more</a></p></p> 
-                    <p class='meta'><strong>Posted by: </strong>{$pages['name']} | <strong>Posted on: </strong> {$pages['date']}</p>
-                    </div> --> 
-         <!-- Paging-->
+            </ul>
+         <!-- Paging -->
         <div class="row">
           <div class="pagination pull-right">
             <ul>
