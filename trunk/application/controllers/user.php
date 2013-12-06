@@ -10,18 +10,7 @@ class User extends CI_Controller{
         $this->load->model("muser");
 	}
     public function index(){
-		if(!$this->my_auth->is_Login())
-        {
-            redirect(base_url()."user_view/dangnhap");
-            exit();
-        }
-        else
-        {
-            $userid = $this->my_auth->userid;
-            $data['info'] = $this->muser->getInfo($userid);
-            
-            $this->my_layout->view("user_view/home",$data);
-        }
+		$this->layout();
 	}
 	function layout(){
 		$this->data['title']="Đăng Nhập";
@@ -30,6 +19,41 @@ class User extends CI_Controller{
     public function dangnhap(){
         $this->data['title']="Đăng Nhập";
         $this->load->view("user_view/dangnhap",$this->data);
+        $this->form_validation->set_rules("email","Email","required");
+        $this->form_validation->set_rules("password","Mật Khẩu","required");
+        $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+        if($this->form_validation->run()==FALSE){           
+            $this->load->view("user_view/dangnhap",$this->data);
+        }
+        else{
+            $u = $this->input->post("email");
+            $p = $this->input->post("password");
+            $session = $this->muser->checkLogin($u,$p);
+             
+            if($session)
+            {
+                //if(!$this->my_auth->is_Active($session['userid'])){
+                    
+                    //$data['error'] = "Please check mail and active your account !";
+                    //$this->load->view("frontend/login",$data);
+                //}
+                //else
+                //{
+                     $data = array(
+                                   "email"  => $session['email'],
+                                   "userid"    => $session['userid'],
+                                   "level"  => $session['level'],
+                               );
+                                
+                     $this->my_auth->set_userdata($data);
+                     redirect(base_url()."user_view/home");
+                 //}
+             }
+             else
+             {  
+                $this->load->view("user_view/dangnhap",$this->data);    
+             }
+        }
     }
     public function dangky(){     
         //--- Neu Login thi khong duoc dang ki
@@ -92,9 +116,11 @@ class User extends CI_Controller{
         }
         
     }
+    
     //---- Kiem tra Email khi đăng kí
     function checkEmail($email)
     {
+        $id = $this->uri->segment(4);
         if($this->muser->checkEmail($email,$id)==TRUE){
             return TRUE;
         }
@@ -103,4 +129,5 @@ class User extends CI_Controller{
             return FALSE;
         }
     }
+    
 }

@@ -134,10 +134,10 @@ class muser extends CI_Model{
     
     //--- Kiem tra dang nhap
     //----------------------------- CHECK LOGIN
-    function checkLogin($username,$password){
-        $u = $username;
+    function checkLogin($email,$password){
+        $u = $email;
         $p = md5($password);
-        $this->db->where("username",$u);
+        $this->db->where("email",$u);
         $this->db->where("password",$p);
         $query = $this->db->get($this->_table);
         if($query->num_rows()==0){
