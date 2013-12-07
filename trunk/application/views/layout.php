@@ -53,7 +53,7 @@
     <div class="otherddetailspart">
       <div class="innerclass free">
         <h2>Giao Hàng Miễn Phí</h2>
-        Trên toàn thế giới chỉ với 200$ </div>
+        Trên toàn thế giới chỉ với 200$</div>
     </div>
     <div class="otherddetailspart">
       <div class="innerclass payment">

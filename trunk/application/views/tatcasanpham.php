@@ -32,7 +32,6 @@
 <body>
 <!-- Header Start -->
 <?php $this->load->view("header") ?>
-
 <div id="maincontainer">
  <section id="product">
     <div class="container">
@@ -42,66 +41,47 @@
           <a href="<?php echo base_url();?>">Trang chủ</a>
           <span class="divider">/</span>
 	   </li>
-        <li class="active">ads</li>    
+        <li class="active">Laptop</li>    
       </ul>
       <div class="row">        
         <!-- Sidebar Start-->
         <aside class="span3">
          <!-- Category-->  
           <div class="sidewidt">
-            <h2 class="heading2"><span>Categories</span></h2>
+            <h2 class="heading2"><span>Hãng Laptop</span></h2>
             <ul class="nav nav-list categories">
+            <?php foreach($hanglaptop as $item) : ?>
               <li>
-                <a href="category.html">Men Accessories</a>
+                <a href="category.html"><?php echo $item['name_cate2'] ?></a>
               </li>
-              <li>
-                <a href="category.html">Women Accessories</a>
-              </li>
-              <li>
-                <a href="category.html">Computers </a>
-              </li>
-              <li>
-                <a href="category.html">Home and Furniture</a>
-              </li>
-              <li>
-                <a href="category.html">Others</a>
-              </li>
+               <?php endforeach ?>
             </ul>
           </div>
-         <!--  Best Seller -->  
+         <!--  Mua Nhiều -->  
           <div class="sidewidt">
-            <h2 class="heading2"><span>Best Seller</span></h2>
+            <h2 class="heading2"><span>Mua Nhiều</span></h2>
             <ul class="bestseller">
+            <?php foreach($sp_muanhieu as $item) : ?>
               <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Women Accessories</span>
-                <span class="price">$250</span>
+                <img width="50" height="50" src="<?php echo base_url();?>/<?php echo $item['img_sp']; ?>" alt="product" title="product">
+                <a class="productname" href="product.html"><?php echo $item['name_sp'] ?></a>
+                <span class="procategory"><?php echo $item['name_loai'] ?></span>
+                <span class="price"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</span>
               </li>
+              <?php endforeach ?>
             </ul>
           </div>
-          <!-- Latest Product -->  
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Latest Products</span></h2>
-            <ul class="bestseller">
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Women Accessories</span>
-                <span class="price">$250</span>
-              </li>
-            </ul>
-          </div>
+          
           <!--  Must have -->  
           <div class="sidewidt">
-          <h2 class="heading2"><span>Must have</span></h2>
+          <h2 class="heading2"><span>Nên Mua</span></h2>
           <div class="flexslider" id="mainslider">
             <ul class="slides">
               <li>
-                <img src="img/product1.jpg" alt="" />
+                <img src="<?php echo base_url();?>/publics/img/product1.jpg" alt="" />
               </li>
               <li>
-                <img src="img/product2.jpg" alt="" />
+                <img src="<?php echo base_url();?>/publics/img/product2.jpg" alt="" />
               </li>
             </ul>
           </div>
@@ -117,23 +97,14 @@
                <!-- Sorting-->
                 <div class="sorting well">
                   <form class=" form-inline pull-left">
-                    Sort By :
+                    Xếp theo :
                     <select class="span2">
-                      <option>Default</option>
-                      <option>Name</option>
-                      <option>Pirce</option>
+                      <option>Mặc định</option>
+                      <option>Tên</option>
+                      <option>Giá</option>
                       <option>Rating </option>
-                      <option>Color</option>
                     </select>
                     &nbsp;&nbsp;
-                    Show:
-                    <select class="span1">
-                      <option>10</option>
-                      <option>15</option>
-                      <option>20</option>
-                      <option>25</option>
-                      <option>30</option>
-                    </select>
                   </form>
                   <div class="btn-group pull-right">
                     <button class="btn" id="list"><i class="icon-th-list"></i>
@@ -149,7 +120,6 @@
                    <li class="span3">                 
                       <a class="prdocutname" href="product.html"><?php echo $item['name_sp'] ?></a>
                       <div class="thumbnail">
-                        <span class="sale tooltip-test">Sale</span>
                         <a href="#"><img alt="" src="<?php echo base_url();?>/<?php echo $item['img_sp']; ?>"></a>
                         <div class="shortlinks">
                           <a class="details" href="#">Chi Tiết</a>
@@ -157,7 +127,7 @@
                           <a class="compare" href="#">So Sánh</a>
                         </div>
                         <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                          <span class="spiral"></span><a href="#" class="productcart">THÊM VÀO</a>
                           <div class="price">
                             <div class="pricenew">$4459.00</div>
                             <div class="priceold">$5000.00</div>
@@ -209,19 +179,7 @@
                  <?php } ?>
                   <div class="pagination pull-right">
                     <ul>
-                      <li><a href="#">Prev</a>
-                      </li>
-                      <li class="active">
-                        <a href="#">1</a>
-                      </li>
-                      <li><a href="#">2</a>
-                      </li>
-                      <li><a href="#">3</a>
-                      </li>
-                      <li><a href="#">4</a>
-                      </li>
-                      <li><a href="#">Next</a>
-                      </li>
+	                  <?php echo $this->pagination->create_links();?>
                     </ul>
                   </div>
                 </section>

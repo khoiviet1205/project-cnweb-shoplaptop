@@ -3,7 +3,6 @@
 		$path_css=base_url().'publics/css/';
 	//Js file path :
 		$path_js=base_url().'publics/js/';
-	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -143,8 +142,8 @@
       <?php endforeach ?>
     </div>
   </section>
-   <!-- San pham ưa chuộng loai-->
-   <?php $this->load->view("sanphamuachuong") ?>
+   <!-- San pham mua nhieu-->
+   <?php $this->load->view("sanphammuanhieu") ?>
    
    <!-- Popular Brands-->
    <?php $this->load->view("thuonghieunoitieng") ?>
@@ -174,6 +173,5 @@
 <script type="text/javascript" src="<?php echo $path_js?>jquery.touchSwipe.min.js"></script> 
 <script type="text/javascript" src="<?php echo $path_js?>jquery.ba-throttle-debounce.min.js"></script>
 <script src="<?php echo $path_js?>custom.js"></script>
-
 </body>
 </html>
