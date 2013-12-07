@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-
+$route['tatcasanpham/(:any)'] = "welcome/tatcasanpham/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
