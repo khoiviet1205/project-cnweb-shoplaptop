@@ -162,7 +162,7 @@ class Mbase extends CI_Model{
 	}
 	// Get san pham mua nhieu
 	public function getspmn(){
-		$result=$this->db->query("SELECT id_sp, count(*) AS SL FROM chitietdonhang GROUP BY id_sp ORDER BY SL DESC LIMIT 4");
+		$result=$this->db->query("select *, count(*) as sl from chitietdonhang, product,loai where chitietdonhang.id_sp=product.id_sp and product.id_loai=loai.id_loai group by chitietdonhang.id_sp order by sl desc limit 0,4");
 		return $result->result_array();
 	}
 	
@@ -202,13 +202,35 @@ class Mbase extends CI_Model{
 	}
 	
 	//Get tat ca san pham theo loai
-	function get_tatca_sp($param)
+	function get_tatca_sp($param,$number,$offset)
 	{
 		$this->db->select("*");
 		$this->db->where("id_loai",$param);
-		$query=$this->db->get("product");
+		$query=$this->db->get("product",$number,$offset);
 		return $query->result_array();	
-	}	
+	}
+	//Get tat ca san pham 
+	function get_tatca_sp1($param)
+	{
+$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=$param order by id_sp ");
+		return $result->result_array();	
+	}
+	// Get hãng laptop
+	function get_hang_laptop()
+	{
+		$result =$this->db->query("select * from cate2");
+		return $result->result_array();
+	}
+	// ***************Phân trang**********************//
+	// Tổng số laptop theo điều kiện
+	function count_laptop($param)
+	{
+		$this->db->select('COUNT(*) AS `numrows`');
+    		$this->db->where(array('id_loai'=>$param));
+  	    $query = $this->db->get('product');
+    	return $query->row()->numrows;
+	}
+
 }
 
 
