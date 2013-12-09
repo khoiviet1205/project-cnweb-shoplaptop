@@ -3,16 +3,7 @@
 		$path_css=base_url().'publics/css/';
 	//Js file path :
 		$path_js=base_url().'publics/js/';
-	$email = array(
-                        'name'        => 'email',
-                        'id'          => 'email',
-                        'size'        => '25',
-                    );
-    $password = array(
-                        'name'        => 'password',
-                        'id'          => 'password',
-                        'size'        => '25',
-                    );
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,13 +30,27 @@
 <!-- fav -->
 <link rel="shortcut icon" href="assets/ico/favicon.html">
 </head>
+
 <body>
 <!-- Header Start -->
 <?php
     $this->load->view("header");
 ?>
 <!-- Header End -->
-
+<?php
+    //--- Giu gia tri cua form
+    $password = array(
+                        'name'        => 'password',
+                        'id'          => 'lname',
+                        'size'        => '30',
+                    );
+    $email = array(
+                        'name'        => 'email',
+                        'id'          => 'email',
+                        'size'        => '30',
+                        'value'       => set_value('email'),
+                    );
+?>
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -77,7 +82,9 @@
             <h2 class="heading2">Đã có tài khoản </h2>
             <div class="loginbox">
               <h4 class="heading4"></h4>
-              <form class="form-vertical">
+              <?php
+                echo form_open('user');
+              ?>
                 <fieldset>
                   <div class="control-group">
                       <label class="control-label">E-Mail :</label>
@@ -93,6 +100,8 @@
                       <?php 
                             echo form_password($password);
                             echo form_error('password','<div class="red">','</div>');
+                            if($error!="")
+                                echo '<div class="red">'.$error.'</div>';
                         ?>
                     </div>
                   </div>
@@ -102,7 +111,7 @@
                         
                   <input class="btn btn-orange" type="submit" name="ok" value="Đăng Nhập" /><br />
                 </fieldset>
-              </form>
+              
             </div>
           </section>
         </div>
@@ -134,8 +143,8 @@
       </div>
     </div>
   </section>
-</div>
-
+</div>   
+    
 <!-- Footer -->
 <?php
     $this->load->view("footer");
@@ -157,6 +166,5 @@
 <script type="text/javascript" src="<?php echo $path_js?>jquery.mousewheel.min.js"></script> 
 <script type="text/javascript" src="<?php echo $path_js?>jquery.touchSwipe.min.js"></script> 
 <script type="text/javascript" src="<?php echo $path_js?>jquery.ba-throttle-debounce.min.js"></script>
-<script src="<?php echo $path_js?>custom.js"></script>
+<script src="<?php echo $path_js?>custom.js"></script> 
 </body>
-</html>

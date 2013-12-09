@@ -43,105 +43,64 @@
      <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="#">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">My Account</li>
+        <li class="active">Tài Khoản</li>
       </ul>
       <div class="row">
         
         <!-- My Account-->
         <div class="span9">
-<h1 class="heading1"><span class="maintext">My Accounts</span><span class="subtext">View All your account information</span></h1>        
-              <h3 class="heading3">My Accounts</h3>
+<h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>        
+              <h3 class="heading3">Thông tin cá nhân</h3>
           <div class="myaccountbox">
             <ul>
               <li>
-                <a href="#"> Edit your account information</a>
+                <a> Họ Tên : <?php echo $info['full_name'];?></a>
               </li>
               <li>
-                <a href="#"> Change your password</a>
+                <a> Email : <?php echo $info['email'];?></a>
               </li>
               <li>
-                <a href="#">Modify your address book entries</a>
+                <a> Điện Thoại : <?php echo $info['phone'];?></a>
               </li>
               <li>
-                <a href="#">Modify your wish list</a>
+                <a> Địa Chỉ : <?php echo $info['address'];?></a>
               </li>
+              <li>
+                <a> Giới Tính : <?php if($info['gender']==1) echo "Nam";
+                           if($info['gender']==2) echo "Nữ"; ?></a>
+              </li>
+              <li>
+                <a> Tài Khoản : <?php if($info['level']==1) echo "Quản Lý";
+                          if($info['level']==2) echo "Thành Viên"; ?></a>
+              </li>
+              
             </ul>
           </div>
-          <h3 class="heading3">My Orders</h3>
-          <div class="myaccountbox">
-            <ul>
-              <li>
-                <a href="#"> View your order history</a>
-              </li>
-              <li>
-                <a href="#"> Downloads</a>
-              </li>
-              <li>
-                <a href="#">Your Reward Points</a>
-              </li>
-              <li>
-                <a href="#">View your return requests</a>
-              </li>
-              <li>
-                <a href="#">Your Transactions</a>
-              </li>
-            </ul>
-          </div>
-          <h3 class="heading3">Newsletter</h3>
-          <div class="myaccountbox">
-            <ul>
-              <li>
-                <a href="#"> Subscribe</a>
-                <a href="#"> unsubscribe to newsletter</a>
-              </li>
-            </ul>
-          </div>
-       
-          
-          
-          
-          
-          
-          
-          
-          
-          
+                                                               
         </div>
         
         <!-- Sidebar Start-->
           <aside class="span3">
             <div class="sidewidt">
-              <h2 class="heading2"><span>Account</span></h2>
+              <h2 class="heading2"><span>Tài Khoản</span></h2>
               <ul class="nav nav-list categories">
                 <li>
-                  <a href="#"> My Account</a>
+                  <a href="#"> Xem thông tin cá nhân</a>
                 </li>
                 <li>
-                  <a href="#">Edit Account</a>
+                  <a href="#">Cập nhật thông tin</a>
                 </li>
                 <li>
-                  <a href="#">Password</a>
+                  <a href="#">Đổi mật khẩu</a>
                 </li>
                 <li>
-                  <a href="#">Wish List</a>
-                </li>
-                <li><a href="#">Order History</a>
-                </li>
-                <li><a href="#">Downloads</a>
-                </li>
-                <li><a href="#">Returns</a>
+                  <a href="#">Giỏ hàng</a>
                 </li>
                 <li>
-                  <a href="#"> Transactions</a>
-                </li>
-                <li>
-                  <a href="category.html">Newsletter</a>
-                </li>
-                <li>
-                  <a href="category.html">Logout</a>
+                  <a href="<?php echo base_url();?>index.php/user/dangxuat/">Đăng Xuất</a>
                 </li>
               </ul>
             </div>

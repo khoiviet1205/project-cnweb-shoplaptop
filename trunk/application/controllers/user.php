@@ -5,20 +5,23 @@ class User extends CI_Controller{
     public function __construct(){
 		parent ::__construct();
 		$this->load->library(array('form_validation','email','session','my_auth'));
-		$this->load->helper(array("url","date","form","string"));
+		$this->load->helper(array("url","date","string","form"));
         
         $this->load->model("muser");
 	}
     public function index(){
-		$this->layout();
-	}
-	function layout(){
-		$this->data['title']="Đăng Nhập";
-		$this->load->view("user_view/dangnhap",$this->data);
+		$this->dangnhap();
 	}
     public function dangnhap(){
+        if($this->my_auth->is_Login()){
+            $this->data['title']="Trang Cá Nhân";
+            $userid = $this->my_auth->userid;
+            $this->data['info'] = $this->muser->getInfo($userid);
+            $this->load->view("user_view/home",$this->data);
+            //exit();
+        }
         $this->data['title']="Đăng Nhập";
-        $this->load->view("user_view/dangnhap",$this->data);
+        $this->data['error']="";
         $this->form_validation->set_rules("email","Email","required");
         $this->form_validation->set_rules("password","Mật Khẩu","required");
         $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
@@ -39,6 +42,7 @@ class User extends CI_Controller{
                 //}
                 //else
                 //{
+                    $this->data['title']="Trang Cá Nhân";
                      $data = array(
                                    "email"  => $session['email'],
                                    "userid"    => $session['userid'],
@@ -46,11 +50,15 @@ class User extends CI_Controller{
                                );
                                 
                      $this->my_auth->set_userdata($data);
-                     redirect(base_url()."user_view/home");
+                     $userid = $this->my_auth->userid;
+                     $this->data['info'] = $this->muser->getInfo($userid);
+                    // redirect(base_url()."user_view/home");
+                    $this->load->view("user_view/home",$this->data);
                  //}
              }
              else
              {  
+                $this->data['error']="Email hoặc mật khẩu sai !";
                 $this->load->view("user_view/dangnhap",$this->data);    
              }
         }
@@ -58,8 +66,11 @@ class User extends CI_Controller{
     public function dangky(){     
         //--- Neu Login thi khong duoc dang ki
         if($this->my_auth->is_Login()){
-            redirect(base_url()."user_view/home");
-            exit();
+            $this->data['title']="Trang Cá Nhân";
+            $userid = $this->my_auth->userid;
+            $this->data['info'] = $this->muser->getInfo($userid);
+            $this->load->view("user_view/home",$this->data);
+            //exit();
         }
         
         $this->data['title']="Đăng Ký";
@@ -115,6 +126,10 @@ class User extends CI_Controller{
             }   
         }
         
+    }
+    public function dangxuat(){
+        $this->my_auth->sess_destroy();
+		$this->dangnhap();
     }
     
     //---- Kiem tra Email khi đăng kí

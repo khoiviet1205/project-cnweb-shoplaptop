@@ -122,16 +122,16 @@
           </li>          
           <li><a href="<?php echo base_url();?>index.php/welcome/tintuc/">Tin Tức</a>
           </li>
-          <li><a href="myaccount.html">Tài Khoản</a>
+          <li><a href="<?php echo base_url();?>index.php/user/">Tài Khoản</a>
             <div>
               <ul>
-                <li><a href="myaccount.html">Tài Khoản</a>
+                <li><a href="<?php echo base_url();?>index.php/user/">Tài Khoản</a>
                 </li>
-                <li><a class= "dangnhap" href="<?php echo base_url();?>index.php/user/dangnhap/">Đăng Nhập</a>
+                <li><a class= "dangnhap" href="<?php echo base_url();?>index.php/user/">Đăng Nhập</a>
                 </li>
                 <li><a class= "dangky" href="<?php echo base_url();?>index.php/user/dangky/">Đăng Ký</a>
                 </li>
-                <li><a href="wishlist.html">Ưa Thích</a>
+                <li><a href="<?php echo base_url();?>index.php/user/dangxuat">Đăng Xuất</a>
                 </li>
               </ul>
             </div>
