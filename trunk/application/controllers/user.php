@@ -35,13 +35,14 @@ class User extends CI_Controller{
              
             if($session)
             {
-                //if(!$this->my_auth->is_Active($session['userid'])){
+                if(!$this->my_auth->is_Active($session['userid'])){
                     
-                    //$data['error'] = "Please check mail and active your account !";
-                    //$this->load->view("frontend/login",$data);
-                //}
-                //else
-                //{
+                    $data['report'] = "Tài khoản của bạn chưa được kích hoạt, vui lòng kiểm tra email để kích hoạt !";
+                    $data['title'] = "Kích hoạt tài khoản";
+                    $this->load->view("user_view/dangky_thanhcong",$data);
+                }
+                else
+                {
                     $this->data['title']="Trang Cá Nhân";
                      $data = array(
                                    "email"  => $session['email'],
@@ -52,9 +53,8 @@ class User extends CI_Controller{
                      $this->my_auth->set_userdata($data);
                      $userid = $this->my_auth->userid;
                      $this->data['info'] = $this->muser->getInfo($userid);
-                    // redirect(base_url()."user_view/home");
                     $this->load->view("user_view/home",$this->data);
-                 //}
+                 }
              }
              else
              {  
@@ -107,8 +107,8 @@ class User extends CI_Controller{
              $message = "";
              if($this->muser->addUser($add)){
 
-                /*$userid = mysql_insert_id();
-                $link_active = base_url()."home/user/active/?userid=".$userid."&key=".md5($salt);
+                $userid = mysql_insert_id();
+                $link_active = base_url()."index.php/user/active/?userid=".$userid."&key=".md5($salt);
                 $message  = "Please follow this link to active your acount <br/>".
                 $message .= "Link : <a href=".$link_active.">".$link_active."</a><br/>";
                 $message .= "password : ".$this->input->post("password");
@@ -120,8 +120,9 @@ class User extends CI_Controller{
 
                 $this->load->library("my_email");
                 $this->my_email->config($mail);
-                $this->my_email->sendmail();*/
+                $this->my_email->sendmail();
 
+                $this->data['report'] = "Đăng ký tài khoản thành công !";
                 $this->load->view("user_view/dangky_thanhcong",$this->data);
             }   
         }
@@ -130,6 +131,57 @@ class User extends CI_Controller{
     public function dangxuat(){
         $this->my_auth->sess_destroy();
 		$this->dangnhap();
+    }
+    
+    //--- Kick hoat tai khoan
+    function active(){
+        
+        //--- Neu Login thi khong active
+        if($this->my_auth->is_Login()){
+            $this->data['title']="Trang Cá Nhân";
+            $userid = $this->my_auth->userid;
+            $this->data['info'] = $this->muser->getInfo($userid);
+            $this->load->view("user_view/home",$this->data);
+        }
+        
+        $userid = $_GET['userid'];
+        $key = $_GET['key'];
+        $data = array();
+        $data['title'] = "Kích hoạt tài khoản";
+        
+        if(is_numeric($userid)){
+            
+            $check = $this->muser->checkActive($userid,$key);
+
+            if($check){
+                
+                if($check['active']==1)
+                {
+                    $data['report'] = "Tài khoản của bạn đã được kích hoạt !";
+                    $this->session->unset_userdata($this->_register);
+                }
+                else
+                {
+                    
+                     $update = array(
+                                    "active"      => 1,
+                                );
+                    $this->muser->updateUser($update,$userid);
+                    $data['report'] = "Tài khoản của bạn đã được kích hoạt !";   
+                }
+            
+            }
+            else{
+                
+                $data['report'] = "Tài khoản không tồn tại !";
+            }
+            
+        }else{
+            
+            $data['report'] = "Đường dẫn sai !";
+        }
+
+        $this->load->view("user_view/dangky_thanhcong",$data);
     }
     
     //---- Kiem tra Email khi đăng kí

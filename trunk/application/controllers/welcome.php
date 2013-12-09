@@ -58,7 +58,6 @@ class Welcome extends Cpanel{
 		$this->data['title']="Liên Hệ";
 		$this->load->view("lienhe",$this->data);
 	}
-<<<<<<< .mine
 	//****************************************************
 	//Tất cả hàm liên quan đến giỏ hàng
 	public function add_giohang($param){
@@ -78,13 +77,10 @@ class Welcome extends Cpanel{
 	}
 //********************************************************
 
-=======
     
     public function tintuc(){
         $this->data['title']="Tin Tức";
         $this->load->view("tintuc",$this->data);        
     }
     
-   
->>>>>>> .r62
 }

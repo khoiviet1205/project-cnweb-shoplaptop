@@ -51,7 +51,11 @@
     
                   
         <fieldset>
-            <h1 class="heading1"><span class="maintext">Đăng ký tài khoản thành công.</span><span class="subtext"></span></h1>
+            <h1 class="heading1"><span class="maintext">
+                <?php
+                    echo '<div>'.$report.'</div>';
+                ?>
+            </span><span class="subtext"></span></h1>
             <div class="control-group">
                 <a href="<?php echo base_url();?>index.php/user/dangnhap/" class="btn btn-orange">Bắt đầu Đăng nhập</a>
             </div>
