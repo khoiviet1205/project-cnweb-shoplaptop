@@ -116,30 +116,6 @@
           </section>
         </div>
         
-        <!-- Sidebar Start-->
-        <aside class="span3">
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Tài Khoản</span></h2>
-            <ul class="nav nav-list categories">
-              <li>
-                <a href="#">Thông tin</a>
-              </li>
-              <li>
-                <a href="#">Chỉnh sửa</a>
-              </li>
-              <li>
-                <a href="#">Đổi mật khẩu</a>
-              </li>
-              <li>
-                <a href="#">Lịch sử đặt hàng</a>
-              </li>
-              <li>
-                <a href="category.html">Đăng xuất</a>
-              </li>
-            </ul>
-          </div>
-        </aside>
-        <!-- Sidebar End-->
       </div>
     </div>
   </section>

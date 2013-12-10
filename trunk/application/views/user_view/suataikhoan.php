@@ -4,6 +4,31 @@
 	//Js file path :
 		$path_js=base_url().'publics/js/';
 	
+    $full_name = array(
+                        "name"  => "full_name",
+                        "id"    => "full_name",
+                        "size"  => "30",
+                        "value" => $info["full_name"]
+                    );
+    $address = array(
+                        'name'        => 'address',
+                        'id'          => 'address',
+                        'size'        => '30',
+                        'value'       => $info["address"],
+                    );
+    $phone = array(
+                        'name'        => 'phone',
+                        'id'          => 'phone',
+                        'size'        => '30',
+                        'value'       => $info["phone"],
+                    );
+    $email = array(
+                        'name'        => 'email',
+                        'id'          => 'email',
+                        'size'        => '30',
+                        'disabled'    => 'disabled',
+                        'value'       => $info["email"],
+                    );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,33 +77,57 @@
         
         <!-- My Account-->
         <div class="span9">
-<h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>        
-              <h3 class="heading3">Thông tin cá nhân</h3>
-          <div class="myaccountbox">
-            <ul>
-              <li>
-                <a> Họ Tên : <?php echo $info['full_name'];?></a>
-              </li>
-              <li>
-                <a> Email : <?php echo $info['email'];?></a>
-              </li>
-              <li>
-                <a> Điện Thoại : <?php echo $info['phone'];?></a>
-              </li>
-              <li>
-                <a> Địa Chỉ : <?php echo $info['address'];?></a>
-              </li>
-              <li>
-                <a> Giới Tính : <?php if($info['gender']==1) echo "Nam";
-                           if($info['gender']==2) echo "Nữ"; ?></a>
-              </li>
-              <li>
-                <a> Tài Khoản : <?php if($info['level']==1) echo "Quản Lý";
-                          if($info['level']==2) echo "Thành Viên"; ?></a>
-              </li>
-              
-            </ul>
-          </div>
+        <h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>        
+              <h3 class="heading3">Sửa thông tin cá nhân</h3>
+        <form name="frmEdit" id="frmEdit" action="" method="post" enctype="multipart-formdata">
+            <fieldset>            
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Họ tên:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_input($full_name);
+                            echo form_error('full_name','<div class="red">','</div>');
+                        ?>
+                      </div>  
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Email:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_input($email);
+                            echo form_error('email','<div class="red">','</div>');
+                        ?>
+                      </div>       
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Địa Chỉ:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_input($address);
+                            echo form_error('address','<div class="red">','</div>');
+                        ?>
+                      </div>
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Điện Thoại:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_input($phone);
+                            echo form_error('phone','<div class="red">','</div>');
+                        ?>
+                      </div>        
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Giới tính:</label>
+                      <div class="controls">
+                        <input type="radio" value="1" name="gender" <?php if($info['gender']==1) echo "checked";?> class="input-xlarge"> Nam                    
+                        <?php
+                            echo "&nbsp&nbsp&nbsp&nbsp";                        
+                        ?>
+                        <input type="radio" value="2" name="gender" <?php if($info['gender']==2) echo "checked";?> class="input-xlarge"> Nữ
+                        
+                      </div>
+                    </div>
+            <input class="btn btn-orange" type="submit" name="ok" value="Cập Nhật" /><br />
+    
+            </fieldset>
+        </form>
                                                                
         </div>
         

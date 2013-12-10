@@ -122,6 +122,7 @@ class User extends CI_Controller{
                 $this->my_email->config($mail);
                 $this->my_email->sendmail();
 
+                $this->data['title'] = "Thành Công";
                 $this->data['report'] = "Đăng ký tài khoản thành công !";
                 $this->load->view("user_view/dangky_thanhcong",$this->data);
             }   
@@ -182,6 +183,101 @@ class User extends CI_Controller{
         }
 
         $this->load->view("user_view/dangky_thanhcong",$data);
+    }
+    
+    //--- Cap nhat tai khoan
+    public function suataikhoan(){
+        
+        if(!$this->my_auth->is_Login())
+        {
+            $this->data['report'] = "Bạn vui lòng đăng nhập trước !";
+            $this->load->view("user_view/dangky_thanhcong",$this->data);
+        }
+        
+            $userid = $this->my_auth->userid;
+            $data['info'] = $this->muser->getInfo($userid); 
+            $data['title'] = "Trang Cá Nhân";
+            if(isset($_POST['ok']))
+            {
+                $this->form_validation->set_rules("full_name","Họ Tên","required|min_length[6]");
+                $this->form_validation->set_rules("address","Địa Chỉ","required");
+                $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[10]");
+                $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+                $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                
+                if($this->form_validation->run()==FALSE){
+                    $this->load->view("user_view/suataikhoan",$data);
+                
+                }else{
+                    
+                    $update = array(
+                                    "full_name" => $this->input->post("full_name"),
+                                    "address"   => $this->input->post("address"),
+                                    "phone"   => $this->input->post("phone"),
+                                    "gender"    => $_POST['gender'],
+                                 );
+                    $this->muser->updateUser($update,$userid);
+                    redirect(base_url()."index.php/user"); 
+                }
+            }
+            else
+            {
+                
+                $this->load->view("user_view/suataikhoan",$data);    
+            } 
+        
+    }
+    
+    //--- Cap nhat tai khoan
+    public function suamatkhau(){
+        $this->data['report'] = "";
+        $this->data['title'] = "Trang Cá Nhân";
+        if(!$this->my_auth->is_Login())
+        {
+            $this->data['report'] = "Bạn vui lòng đăng nhập trước !";
+            $this->load->view("user_view/dangky_thanhcong",$this->data);
+        }
+        
+            $userid = $this->my_auth->userid;
+            $this->data['info'] = $this->muser->getInfo($userid); 
+            
+            if(isset($_POST['ok']))
+            {
+                $this->form_validation->set_rules("oldpassword","Mật Khẩu Cũ","required");
+                $this->form_validation->set_rules("password","Mật Khẩu","required|matches[repassword]");
+                $this->form_validation->set_rules("repassword","Xác Thực Mật Khẩu","required");
+                $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+                $this->form_validation->set_message('matches','Xác thực %s sai !');
+                
+                if($this->form_validation->run()==FALSE){
+                    
+                    $this->load->view("user_view/suamatkhau",$this->data);
+                
+                }else{
+                    $oldpw = md5($this->input->post("oldpassword"));
+                    $reoldpw = $this->input->post("reoldpassword");
+                    if($oldpw === $reoldpw){
+                        $update = array(
+                                "password" => md5($this->input->post("password")),
+                                );
+                    
+                        $this->muser->updateUser($update,$userid);
+                        $this->data['title'] = "Thành Công";
+                        $this->data['report'] = "Đổi mật khẩu thành công !";
+                        $this->load->view("user_view/dangky_thanhcong",$this->data);  
+                    }else{
+                        $this->data['report'] = "Mật Khẩu Cũ sai !";
+                        $this->load->view("user_view/suamatkhau",$this->data);
+                    }
+                            
+                }
+            }
+            else
+            {
+                
+                $this->load->view("user_view/suamatkhau",$this->data);    
+            } 
+        
     }
     
     //---- Kiem tra Email khi đăng kí

@@ -3,7 +3,13 @@
 		$path_css=base_url().'publics/css/';
 	//Js file path :
 		$path_js=base_url().'publics/js/';
-	
+        
+    $reoldpassword = array(
+                        'name'        => 'reoldpassword',
+                        'id'          => 'reoldpassword',
+                        'size'        => '30',
+                        'value'       => $info["password"],
+                    );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,33 +58,44 @@
         
         <!-- My Account-->
         <div class="span9">
-<h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>        
-              <h3 class="heading3">Thông tin cá nhân</h3>
-          <div class="myaccountbox">
-            <ul>
-              <li>
-                <a> Họ Tên : <?php echo $info['full_name'];?></a>
-              </li>
-              <li>
-                <a> Email : <?php echo $info['email'];?></a>
-              </li>
-              <li>
-                <a> Điện Thoại : <?php echo $info['phone'];?></a>
-              </li>
-              <li>
-                <a> Địa Chỉ : <?php echo $info['address'];?></a>
-              </li>
-              <li>
-                <a> Giới Tính : <?php if($info['gender']==1) echo "Nam";
-                           if($info['gender']==2) echo "Nữ"; ?></a>
-              </li>
-              <li>
-                <a> Tài Khoản : <?php if($info['level']==1) echo "Quản Lý";
-                          if($info['level']==2) echo "Thành Viên"; ?></a>
-              </li>
-              
-            </ul>
-          </div>
+        <h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>        
+              <h3 class="heading3">Sửa thông tin cá nhân</h3>
+        <form name="frmEdit" id="frmEdit" action="" method="post" enctype="multipart-formdata">
+            <fieldset>            
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Mật Khẩu Cũ:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_password('oldpassword');
+                            echo form_error('oldpassword','<div class="red">','</div>');
+                            echo '<div class="red">'.$report.'</div>';
+                        ?>
+                      </div>  
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Mật Khẩu Mới:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_password('password');
+                            echo form_error('password','<div class="red">','</div>');
+                        ?>
+                      </div>       
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Xác Thực Mật Khẩu:</label>
+                      <div class="controls">                
+                        <?php 
+                            echo form_password('repassword');
+                            echo form_error('repassword','<div class="red">','</div>');
+                        ?>
+                      </div>
+            <div class="control-group">                 
+                      <div class="controls">                
+                        <?php 
+                            echo form_hidden($reoldpassword);
+                        ?>
+                      </div>          
+            <input class="btn btn-orange" type="submit" name="ok" value="Cập Nhật" /><br />
+            </fieldset>
+        </form>
                                                                
         </div>
         
