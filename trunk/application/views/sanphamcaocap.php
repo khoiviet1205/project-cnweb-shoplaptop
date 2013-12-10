@@ -2,7 +2,7 @@
   <section id="latest" class="row">
    <?php if(!empty($itemsspcc)) { ?> 
     <div class="container">
-      <h1 class="heading1"><span class="maintext">Sản Phẩm Cao Cấp</span><span class="subtext" ><a href="<?php echo base_url();?>index.php/welcome/tatcasanpham/6"> Xem Tất Cả Sản Phẩm Cao Cấp</a></span></h1>
+      <h1 class="heading1"><span class="maintext">Sản Phẩm Cao Cấp</span><span class="subtext"><a href="<?php echo base_url();?>index.php/welcome/tatcasanpham/6"> Xem Tất Cả Sản Phẩm Cao Cấp</a></span></h1>
        <ul class="thumbnails">
       	<?php foreach($itemsspcc as $item) : ?>
         <li class="span3">

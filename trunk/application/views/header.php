@@ -92,25 +92,14 @@
         <ul class="nav-pills categorymenu">
           <li><a class="active"  href="<?php echo base_url();?>">Trang Chủ</a>
           </li>
-           <li><a href="product.html">LapTop</a>
+           <li><a href="#">LapTop</a>
             <div>
               <ul>
-                <li><a href="product.html">Lenovo</a>
-                </li>
-                <li><a href="product2.html">Dell</a>
-                </li>
-                <li><a href="#">Asus</a>
-                </li>
-                <li><a href="#">Acer</a>
-                </li>
-                <li><a href="#">HP </a>
-                </li>
-                <li><a href="#">Apple</a>
-                </li>
-                <li><a href="#">Sony</a>
-                </li>
-                <li><a href="#">Toshiba</a>
-                </li>
+                <?php foreach($hanglaptop as $item) : ?>
+              <li>
+                <a href="<?php echo base_url();?>index.php/welcome/lay_sp_theohang/<?php echo $item['id_cate2'];?>"><?php echo $item['name_cate2'] ?></a>
+              </li>
+               <?php endforeach ?>
               </ul>
             </div>
           </li>

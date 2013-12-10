@@ -52,7 +52,7 @@
             <ul class="nav nav-list categories">
             <?php foreach($hanglaptop as $item) : ?>
               <li>
-                <a href="category.html"><?php echo $item['name_cate2'] ?></a>
+                <a href="<?php echo base_url();?>index.php/welcome/lay_sp_theohang/<?php echo $item['id_cate2'];?>"><?php echo $item['name_cate2'] ?></a>
               </li>
                <?php endforeach ?>
             </ul>
@@ -64,7 +64,7 @@
             <?php foreach($sp_muanhieu as $item) : ?>
               <li>
                 <img width="50" height="50" src="<?php echo base_url();?>/<?php echo $item['img_sp']; ?>" alt="product" title="product">
-                <a class="productname" href="product.html"><?php echo $item['name_sp'] ?></a>
+                <a class="productname" href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id_sp'];?>"><?php echo $item['name_sp'] ?></a>
                 <span class="procategory"><?php echo $item['name_loai'] ?></span>
                 <span class="price"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</span>
               </li>
