@@ -36,7 +36,7 @@ class User extends CI_Controller{
             if($session)
             {
                 if(!$this->my_auth->is_Active($session['userid'])){
-                    
+                    $data['userid'] = $session['userid'];
                     $data['report'] = "Tài khoản của bạn chưa được kích hoạt, vui lòng kiểm tra email để kích hoạt !";
                     $data['title'] = "Kích hoạt tài khoản";
                     $this->load->view("user_view/dangky_thanhcong",$data);
@@ -109,7 +109,7 @@ class User extends CI_Controller{
 
                 $userid = mysql_insert_id();
                 $link_active = base_url()."index.php/user/active/?userid=".$userid."&key=".md5($salt);
-                $message  = "Please follow this link to active your acount <br/>".
+                $message  = "Please follow this link to active your acount <br/>";
                 $message .= "Link : <a href=".$link_active.">".$link_active."</a><br/>";
                 $message .= "password : ".$this->input->post("password");
 
@@ -123,7 +123,7 @@ class User extends CI_Controller{
                 $this->my_email->sendmail();
 
                 $this->data['title'] = "Thành Công";
-                $this->data['report'] = "Đăng ký tài khoản thành công !";
+                $this->data['report'] = "Đăng ký tài khoản thành công, kiểm tra email để kích hoạt !";
                 $this->load->view("user_view/dangky_thanhcong",$this->data);
             }   
         }
@@ -159,7 +159,7 @@ class User extends CI_Controller{
                 if($check['active']==1)
                 {
                     $data['report'] = "Tài khoản của bạn đã được kích hoạt !";
-                    $this->session->unset_userdata($this->_register);
+                    //$this->load->view("user_view/dangky_thanhcong",$data);
                 }
                 else
                 {
@@ -221,8 +221,7 @@ class User extends CI_Controller{
                 }
             }
             else
-            {
-                
+            {              
                 $this->load->view("user_view/suataikhoan",$data);    
             } 
         
@@ -239,7 +238,8 @@ class User extends CI_Controller{
         }
         
             $userid = $this->my_auth->userid;
-            $this->data['info'] = $this->muser->getInfo($userid); 
+            $info = $this->muser->getInfo($userid); 
+            $this->data['info'] = $info;
             
             if(isset($_POST['ok']))
             {
@@ -255,8 +255,7 @@ class User extends CI_Controller{
                 
                 }else{
                     $oldpw = md5($this->input->post("oldpassword"));
-                    $reoldpw = $this->input->post("reoldpassword");
-                    if($oldpw === $reoldpw){
+                    if($oldpw === $info['password']){
                         $update = array(
                                 "password" => md5($this->input->post("password")),
                                 );
@@ -280,6 +279,98 @@ class User extends CI_Controller{
         
     }
     
+    //---- Quên mật khẩu
+    public function quenmatkhau(){
+        
+        //--- Neu Login thi khong duoc vao trang nay
+        if($this->my_auth->is_Login()){
+            $this->data['title']="Trang Cá Nhân";
+            $userid = $this->my_auth->userid;
+            $this->data['info'] = $this->muser->getInfo($userid);
+            $this->load->view("user_view/home",$this->data);
+        }
+        $this->data['title'] = "Quên Mật Khẩu";
+        $this->form_validation->set_rules("email","Email","required|valid_email|callback_checkEmailForgot");
+        $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+        $this->form_validation->set_message('valid_email','Email không hợp lệ !');
+        
+        if($this->form_validation->run()==FALSE){
+
+            $this->load->view("user_view/quenmatkhau",$this->data);
+            
+        }else{
+             $email = $this->input->post("email");
+             $info = $this->muser->getInfoByEmail($email);
+
+             $message = "";
+             if($info['active']==1){
+
+                // reset password cho user
+                $password = random_string('alnum',5);
+                $reset = array(
+                                "password" => md5($password),
+                            );
+                $this->muser->updateUser($reset,$info['userid']);
+                
+                //--- Gui mail cho user
+                $message  = "Please login with :<br/>";
+                $message .= "email :".$info['email']."<br/>";
+                $message .= "password :".$password;
+                
+                $mail = array(
+                            "to_receiver"   => $email,
+                            "message"       => $message,
+                        );
+
+                $this->load->library("my_email");
+                $this->my_email->config($mail);
+                $this->my_email->sendmail();
+
+                $this->data['title'] = "Thành Công";
+                $this->data['report'] = "Thành công, vui lòng kiểm tra email để xem mật khẩu mới !";
+                $this->load->view("user_view/dangky_thanhcong",$this->data); 
+                
+             }else{
+                $this->data['title'] = "Thất Bại";
+                $this->data['report'] = "Tài khoản của bạn chưa được kích hoạt, vui lòng kiểm tra email để kích hoạt !";
+                $this->data['userid'] = $info['userid'];
+                $this->load->view("user_view/dangky_thanhcong",$this->data); 
+             }
+             
+        }
+        
+    }
+    
+    //--- gửi lại email kích hoạt
+    public function guimail(){
+        $userid = $_GET['userid'];
+        $data['title'] = "Kích hoạt tài khoản";
+        
+        if(is_numeric($userid)){
+            $info = $this->muser->getInfo($userid);
+                $link_active = base_url()."index.php/user/active/?userid=".$userid."&key=".md5($info['salt']);
+                $message  = "Please follow this link to active your acount <br/>";
+                $message .= "Link : <a href=".$link_active.">".$link_active."</a><br/>";
+
+                $mail = array(
+                    "to_receiver"   => $info['email'],
+                    "message"       => $message,
+                );
+
+                $this->load->library("my_email");
+                $this->my_email->config($mail);
+                $this->my_email->sendmail();
+
+                $this->data['title'] = "Thành Công";
+                $this->data['report'] = "Gửi thành công, kiểm tra email để kích hoạt !";
+                $this->load->view("user_view/dangky_thanhcong",$this->data);
+        }else{
+            
+            $data['report'] = "Đường dẫn sai !";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+    }
+    
     //---- Kiem tra Email khi đăng kí
     function checkEmail($email)
     {
@@ -292,5 +383,15 @@ class User extends CI_Controller{
             return FALSE;
         }
     }
-    
+    //--- Kiem tra email khi quen mat khau
+    function checkEmailForgot($email)
+    {
+        if($this->muser->checkEmail($email)==FALSE){ // co ton tai email
+            return TRUE;
+        }
+        else{
+            $this->form_validation->set_message("checkEmailForgot","Email này chưa đăng ký, vui lòng nhập lại !");
+            return FALSE;
+        }
+    }
 }

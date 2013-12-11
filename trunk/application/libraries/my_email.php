@@ -17,7 +17,7 @@ class MY_Email extends CI_Email {
         $this->_mail=array(
                             "from_sender"       => "lta1292@gmail.com",
                             "name_sender"       => "AnhPC",
-                            "subject_sender"    => "Kích hoạt tài khoản từ shoplaptop !",
+                            "subject_sender"    => "Shoplaptop !",
                          );
 
         

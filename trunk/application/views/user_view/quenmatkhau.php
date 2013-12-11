@@ -3,7 +3,6 @@
 		$path_css=base_url().'publics/css/';
 	//Js file path :
 		$path_js=base_url().'publics/js/';
-	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,97 +29,51 @@
 <!-- fav -->
 <link rel="shortcut icon" href="assets/ico/favicon.html">
 </head>
-
 <body>
 <!-- Header Start -->
 <?php
     $this->load->view("header");
 ?>
 <!-- Header End -->
-<?php
-    //--- Giu gia tri cua form
-    $password = array(
-                        'name'        => 'password',
-                        'id'          => 'lname',
-                        'size'        => '30',
-                    );
-    $email = array(
-                        'name'        => 'email',
-                        'id'          => 'email',
-                        'size'        => '30',
-                        'value'       => set_value('email'),
-                    );
-?>
+
 <div id="maincontainer">
   <section id="product">
     <div class="container">
-      <!--  breadcrumb --> 
+     <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
           <a href="#">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Đăng Nhập</li>
+        <li class="active">Tài Khoản</li>
       </ul>
-       <!-- Account Login-->
-      <div class="row">  
+      <div class="row">
+        
+        <!-- My Account-->
         <div class="span9">
-          <h1 class="heading1"><span class="maintext">Đăng Nhập</span><span class="subtext"></span></h1>
-          <section class="newcustomer">
-            <h2 class="heading2">Bạn chưa có tài khoản?</h2> </h2>
-            <div class="loginbox">
-              <h4 class="heading4"> Hãy đăng ký ngay</h4>
-              <p>Có tài khoản sẽ giúp bạn mua sắm nhanh hơn, theo dõi các đơn đặt hàng bạn đã thực hiện và được cập nhật về tình trạng của đơn hàng đó.</p>
-              <br>
-              <p>Có tài khoản để tham gia các chương trình khuyến mãi, tri ân khách hàng...</p>
-              <br>
-              <br>
-              <a href="<?php echo base_url();?>index.php/user/dangky/" class="btn btn-orange">Đăng Ký</a>
-            </div>
-          </section>
-          <section class="returncustomer">
-            <h2 class="heading2">Đã có tài khoản </h2>
-            <div class="loginbox">
-              <h4 class="heading4"></h4>
-              <?php
-                echo form_open('user');
-              ?>
-                <fieldset>
-                  <div class="control-group">
-                      <label class="control-label">E-Mail :</label>
+        <h1 class="heading1"><span class="maintext">Quên Mật Khẩu ?</span><span class="subtext"></span></h1>        
+              <h3 class="heading3">Nhập Email để lấy lại mật khẩu</h3>
+        <form name="frmEdit" id="frmEdit" action="" method="post" enctype="multipart-formdata">
+            <fieldset>            
+            <div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Email:</label>
                       <div class="controls">                
                         <?php 
-                            echo form_input($email);
+                            echo form_input('email');
                             echo form_error('email','<div class="red">','</div>');
                         ?>
-                  </div> 
-                  <div class="control-group">
-                    <label  class="control-label">Mật khẩu:</label>
-                    <div class="controls">
-                      <?php 
-                            echo form_password($password);
-                            echo form_error('password','<div class="red">','</div>');
-                            if($error!="")
-                                echo '<div class="red">'.$error.'</div>';
-                        ?>
-                    </div>
-                  </div>
-                  <a class="" href="<?php echo base_url();?>index.php/user/quenmatkhau/">Mất mật khẩu?</a>
-                  <br>
-                  <br>
-                        
-                  <input class="btn btn-orange" type="submit" name="ok" value="Đăng Nhập" /><br />
-                </fieldset>
-              
-            </div>
-          </section>
+                      </div>         
+            <input class="btn btn-orange" type="submit" name="ok" value="Gửi" /><br />
+            </fieldset>
+        </form>
+                                                               
         </div>
         
       </div>
     </div>
   </section>
-</div>   
-    
+</div>
+
 <!-- Footer -->
 <?php
     $this->load->view("footer");
@@ -142,5 +95,6 @@
 <script type="text/javascript" src="<?php echo $path_js?>jquery.mousewheel.min.js"></script> 
 <script type="text/javascript" src="<?php echo $path_js?>jquery.touchSwipe.min.js"></script> 
 <script type="text/javascript" src="<?php echo $path_js?>jquery.ba-throttle-debounce.min.js"></script>
-<script src="<?php echo $path_js?>custom.js"></script> 
+<script src="<?php echo $path_js?>custom.js"></script>
 </body>
+</html>

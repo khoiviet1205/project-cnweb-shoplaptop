@@ -3,13 +3,6 @@
 		$path_css=base_url().'publics/css/';
 	//Js file path :
 		$path_js=base_url().'publics/js/';
-        
-    $reoldpassword = array(
-                        'name'        => 'reoldpassword',
-                        'id'          => 'reoldpassword',
-                        'size'        => '30',
-                        'value'       => $info["password"],
-                    );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,13 +79,7 @@
                             echo form_password('repassword');
                             echo form_error('repassword','<div class="red">','</div>');
                         ?>
-                      </div>
-            <div class="control-group">                 
-                      <div class="controls">                
-                        <?php 
-                            echo form_hidden($reoldpassword);
-                        ?>
-                      </div>          
+                      </div>         
             <input class="btn btn-orange" type="submit" name="ok" value="Cập Nhật" /><br />
             </fieldset>
         </form>

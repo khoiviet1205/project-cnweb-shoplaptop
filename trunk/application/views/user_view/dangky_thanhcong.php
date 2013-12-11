@@ -54,6 +54,9 @@
             <h1 class="heading1"><span class="maintext">
                 <?php
                     echo '<div>'.$report.'</div>';
+                    if($report === "Tài khoản của bạn chưa được kích hoạt, vui lòng kiểm tra email để kích hoạt !"){
+                        echo "<div><a href=\"".base_url()."index.php/user/guimail/?userid=".$userid."\" class=\"btn btn-orange\">Gửi lại email kích hoạt</a></div>";
+                    }
                 ?>
             </span><span class="subtext"></span></h1>
             <div class="control-group">
