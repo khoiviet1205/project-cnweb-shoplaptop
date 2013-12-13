@@ -209,6 +209,38 @@ class Mbase extends CI_Model{
 		$query=$this->db->get("product",$number,$offset);
 		return $query->result_array();	
 	}
+    	//Get tat ca tin tuc
+	public function get_news(){	   
+		$result = $this->db->query("select * from news");
+		return $result->result_array();
+	}
+    public function list_all($number,$offset){
+        $query=$this->db->get('news',$number,$offset);
+        return $query -> result_array();
+    }	
+    public function count_all(){
+        return $this->db->count_all('news');
+    }
+    public function get_title_news_for_new_detail($param)
+		{
+			$this->db->select("page_title, info_news, image_url, date_news");
+			//$this->db->join("news","news.new_id = new_details.new_id_detail");
+			$this->db->where("page_id =",$param);
+			//$this->db->where("new_type =","news");
+			//$this->db->where("new_detail_type =","news");
+			$query=$this->db->get("news");
+			return $query->result_array();
+		}
+     public function get_detail_new($param)
+		{
+			$this->db->select("page_id, full_news");
+			//$this->db->join("news","news.new_id = new_details.new_id_detail");
+			$this->db->where("page_id =",$param);
+			//$this->db->where("news.new_type = new_details.new_detail_type");
+			$query=$this->db->get("news");
+			return $query->result_array();	
+		}
+	}
 	//Get tat ca san pham 
 	function get_tatca_sp1($param)
 	{
@@ -230,9 +262,6 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
   	    $query = $this->db->get('product');
     	return $query->row()->numrows;
 	}
-
-}
-
 
 
 
