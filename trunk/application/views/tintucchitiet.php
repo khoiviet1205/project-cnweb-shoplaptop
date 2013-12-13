@@ -1,4 +1,4 @@
-<?php
+ <?php
 	//Css file path :
 		$path_css=base_url().'publics/css/';
 	//Js file path :
@@ -196,34 +196,36 @@
           </div>
         </aside>
         <!-- Sidebar End--> 
-         <!-- Blog listing-->      
-        <div class="span9 bloggrid">
+         <!-- Blog listing-->  
+         <div class="span9 bloggrid">
           <h1 class="heading1"><span class="maintext">Tin Mới Nhất</span></h1>   
-         <ul class="thumbnails">
-                   <?php foreach($news as $new) : ?>
-                    <li>
-                    <div class='post_wrap' style='font:15px arial,sans-serif;'>
-                    <h2><a href="<?php echo base_url();?>index.php/welcome/tintucchitiet/<?php echo $new['page_id'] ?> "><b><?php echo $new['page_title'] ?></b></a></h2>
-                    <p><img src="<?php echo base_url();?>/<?php echo $new['image_url']; ?>" alt="" title="">
-                    <p><?php echo $new['full_news'] = substr(($new['full_news']),0,400)?></p>
-                    <p class='readmore'><a href="#">Read more</a></p></p> 
-                    <p class='meta'><strong>Posted by: </strong><?php echo $new['duyet_news'] ?> <strong>Posted on: </strong><?php echo $new['date_news']?></p>
-                    </div>                    
-                    </li>                        
-                    <?php endforeach ?> 
-                    <div class="row">
-                        <div class="pagination pull-right">
-                            <ul>
-                                <?php
-                                 echo $this->pagination->create_links(); // tạo link phân trang trong thu vien pagination
-                			     echo '</div><!--#pagination-->'; 
-                                ?>   
-                        
-                            </ul>
+            <ul class="thumbnails">
+                    	<div>
+                        	<?php foreach($new_title_for_new_detail as $ntfnd)
+							{
+								echo "<h3 style='color:#09F'>" .$ntfnd['page_title']. "</h3>";
+							}?>
+                            <strong>Posted on: </strong><?php echo $ntfnd['date_news']?></p>
+                            <p><img src="<?php echo base_url();?>/<?php echo $ntfnd['image_url']; ?>" alt="" title="">
+                            <div class="clear"></div>
+                            <?php
+                            {
+								echo "<b>" .$ntfnd['info_news']. "</b>";
+								echo "<br />";
+							}
+                            ?> 
                         </div>
-                    </div>                         
-                </ul>
-            </div>
+                        <div class="clear"></div><!--.clear-->
+                    	<div id="new_detail">
+                        <br />
+                        	<?php foreach($new_detail as $nd)
+							{
+								echo $nd['full_news'];
+							}
+							?>
+                    	</div><!--#new_detail-->                        
+         </ul>
+         </div>
       </div>
     </div>
   </section>
