@@ -209,6 +209,7 @@ class Mbase extends CI_Model{
 		$query=$this->db->get("product",$number,$offset);
 		return $query->result_array();	
 	}
+    //Tất cả của phần tin tuc
     	//Get tat ca tin tuc
 	public function get_news(){	   
 		$result = $this->db->query("select * from news");
@@ -240,7 +241,27 @@ class Mbase extends CI_Model{
 			$query=$this->db->get("news");
 			return $query->result_array();	
 		}
-	}
+    //--- Lay du lieu
+    public function getalldata($off="",$limit=""){
+        $this->db->select('*');
+        $this->db->limit($off,$limit);
+        $this->db->order_by("page_id","ASC");
+        $query = $this->db->get("news");
+        $data = $query->result_array();
+        return $data;
+    }
+    // Tong so record
+    public function num_rows(){
+        return $this->db->count_all($this->getTableName());
+    }
+    //--- Xoa tin tuc
+    public function deleteNews($id){        
+        if($id!=1){
+            $this->db->select('*');
+            $this->db->where("page_id",$id); 
+            $this->db->delete("news");
+        }
+    }
 	//Get tat ca san pham 
 	function get_tatca_sp1($param)
 	{
@@ -262,7 +283,8 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
   	    $query = $this->db->get('product');
     	return $query->row()->numrows;
 	}
-
+    
+}
 
 
 
