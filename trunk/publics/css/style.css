@@ -132,6 +132,8 @@ ul.categorymenu > li ul > li img { margin:3px; max-width:none }
 	height: 0;;}
 .thumbnails .prdocutname { font-size:16px;  color:#5e626b; text-transform:uppercase; text-align:center; margin:0 0 10px 0; display:block }
 .thumbnails.list .thumbnail .prdocutname { font-size:16px;  color:#5e626b; text-transform:uppercase; text-align:left; margin:0 0 10px 0; display:block }
+.thumbnails .news { font-size:16px;  color:#5e626b; text-transform:uppercase; text-align:center; margin:0 0 10px 0; display:block }
+.thumbnails.list .thumbnail .news { font-size:16px;  color:#5e626b; text-transform:uppercase; text-align:left; margin:0 0 10px 0; display:block }
 .thumbnails.list > li { margin-bottom:40px; padding-bottom:40px; border-bottom:1px solid #ccc }
 .thumbnails.list .productdiscrption { margin:10px 0 25px 0 }
 .thumbnails.list .thumbnail .shortlinks { display:block; width:auto; position:static; text-align:left; margin:10px 0 25px 0 }
@@ -701,4 +703,63 @@ left:70px
 .headerstrip #topnav {
 margin-bottom:0px
 }
- }
+/*--------tin tuc va single page------*/
+.post{
+    padding-right: 20px ;
+    margin: 20px;
+    margin-bottom: 10px;
+}
+.post_wrap h2 a, .post h2 a{
+    text-decoration: none;
+    color: #0fb2fe;
+}
+.post_wrap h2 a:hover, .post h2 a:hover{
+    color: #000;
+}
+.img_feature{
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 10px;
+    border: solid 2px silver;
+}
+
+.post_wrap{
+    height: 200px;
+    margin: 20px;
+}
+ 
+.meta{
+    float:right;
+}
+.readmore{
+    float:left;
+    color: rgba(255,255,255,1); 
+    text-decoration: none;
+    background-color: #0fb2fe; 
+    width:120px; 
+    padding: 4px; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px; 
+    -webkit-box-shadow: 0px 3px 0px #0292d4; 
+    -moz-box-shadow: 0px 3px 0px #0292d4; 
+    box-shadow: 0px 3px 0px #0292d4; 
+    margin: 10px 0; text-align: center; 
+    -webkit-transition: all .1s ease; 
+    -moz-transition: all .1s ease; 
+    -ms-transition: all .1s ease; 
+    -o-transition: all .1s ease; transition: all .1s ease;
+    
+}
+.readmore a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.readmore:hover{
+    -webkit-box-shadow: 0px 1px 0px #0292d4; 
+    -moz-box-shadow: 0px 1px 0px #0292d4; 
+    box-shadow: 0px 1px 0px #0292d4; 
+    position: relative; top: 3px;
+}
