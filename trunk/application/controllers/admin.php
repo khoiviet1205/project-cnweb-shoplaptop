@@ -7,6 +7,7 @@ class Admin extends CI_Controller{
 		$this->load->helper(array("url","date","string","form"));
         
         $this->load->model("muser");
+        $this->load->model("mbase");
 	}
     public function index(){
         
@@ -149,5 +150,47 @@ class Admin extends CI_Controller{
             $this->load->view("user_view/dangky_thanhcong",$data);
         }
     }
-    
+    public function qltintuc(){
+        $this->mbase->setTableName('news');        
+        $this->mbase->getalldata();
+        $max = $this->mbase->num_rows();
+        $min = 3;
+        $this->data['num_rows'] = $max;
+        //--- Paging
+        if($max!=0){
+            
+            $this->load->library('pagination');
+            $config['base_url'] = base_url()."index.php/admin/qltintuc";
+            $config['total_rows'] = $max;
+            $config['per_page'] = $min;
+            $config['num_link'] = 3; 
+            $config['next_link'] = 'Next »'; 
+            $config['prev_link'] = '« Prev';
+            $config['uri_segment'] = 3;
+            $this->pagination->initialize($config);
+            
+            $this->data['link'] = $this->pagination->create_links();
+            $this->data['news'] = $this->mbase->getalldata($min,$this->uri->segment($config['uri_segment']));
+            $this->data['title'] = "Quản Lý Tin Tức";
+            $this->load->view("admin_view/qltintuc",$this->data);
+        
+        }else{
+
+            $this->data['report'] = "Không có dữ liệu để hiển thị";
+            $this->my_layout->view("user_view/dangky_thanhcong",$this->data);
+        }
+    }    
+     public function xoatintuc(){
+        $page_id = $this->uri->segment(3);
+        
+        if(is_numeric($page_id)){
+            $this->mbase->deleteNews($page_id);
+            redirect(base_url()."index.php/admin/qltintuc");
+        
+        }else{
+            
+            $data['report'] = "Duong dan khong hop le";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+    }
 }
