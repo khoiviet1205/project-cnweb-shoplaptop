@@ -14,11 +14,15 @@ class User extends CI_Controller{
 	}
     public function dangnhap(){
         if($this->my_auth->is_Login()){
-            $this->data['title']="Trang Cá Nhân";
             $userid = $this->my_auth->userid;
             $this->data['info'] = $this->muser->getInfo($userid);
-            $this->load->view("user_view/home",$this->data);
-            //exit();
+            if($this->my_auth->is_Admin()){
+                $this->data['title']="Trang Admin";
+                $this->load->view("admin_view/home",$this->data);
+            } else{
+                $this->data['title']="Trang Cá Nhân";
+                $this->load->view("user_view/home",$this->data);
+            }
         }
         $this->data['title']="Đăng Nhập";
         $this->data['error']="";
@@ -43,17 +47,22 @@ class User extends CI_Controller{
                 }
                 else
                 {
-                    $this->data['title']="Trang Cá Nhân";
-                     $data = array(
+                    $data = array(
                                    "email"  => $session['email'],
                                    "userid"    => $session['userid'],
                                    "level"  => $session['level'],
                                );
-                                
-                     $this->my_auth->set_userdata($data);
-                     $userid = $this->my_auth->userid;
-                     $this->data['info'] = $this->muser->getInfo($userid);
-                    $this->load->view("user_view/home",$this->data);
+                    $this->my_auth->set_userdata($data);
+                    $userid = $this->my_auth->userid;
+                    if($this->my_auth->is_Admin()){
+                        $this->data['title']="Trang Admin";
+                        $this->data['info'] = $this->muser->getInfo($userid);
+                        $this->load->view("admin_view/home",$this->data);
+                    } else {
+                        $this->data['title']="Trang Cá Nhân";
+                        $this->data['info'] = $this->muser->getInfo($userid);
+                        $this->load->view("user_view/home",$this->data);
+                    }
                  }
              }
              else
@@ -66,11 +75,15 @@ class User extends CI_Controller{
     public function dangky(){     
         //--- Neu Login thi khong duoc dang ki
         if($this->my_auth->is_Login()){
-            $this->data['title']="Trang Cá Nhân";
             $userid = $this->my_auth->userid;
             $this->data['info'] = $this->muser->getInfo($userid);
-            $this->load->view("user_view/home",$this->data);
-            //exit();
+            if($this->my_auth->is_Admin()){
+                $this->data['title']="Trang Admin";
+                $this->load->view("admin_view/home",$this->data);
+            } else{
+                $this->data['title']="Trang Cá Nhân";
+                $this->load->view("user_view/home",$this->data);
+            }
         }
         
         $this->data['title']="Đăng Ký";
@@ -139,10 +152,15 @@ class User extends CI_Controller{
         
         //--- Neu Login thi khong active
         if($this->my_auth->is_Login()){
-            $this->data['title']="Trang Cá Nhân";
             $userid = $this->my_auth->userid;
             $this->data['info'] = $this->muser->getInfo($userid);
-            $this->load->view("user_view/home",$this->data);
+            if($this->my_auth->is_Admin()){
+                $this->data['title']="Trang Admin";
+                $this->load->view("admin_view/home",$this->data);
+            } else{
+                $this->data['title']="Trang Cá Nhân";
+                $this->load->view("user_view/home",$this->data);
+            }
         }
         
         $userid = $_GET['userid'];
