@@ -3,6 +3,8 @@
 		$path_css=base_url().'publics/css/';
 	//Js file path :
 		$path_js=base_url().'publics/js/';
+    //Img file path :
+		$path_img=base_url().'publics/img/';
 	
 ?>
 <!DOCTYPE html>
@@ -36,7 +38,6 @@
     $this->load->view("header");
 ?>
 <!-- Header End -->
-
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -49,74 +50,48 @@
         <li class="active">Trang Admin</li>
       </ul>
       <div class="row">
-        
-        <!-- My Account-->
-        <div class="span9">
-        <h1 class="heading1"><span class="maintext">Thông tin tài khoản</span><span class="subtext"></span></h1>        
-              <h3 class="heading3">Thông tin cá nhân</h3>
-          <div class="myaccountbox">
-            <ul>
-              <li>
-                <a> Họ Tên : <?php echo $info['full_name'];?></a>
-              </li>
-              <li>
-                <a> Email : <?php echo $info['email'];?></a>
-              </li>
-              <li>
-                <a> Điện Thoại : <?php echo $info['phone'];?></a>
-              </li>
-              <li>
-                <a> Địa Chỉ : <?php echo $info['address'];?></a>
-              </li>
-              <li>
-                <a> Giới Tính : <?php if($info['gender']==1) echo "Nam";
-                           if($info['gender']==2) echo "Nữ"; ?></a>
-              </li>
-              <li>
-                <a> Tài Khoản : <?php if($info['level']==1) echo "Admin";
-                          if($info['level']==2) echo "Thành Viên"; ?></a>
-              </li>
-              
-            </ul>
-          </div>
-                                                               
+
+        <div id="box_display">
+        <div id="list_table">
+                  <!-- Paging -->
+                  <div id="paging" class="pagination">
+                  <?php
+                    if($num_rows>0){
+                        echo "<h1 class=\"heading1\"><span class=\"maintext\">Tổng số tin tức</span> : ".$num_rows."</h1>";
+                        echo "<h2><div style=\"font-size: large;\"> Trang ".$link."</div></h2>";
+                    }
+                  ?>
+                  </div>
+                    <table width="75%" cellpadding="2" cellspacing="2" class="table table-striped table-bordered">
+                          <tbody>
+                          <tr style="font-weight: bold; font-size: large;">
+                            <td width="20%" class="orange">Tiêu Đề Tin Tức</td>
+                            <td width="20%" class="orange">Nội Dung</td>
+                            <td width="20%" class="orange">Ngày Đăng</td>
+                            <td width="20%" class="orange">Người Đăng</td>
+                            <td width="20%" class="orange">Thao tác</td>
+                          </tr>
+                          
+                          <?php
+                                foreach ($news as $item) {
+                                    echo "<tr>";
+                                    echo '<td>'.$item['page_title'].'</td>';
+                                    echo '<td>'.$item['full_news'] = substr(($item['full_news']),0,100).'</td>';
+                                    echo '<td>'.$item['date_news'].'</td>';
+                                    echo '<td>'.$item['duyet_news'].'</td>';                                    
+                                    echo '<td class="total"><a href="#"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
+                                    <a onclick="return confirm(\'Bạn có chắc chắn xóa?\');" href="'.base_url().'index.php/admin/xoatintuc/'.$item['page_id'].'"><img class="tooltip-test" data-original-title="Xóa"  src="'.$path_img.'remove.png" alt=""></a></td>';
+                                    echo "</tr>"; 
+                                }
+                           ?>
+                    </tbody>
+                   </table>
         </div>
-        
-        <!-- Sidebar Start-->
-          <aside class="span3">
-            <div class="sidewidt">
-              <h2 class="heading2"><span>Tài Khoản</span></h2>
-              <ul class="nav nav-list categories">
-                <li>
-                  <a href="<?php echo base_url();?>index.php/user/"> Xem thông tin cá nhân</a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url();?>index.php/admin/suataikhoan/">Cập nhật thông tin</a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url();?>index.php/admin/suamatkhau/">Đổi mật khẩu</a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url();?>index.php/admin/qlthanhvien/">Quản lý thành viên</a>
-                </li>
-                <li>
-                  <a href="#">Quản lý  sản phẩm</a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url();?>index.php/admin/qltintuc/">Quản lý  tin tức</a>
-                </li>
-                <li>
-                  <a href="<?php echo base_url();?>index.php/user/dangxuat/">Đăng Xuất</a>
-                </li>
-              </ul>
-            </div>
-          </aside>
-        <!-- Sidebar End-->
-      </div>
+        </div>
+    </div>
     </div>
   </section>
 </div>
-
 <!-- Footer -->
 <?php
     $this->load->view("footer");
