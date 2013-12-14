@@ -15,10 +15,10 @@
               <a class="compare" href="#">So Sánh</a>
             </div>
             <div class="pricetag">
-              <span class="spiral"></span><a href="#" class="productcart">Thêm Vào</a>
+              <span class="spiral"></span><a href="<?php echo base_url();?>index.php/welcome/add_giohang/<?php echo $item['id_sp']; ?>" class="productcart">Thêm Vào</a>
               <div class="price">
                 <div class="pricenew"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</div>
-                <div class="priceold"><?php echo number_format($item['price'],0,',','.'); ?></div>
+                <div class="priceold"><?php echo number_format($item['price'],0,',','.'); ?> đ</div>
               </div>
             </div>
           </div>

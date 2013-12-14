@@ -74,13 +74,7 @@
   <!-- Section End-->
 <br />
   
-  <?php $this->load->view("sanphammoinhat") ?>
-  
-  <?php $this->load->view("sanphamcaocap",$itemsspcc)?>
-  
-  <?php $this->load->view("sanphamphothong",$itemssppt)?> 
-  
-  <?php $this->load->view("sanphamtrungcap",$itemssptc)?>
+ <?php $this->load->view($contain) ?>
   <!-- Section  Banner Start-->
   <section class="container smbanner">
     <div class="row">

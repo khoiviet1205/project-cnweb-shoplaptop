@@ -64,14 +64,7 @@
                 <div class="productpageprice">
                   <span class="spiral"></span><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</div>
 
-                <div class="productpageoldprice"><?php echo number_format($item['price'],0,',','.'); ?></div>
-                <ul class="rate">
-                  <li class="on"></li>
-                  <li class="on"></li>
-                  <li class="on"></li>
-                  <li class="off"></li>
-                  <li class="off"></li>
-                </ul>
+                <div class="productpageoldprice"><a>Giá cũ :</a><?php echo number_format($item['price'],0,',','.'); ?> đ</div>
               </div>
               <div class="quantitybox">
                 <div class="clear"></div>
@@ -98,14 +91,13 @@
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="description">
-                    <h2>h2 tag will be appear</h2>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum <br>
-                    <br>
+                    <h2>Mô tả sản phẩm</h2>
                     <ul class="listoption3">
-                      <li>Lorem ipsum dolor sit amet Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa Facilisis in pretium nisl aliquet</li>
-                      <li>Nulla volutpat aliquam velit </li>
-                      <li>Faucibus porta lacus fringilla vel Aenean sit amet erat nunc Eget porttitor lorem</li>
+                      <li>Cấu hình “khủng”, thiết kế siêu mỏng nhẹ, cao cấp</li>
+                      <li>Hiệu suất xử lý tuyệt vời</li>
+                      <li>Màn hình full HD, cảm ứng 10 điểm</li>
+                      <li>Bàn phím chiclet, chuột cảm ứng rộng rãi</li>
+                      <li>Nhiều kết nối và tính năng hiện đại</li>
                     </ul>
                   </div>
                   <div class="tab-pane " id="specification">
@@ -118,7 +110,7 @@
                     <form class="form-vertical">
                       <fieldset>
                         <div class="control-group">
-                          <label class="control-label">Text input</label>
+                          <label class="control-label">Nhập nội dung</label>
                           <div class="controls">
                             <input type="text" class="span3">
                           </div>

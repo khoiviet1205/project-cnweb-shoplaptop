@@ -50,24 +50,24 @@
       <div class="cart-info">
         <table class="table table-striped table-bordered">
           <tr>
-            <th class="image">Hình Ảnh</th>
             <th class="name">Tên Sản Phẩm</th>
             <th class="model">Loại</th>
             <th class="quantity">Số Lượng</th>
             <th class="price">Đơn Giá</th>
-            <th class="total">Tổng</th>
+            <th class="total">Tổng Đơn Giá</th>
+            <th class="delete" style="text-align:center"></th>
           </tr>
           <?php $i = 1; ?>
 				<?php foreach ($info as $items){?>
           <input type='hidden' name='<?php echo $i."[rowid]" ?>' value="<?php echo $items['rowid']?>" />
           <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Shirt</a></td>
+            <td  class="name"><a href="#"><?php echo $items['name']?></a></td>
             <td class="model">Purchased Product</td>
             <td class="quantity"><input type="text" size="1" value="<?php echo $items['qty']; ?>" name="quantity[40]" class="span1">             
              </td>           
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>             
+            <td class="price"><?php echo number_format(($items['price']),0,',','.');?> đ</td>
+            <td class="total"><?php echo number_format((($items['price'])*$items['qty']),0,',','.');?> đ</td>
+            <td class="delete"><a class="btn btn-orange pull-right mr10" href="<?php echo base_url()."welcome/del_giohang/".$items['id'];?>">Xóa</a></td>             
           </tr>    
           <?php 
 			$i++; }?>     
@@ -82,19 +82,19 @@
             <table class="table table-striped table-bordered ">
               <tr>
                 <td><span class="extra bold">Tổng( chưa VAT) :</span></td>
-                <td><span class="bold">$101.0</span></td>
+                <td><span class="bold"><?php echo number_format(($this->cart->total()),0,',','.');?>đ</span></td>
               </tr>
               <tr>
-                <td><span class="extra bold">VAT (18.2%) :</span></td>
-                <td><span class="bold">$21.0</span></td>
+                <td><span class="extra bold">VAT (10%) :</span></td>
+                <td><span class="bold"><?php echo number_format((($this->cart->total()*10)/100),0,',','.');?>đ</span></td>
               </tr>
               <tr>
                 <td><span class="extra bold totalamout">Tổng Cộng :</span></td>
-                <td><span class="bold totalamout">$150.28</span></td>
+                <td><span class="bold totalamout"><?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?>đ</span></td>
               </tr>
             </table>
-            <input type="submit" value="CheckOut" class="btn btn-orange pull-right">
-            <input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10">
+            <a class="btn btn-orange pull-right mr10" href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
+            <a class="btn btn-orange pull-right mr10" href="<?php echo base_url();?>">Tiếp Tục Mua Hàng</a>
           </div>
         </div>
         </div>

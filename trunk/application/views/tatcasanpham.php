@@ -102,7 +102,6 @@
                       <option>Mặc định</option>
                       <option>Tên</option>
                       <option>Giá</option>
-                      <option>Rating </option>
                     </select>
                     &nbsp;&nbsp;
                   </form>
@@ -122,15 +121,15 @@
                       <div class="thumbnail">
                         <a href="#"><img alt="" src="<?php echo base_url();?>/<?php echo $item['img_sp']; ?>"></a>
                         <div class="shortlinks">
-                          <a class="details" href="#">Chi Tiết</a>
+                          <a class="details" href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id_sp'];?>">Chi Tiết</a>
                           <a class="wishlist" href="#">Ưa Thích</a>
                           <a class="compare" href="#">So Sánh</a>
                         </div>
                         <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">THÊM VÀO</a>
+                          <span class="spiral"></span><a href="<?php echo base_url();?>index.php/welcome/add_giohang/<?php echo $item['id_sp']; ?>" class="productcart">THÊM VÀO</a>
                           <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
+                            <div class="pricenew"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</div>
+                            <div class="priceold"><?php echo number_format($item['price'],0,',','.'); ?></div>
                           </div>
                         </div>
                       </div>
@@ -152,21 +151,18 @@
                           </div>
                           <div class="span6">
                             <a class="prdocutname" href="product.html"><?php echo $item['name_sp'] ?></a>
-                            <div class="productdiscrption"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.<br>
-                              <br>
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan </div>
+                            <div class="productdiscrption"> Mô tả sản phẩm ở đây </div>
                             <div class="pricetag">
-                              <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                              <span class="spiral"></span><a href="#" class="productcart">THÊM VÀO</a>
                               <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
+                                <div class="pricenew"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</div>
+                                <div class="priceold"><?php echo number_format($item['price'],0,',','.'); ?> đ</div>
                               </div>
                             </div>
                             <div class="shortlinks">
-                              <a class="details" href="#">DETAILS</a>
-                              <a class="wishlist" href="#">WISHLIST</a>
-                              <a class="compare" href="#">COMPARE</a>
+                              <a class="details" href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id_sp'];?>">CHI TIẾT</a>
+                              <a class="wishlist" href="#">ƯA THÍCH</a>
+                              <a class="compare" href="#">SO SÁNH</a>
                             </div>
                           </div>
                         </div>
@@ -179,7 +175,7 @@
                  <?php } ?>
                   <div class="pagination pull-right">
                     <ul>
-	                  <?php echo $this->pagination->create_links();?>
+                      <?php echo $this->pagination->create_links();?>
                     </ul>
                   </div>
                 </section>
