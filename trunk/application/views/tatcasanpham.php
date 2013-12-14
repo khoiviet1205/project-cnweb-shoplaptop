@@ -99,10 +99,10 @@
                 <div class="sorting well">
                   <form class=" form-inline pull-left">
                     Xếp theo :
-                    <select class="span2">
-                      <option>Mặc định</option>
-                      <option>Tên</option>
-                      <option>Giá</option>
+                    <select class="span2" name="chonsx">
+                      <option value="macdinh">Mặc định</option>
+                      <option value="ten">Tên</option>
+                      <option value="gia">Giá</option>
                     </select>
                     &nbsp;&nbsp;
                   </form>

@@ -40,11 +40,12 @@ class Welcome extends Cpanel{
 		$data['title']="Shop Laptop";
 		$st=$this->uri->segment(3);
 		$tl=$this->Mbase->getLoaiByID($st);
+		$data['idd']=$st;
 		$data['tenloai']=$tl['name_loai'];
 		$data['hanglaptop']=$this->Mbase->get_hang_laptop();
 		$data['sp_muanhieu']=$this->Mbase->getspmn();
 		// Load thư viện để phân trang
-		$this->load->library('pagination'); 
+		$this->load->library('pagination');
 		// Cấu hình phân trang 
 		$data['base_url'] = base_url().'index.php/welcome/tatcasanpham/'.$st; // xác định trang phân trang 
         $data['total_rows'] =$this->Mbase->count_laptop($st); // xác định tổng số record 
