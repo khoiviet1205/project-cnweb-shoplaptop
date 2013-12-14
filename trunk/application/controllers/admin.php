@@ -109,7 +109,7 @@ class Admin extends CI_Controller{
     public function qlthanhvien(){
         $this->muser->getalldata();
         $max = $this->muser->num_rows();
-        $min = 3;
+        $min = 10;
         $this->data['num_rows'] = $max;
         //--- Paging
         if($max!=0){
@@ -190,6 +190,50 @@ class Admin extends CI_Controller{
         }else{
             
             $data['report'] = "Duong dan khong hop le";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+    }
+    public function suathanhvien(){
+        $userid = $this->uri->segment(3);
+        $this->data['info'] = $this->muser->getInfo($userid);
+        $this->data['title'] = "Sửa thông tin";
+        if(is_numeric($userid) && $this->data['info']!=NULL)
+        {          
+            if(isset($_POST['ok']))
+            {
+                $this->form_validation->set_rules("full_name","Full name","required|min_length[6]");
+                $this->form_validation->set_rules("address","Address","required");
+                $this->form_validation->set_rules("phone","Phone number","required|min_length[10]");
+                $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+                $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                
+                if($this->form_validation->run()==FALSE){
+                    
+                    $this->load->view("admin_view/suathanhvien",$this->data);
+                
+                }else{
+                    
+                      $update = array(
+                                    "full_name" => $this->input->post("full_name"),
+                                    "address"   => $this->input->post("address"),
+                                    "phone"     => $this->input->post("phone"),
+                                    "active"     => $_POST['active'],
+                                    "gender"    => $_POST['gender'],
+                                 );
+                      
+                      $this->muser->updateUser($update,$userid);
+                      redirect(base_url()."index.php/admin/qlthanhvien"); 
+                }
+            }
+            else
+            {
+                $this->load->view("admin_view/suathanhvien",$this->data);   
+            }
+            
+        }
+        else
+        {          
+            $data['report'] = "Đường dẫn không hợp lệ";
             $this->load->view("user_view/dangky_thanhcong",$data);
         }
     }

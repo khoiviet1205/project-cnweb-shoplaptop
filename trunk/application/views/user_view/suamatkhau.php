@@ -42,10 +42,14 @@
      <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Trang Chủ</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Tài Khoản</li>
+        <li>
+            <a href="<?php echo base_url();?>index.php/user">Tài khoản</a>
+            <span class="divider">/</span>
+        </li>
+        <li class="active">Đổi mật khẩu</li>
       </ul>
       <div class="row">
         

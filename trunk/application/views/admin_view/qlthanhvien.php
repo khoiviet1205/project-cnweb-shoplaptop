@@ -44,10 +44,14 @@
      <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Trang Chủ</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Trang Admin</li>
+        <li>
+            <a href="<?php echo base_url();?>index.php/user">Tài khoản</a>
+            <span class="divider">/</span>
+        </li>
+        <li class="active">Quản lý thành viên</li>
       </ul>
       <div class="row">
 
@@ -93,7 +97,7 @@
                                     }else{
                                         echo '<td>Chưa kích hoạt</td>';
                                     }
-                                    echo '<td class="total"><a href="#"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
+                                    echo '<td class="total"><a href="'.base_url().'index.php/admin/suathanhvien/'.$item['userid'].'"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
                                     <a onclick="return confirm(\'Bạn có chắc chắn xóa?\');" href="'.base_url().'index.php/admin/xoathanhvien/'.$item['userid'].'"><img class="tooltip-test" data-original-title="Xóa"  src="'.$path_img.'remove.png" alt=""></a></td>';
                                     echo "</tr>"; 
                                 }
@@ -101,6 +105,10 @@
                           ?>
                     </tbody>
                    </table>
+                   <br />
+            <div class="control-group">
+                <a href="<?php echo base_url();?>index.php/user/" class="btn btn-orange">Trở về trang Admin</a>
+            </div>
         </div>
         </div>
     </div>

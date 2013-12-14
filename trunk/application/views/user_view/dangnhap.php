@@ -57,7 +57,7 @@
       <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Trang Chủ</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
         <li class="active">Đăng Nhập</li>

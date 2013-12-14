@@ -68,10 +68,14 @@
      <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Trang Chủ</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Tài Khoản</li>
+        <li>
+            <a href="<?php echo base_url();?>index.php/user">Tài khoản</a>
+            <span class="divider">/</span>
+        </li>
+        <li class="active">Cập nhật thông tin</li>
       </ul>
       <div class="row">
         
@@ -146,7 +150,7 @@
                   <a href="<?php echo base_url();?>index.php/admin/suamatkhau/">Đổi mật khẩu</a>
                 </li>
                 <li>
-                  <a href="#">Quản lý thành viên</a>
+                  <a href="<?php echo base_url();?>index.php/admin/qlthanhvien/">Quản lý thành viên</a>
                 </li>
                 <li>
                   <a href="#">Quản lý  sản phẩm</a>
