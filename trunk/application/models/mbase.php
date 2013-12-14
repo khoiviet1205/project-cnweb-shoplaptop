@@ -188,10 +188,20 @@ class Mbase extends CI_Model{
 	function get_detail_product($param)
 	{
 		$this->db->select("*");
-		//$this->db->join("news","news.new_id = new_details.new_id_detail");
 		$this->db->where("id_sp",$param);
-		//$this->db->where("news.new_type = new_details.new_detail_type");
 		$query=$this->db->get("product");
+		return $query->result_array();	
+	}
+	public function getProductById($param){
+		$this->db->where("id_sp",$param);
+		return $this->db->get("product")->row_array();
+	}	
+	//Get san pham theo hang
+	function get_sp_theohang($param,$number,$offset)
+	{
+		$this->db->select("*");
+		$this->db->where("id_cate2",$param);
+		$query=$this->db->get("product",$number,$offset);
 		return $query->result_array();	
 	}
 	
@@ -204,11 +214,30 @@ class Mbase extends CI_Model{
 	//Get tat ca san pham theo loai
 	function get_tatca_sp($param,$number,$offset)
 	{
-		$this->db->select("*");
+		//$this->db->select("*");
 		$this->db->where("id_loai",$param);
-		$query=$this->db->get("product",$number,$offset);
+		$query=$this->db->get('product',$number,$offset);
 		return $query->result_array();	
 	}
+	//Get tat ca san pham 
+	function get_tatca_sp1($param)
+	{
+$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=$param order by id_sp ");
+		return $result->result_array();	
+	}
+	//Get ten loai san pham theo ma so san pham
+	function getLoaiByID($param)
+	{
+		$result=$this->db->query("SELECT name_loai from loai,product where loai.id_loai=product.id_loai and Product.id_sp = $param");
+		return $result->row_array();
+	}
+	// Get hãng laptop
+	function get_hang_laptop()
+	{
+		$result =$this->db->query("select * from cate2");
+		return $result->result_array();
+	}
+	
     //Tất cả của phần tin tuc
     	//Get tat ca tin tuc
 	public function get_news(){	   
@@ -262,18 +291,6 @@ class Mbase extends CI_Model{
             $this->db->delete("news");
         }
     }
-	//Get tat ca san pham 
-	function get_tatca_sp1($param)
-	{
-$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=$param order by id_sp ");
-		return $result->result_array();	
-	}
-	// Get hãng laptop
-	function get_hang_laptop()
-	{
-		$result =$this->db->query("select * from cate2");
-		return $result->result_array();
-	}
 	// ***************Phân trang**********************//
 	// Tổng số laptop theo điều kiện
 	function count_laptop($param)
@@ -283,6 +300,15 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
   	    $query = $this->db->get('product');
     	return $query->row()->numrows;
 	}
+	// Tổng số laptop theo hang
+	function count_laptop_theohang($param)
+	{
+		$this->db->select('COUNT(*) AS `numrows`');
+    		$this->db->where(array('id_cate2'=>$param));
+  	    $query = $this->db->get('product');
+    	return $query->row()->numrows;
+	}
+    //***************************************************//
     
 }
 
