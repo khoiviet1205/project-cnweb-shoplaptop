@@ -156,4 +156,22 @@ class Welcome extends Cpanel{
 		$this->data['new_detail']=$this->Mbase->get_detail_new($param);
         $this->load->view("tintucchitiet",$this->data);
     }
+	//*****************************Tìm kiếm*****************
+	function search_keyword()
+    {
+		$data['hanglaptop']=$this->Mbase->get_hang_laptop();
+        $keyword=$this->input->post('keyword');
+		$data['title']="Kết quả tìm kiếm";
+    
+		// Load thư viện để phân trang
+		$this->load->library('pagination');
+		// Cấu hình phân trang 
+		$data['base_url'] = base_url('index.php/welcome/search_keyword'); // xác định trang phân trang 
+        $data['total_rows'] =$this->Mbase->count_laptop_search($keyword); // xác định tổng số record 
+        $data['per_page'] = 8; // xác định số record ở mỗi trang 
+        $data['uri_segment'] = 3; // xác định segment chứa page number 
+        $this->pagination->initialize($data); 
+	 	$data['results']=$this->Mbase->search($keyword,$data['per_page'],$this->uri->segment(3));
+        $this->load->view('result_view',$data);
+    }
   }

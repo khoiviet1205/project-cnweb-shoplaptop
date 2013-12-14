@@ -318,8 +318,19 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
   	    $query = $this->db->get('product');
     	return $query->row()->numrows;
 	}
-    //***************************************************//
-    
+    //**********************Tìm kiếm*****************************//
+    function search($keyword,$number,$offset)
+    {
+        $this->db->like('name_sp',$keyword);
+        $query = $this->db->get('product',$number,$offset);
+        return $query->result_array();
+    }
+	 function count_laptop_search($keyword)
+    {
+        $this->db->like('name_sp',$keyword);
+        $num_rows = $this->db->count_all_results('product');
+		return $num_rows;
+    }
 }
 
 

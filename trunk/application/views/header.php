@@ -23,8 +23,10 @@
           </div>
           <!-- Top Nav End -->
           <div class="pull-right">
-            <form class="form-search top-search">
-              <input type="text" class="input-medium search-query" placeholder="Tìm Kiếm…">
+          <br/>
+            <form method="post" action="<?php echo base_url('index.php/welcome/search_keyword');?>" class="form-horizontal commentform2">
+	            <input type="text" name = "keyword" />
+    	        <input type="submit" value="Search" class="btn btn-orange"/>
             </form>
           </div>
         </div>
