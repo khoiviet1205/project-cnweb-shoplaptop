@@ -41,6 +41,7 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 $route['tintuc/(:any)']="tintuc/index/$1";
+$route['tatcasanpham/(:any)'] = "tatcasanpham/$1";
 
 
 /* End of file routes.php */
