@@ -41,7 +41,8 @@
           <a href="<?php echo base_url();?>">Trang chủ</a>
           <span class="divider">/</span>
 	   </li>
-        <li class="active">Laptop</li>    
+       <?php $lsp=$this->uri->segment(3); ?>
+        <li class="active"><?php echo $tenloai; ?></li>    
       </ul>
       <div class="row">        
         <!-- Sidebar Start-->

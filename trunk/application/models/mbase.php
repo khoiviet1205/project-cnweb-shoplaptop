@@ -165,6 +165,11 @@ class Mbase extends CI_Model{
 		$result=$this->db->query("select *, count(*) as sl from chitietdonhang, product,loai where chitietdonhang.id_sp=product.id_sp and product.id_loai=loai.id_loai group by chitietdonhang.id_sp order by sl desc limit 0,4");
 		return $result->result_array();
 	}
+	// Get san pham moi
+	public function getspm(){
+		$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=8 order by id_sp DESC limit 0,4");
+		return $result->result_array();
+	}
 	
 	// Get san pham cao cap
 	public function getspcc(){
@@ -227,6 +232,11 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
 	}
 	//Get ten loai san pham theo ma so san pham
 	function getLoaiByID($param)
+	{
+		$result=$this->db->query("SELECT name_loai from loai where id_loai = $param");
+		return $result->row_array();
+	}
+	function getLoaiByID_SP($param)
 	{
 		$result=$this->db->query("SELECT name_loai from loai,product where loai.id_loai=product.id_loai and Product.id_sp = $param");
 		return $result->row_array();

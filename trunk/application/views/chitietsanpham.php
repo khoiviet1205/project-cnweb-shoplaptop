@@ -91,13 +91,9 @@
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="description">
-                    <h2>Mô tả sản phẩm</h2>
+                    <h2><?php echo $item['name_sp'] ?></h2>
                     <ul class="listoption3">
-                      <li>Cấu hình “khủng”, thiết kế siêu mỏng nhẹ, cao cấp</li>
-                      <li>Hiệu suất xử lý tuyệt vời</li>
-                      <li>Màn hình full HD, cảm ứng 10 điểm</li>
-                      <li>Bàn phím chiclet, chuột cảm ứng rộng rãi</li>
-                      <li>Nhiều kết nối và tính năng hiện đại</li>
+                      <?php echo $item['mota_sp'] ?>
                     </ul>
                   </div>
                   <div class="tab-pane " id="specification">

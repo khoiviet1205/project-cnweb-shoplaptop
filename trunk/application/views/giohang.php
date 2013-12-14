@@ -51,7 +51,6 @@
         <table class="table table-striped table-bordered">
           <tr>
             <th class="name">Tên Sản Phẩm</th>
-            <th class="model">Loại</th>
             <th class="quantity">Số Lượng</th>
             <th class="price">Đơn Giá</th>
             <th class="total">Tổng Đơn Giá</th>
@@ -62,7 +61,6 @@
           <input type='hidden' name='<?php echo $i."[rowid]" ?>' value="<?php echo $items['rowid']?>" />
           <tr>
             <td  class="name"><a href="#"><?php echo $items['name']?></a></td>
-            <td class="model">Purchased Product</td>
             <td class="quantity"><input type="text" size="1" value="<?php echo $items['qty']; ?>" name="quantity[40]" class="span1">             
              </td>           
             <td class="price"><?php echo number_format(($items['price']),0,',','.');?> đ</td>

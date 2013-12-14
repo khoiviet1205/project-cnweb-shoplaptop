@@ -20,6 +20,7 @@ class Welcome extends Cpanel{
 		$orderBy = "asc";
 		$this->data['title']="Shop Laptop";
 		$this->data['contain']="container";
+		$this->data['itemsspm']=$this->Mbase->getspm();
 		$this->data['itemsspcc']=$this->Mbase->getspcc();
 		$this->data['itemssppt']=$this->Mbase->getsppt();
 		$this->data['itemssptc']=$this->Mbase->getsptc();
@@ -38,8 +39,8 @@ class Welcome extends Cpanel{
 		
 		$data['title']="Shop Laptop";
 		$st=$this->uri->segment(3);
-		//$st=$this->input->get('id');     
-		//$this->data['tatca_sp']=$this->Mbase->get_tatca_sp($param);
+		$tl=$this->Mbase->getLoaiByID($st);
+		$data['tenloai']=$tl['name_loai'];
 		$data['hanglaptop']=$this->Mbase->get_hang_laptop();
 		$data['sp_muanhieu']=$this->Mbase->getspmn();
 		// Load thư viện để phân trang
@@ -56,6 +57,7 @@ class Welcome extends Cpanel{
 	}
 	public function lay_sp_theohang($param){
 		$this->data['title']="Shop Laptop";
+		$this->data['tenloai']="Laptop";
 		//$this->data['tatca_sp']=$this->Mbase->get_tatca_sp($param);
 		$this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
 		$this->data['sp_muanhieu']=$this->Mbase->getspmn();
@@ -69,6 +71,7 @@ class Welcome extends Cpanel{
 			
 		$this->load->view("tatcasanpham",$this->data);
 	}
+	
 	public function thanhtoan(){
 		$this->data['title']="Thanh Toán";
 		$this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
@@ -98,6 +101,7 @@ class Welcome extends Cpanel{
 		redirect(base_url());
 	}
 	public function view_giohang(){
+		
 		$data['title'] ="Giỏ hàng";
 		$data['hanglaptop']=$this->Mbase->get_hang_laptop();
 		$data['info'] = $this->cart->contents();
