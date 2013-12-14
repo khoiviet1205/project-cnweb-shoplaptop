@@ -3,7 +3,7 @@
 class Admin extends CI_Controller{
     public function __construct(){
 		parent ::__construct();
-		$this->load->library(array('form_validation','email','session','my_auth'));
+		$this->load->library(array('form_validation','email','session','my_auth','cart'));
 		$this->load->helper(array("url","date","string","form"));
         
         $this->load->model("muser");
@@ -15,7 +15,7 @@ class Admin extends CI_Controller{
     
     //--- Cap nhat tai khoan
     public function suataikhoan(){
-        
+        $data['hanglaptop']=$this->Mbase->get_hang_laptop();
         if(!$this->my_auth->is_Login())
         {
             $this->data['report'] = "Bạn vui lòng đăng nhập trước !";
@@ -29,9 +29,10 @@ class Admin extends CI_Controller{
             {
                 $this->form_validation->set_rules("full_name","Họ Tên","required|min_length[6]");
                 $this->form_validation->set_rules("address","Địa Chỉ","required");
-                $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[10]");
+                $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[9]|numeric");
                 $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
                 $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
                 
                 if($this->form_validation->run()==FALSE){
                     $this->load->view("admin_view/suataikhoan",$data);
@@ -57,6 +58,7 @@ class Admin extends CI_Controller{
     
     //--- Cap nhat tai khoan
     public function suamatkhau(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->data['report'] = "";
         $this->data['title'] = "Trang Admin";
         if(!$this->my_auth->is_Login())
@@ -107,6 +109,7 @@ class Admin extends CI_Controller{
     }
     
     public function qlthanhvien(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->muser->getalldata();
         $max = $this->muser->num_rows();
         $min = 10;
@@ -151,6 +154,7 @@ class Admin extends CI_Controller{
         }
     }
     public function qltintuc(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->mbase->setTableName('news');        
         $this->mbase->getalldata();
         $max = $this->mbase->num_rows();
@@ -194,35 +198,49 @@ class Admin extends CI_Controller{
         }
     }
     public function suathanhvien(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $userid = $this->uri->segment(3);
+        $adminid = $this->my_auth->userid;
         $this->data['info'] = $this->muser->getInfo($userid);
         $this->data['title'] = "Sửa thông tin";
+        $this->data['adminid'] = $adminid;
         if(is_numeric($userid) && $this->data['info']!=NULL)
         {          
             if(isset($_POST['ok']))
             {
                 $this->form_validation->set_rules("full_name","Full name","required|min_length[6]");
                 $this->form_validation->set_rules("address","Address","required");
-                $this->form_validation->set_rules("phone","Phone number","required|min_length[10]");
+                $this->form_validation->set_rules("phone","Phone number","required|min_length[9]|numeric");
                 $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
                 $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
                 
                 if($this->form_validation->run()==FALSE){
                     
                     $this->load->view("admin_view/suathanhvien",$this->data);
                 
                 }else{
-                    
-                      $update = array(
+                    if($_POST['level']==0){
+                        $update = array(
                                     "full_name" => $this->input->post("full_name"),
                                     "address"   => $this->input->post("address"),
                                     "phone"     => $this->input->post("phone"),
-                                    "active"     => $_POST['active'],
+                                    "active"    => $_POST['active'],
                                     "gender"    => $_POST['gender'],
                                  );
-                      
-                      $this->muser->updateUser($update,$userid);
-                      redirect(base_url()."index.php/admin/qlthanhvien"); 
+                    }else{
+                        $update = array(
+                                    "full_name" => $this->input->post("full_name"),
+                                    "address"   => $this->input->post("address"),
+                                    "phone"     => $this->input->post("phone"),
+                                    "active"    => $_POST['active'],
+                                    "gender"    => $_POST['gender'],
+                                    "level"     => $_POST['level'],
+                                 );
+                    }
+                    
+                    $this->muser->updateUser($update,$userid);
+                    redirect(base_url()."index.php/admin/qlthanhvien"); 
                 }
             }
             else

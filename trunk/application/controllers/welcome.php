@@ -129,6 +129,7 @@ class Welcome extends Cpanel{
 //*****************************************************************
 
     public function tintuc(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->data['title']="Tin Tức";
         //load thư viện cần thiết
         $this->load->library('pagination');
@@ -144,6 +145,7 @@ class Welcome extends Cpanel{
         $this->load->view("tintuc",$this->data);        
     }
     public function tintucchitiet($param){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->data['title']="Tin Tức";
         $this->data['new_title_for_new_detail']=$this->Mbase->get_title_news_for_new_detail($param);
 		$this->data['new_detail']=$this->Mbase->get_detail_new($param);

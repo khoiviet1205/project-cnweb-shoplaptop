@@ -141,6 +141,19 @@
                         </select><br />
                       </div>
                     </div>
+            <?php 
+                if($adminid==34){
+                    echo '<div class="control-group">
+                      <label class="control-label"><span class="red">*</span> Tài khoản:</label>
+                      <div class="controls">
+                        <select name="level">                          
+                            <option value="2"> Thành viên </option>
+                            <option value="1"> Admin </option>
+                        </select><br />
+                      </div>
+                    </div>';
+                }
+            ?>
             <input class="btn btn-orange" type="submit" name="ok" value="Cập Nhật" />
             <?php echo "&nbsp&nbsp&nbsp&nbsp" ?>
             <a href="<?php echo base_url();?>index.php/admin/qlthanhvien/" class="btn btn-orange">Quay lại</a>

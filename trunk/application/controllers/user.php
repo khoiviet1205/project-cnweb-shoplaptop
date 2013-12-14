@@ -4,7 +4,7 @@ class User extends CI_Controller{
     
     public function __construct(){
 		parent ::__construct();
-		$this->load->library(array('form_validation','email','session','my_auth'));
+		$this->load->library(array('form_validation','email','session','my_auth','cart'));
 		$this->load->helper(array("url","date","string","form"));
         
         $this->load->model("muser");
@@ -13,6 +13,7 @@ class User extends CI_Controller{
 		$this->dangnhap();
 	}
     public function dangnhap(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         if($this->my_auth->is_Login()){
             $userid = $this->my_auth->userid;
             $this->data['info'] = $this->muser->getInfo($userid);
@@ -72,7 +73,8 @@ class User extends CI_Controller{
              }
         }
     }
-    public function dangky(){     
+    public function dangky(){    
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         //--- Neu Login thi khong duoc dang ki
         if($this->my_auth->is_Login()){
             $userid = $this->my_auth->userid;
@@ -91,12 +93,13 @@ class User extends CI_Controller{
         $this->form_validation->set_rules("password","Mật Khẩu","required|matches[repassword]");
         $this->form_validation->set_rules("email","Email","required|valid_email|callback_checkEmail");
         $this->form_validation->set_rules("address","Địa chỉ","required");
-        $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[10]");
+        $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[9]|numeric");
         $this->form_validation->set_rules("checkbox","Đồng ý","required");
         $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
         $this->form_validation->set_message('valid_email','Email không hợp lệ !');
         $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
         $this->form_validation->set_message('matches','Xác thực mật khẩu sai !');
+        $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
         if($this->form_validation->run()==FALSE){
             
             $this->load->view("user_view/dangky",$this->data);
@@ -149,7 +152,7 @@ class User extends CI_Controller{
     
     //--- Kick hoat tai khoan
     function active(){
-        
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         //--- Neu Login thi khong active
         if($this->my_auth->is_Login()){
             $userid = $this->my_auth->userid;
@@ -205,7 +208,7 @@ class User extends CI_Controller{
     
     //--- Cap nhat tai khoan
     public function suataikhoan(){
-        
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         if(!$this->my_auth->is_Login())
         {
             $this->data['report'] = "Bạn vui lòng đăng nhập trước !";
@@ -219,9 +222,10 @@ class User extends CI_Controller{
             {
                 $this->form_validation->set_rules("full_name","Họ Tên","required|min_length[6]");
                 $this->form_validation->set_rules("address","Địa Chỉ","required");
-                $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[10]");
+                $this->form_validation->set_rules("phone","Số Điện Thoại","required|min_length[9]|numeric");
                 $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
                 $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
                 
                 if($this->form_validation->run()==FALSE){
                     $this->load->view("user_view/suataikhoan",$data);
@@ -247,6 +251,7 @@ class User extends CI_Controller{
     
     //--- Cap nhat tai khoan
     public function suamatkhau(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->data['report'] = "";
         $this->data['title'] = "Trang Cá Nhân";
         if(!$this->my_auth->is_Login())
@@ -299,7 +304,7 @@ class User extends CI_Controller{
     
     //---- Quên mật khẩu
     public function quenmatkhau(){
-        
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         //--- Neu Login thi khong duoc vao trang nay
         if($this->my_auth->is_Login()){
             $this->data['title']="Trang Cá Nhân";
