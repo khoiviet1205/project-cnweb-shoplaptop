@@ -12,7 +12,7 @@
             <div class="shortlinks">
               <a class="details" href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id_sp'];?>">Chi Tiết</a>
               <a class="wishlist" href="#">Ưa Thích</a>
-              <a class="compare" href="#">So Sánh</a>
+              <a class="compare" href="<?php echo base_url();?>index.php/welcome/add_sosanh/<?php echo $item['id_sp']; ?>">So Sánh</a>
             </div>
             <div class="pricetag">
               <span class="spiral"></span><a href="<?php echo base_url();?>index.php/welcome/add_giohang/<?php echo $item['id_sp']; ?>" class="productcart">Thêm Vào</a>

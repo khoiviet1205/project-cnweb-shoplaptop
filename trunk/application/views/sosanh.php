@@ -39,102 +39,43 @@
       <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Compare Products</li>
+        <li class="active">So Sánh Sản Phẩm</li>
       </ul>
       <!-- Compare -->
       <div class="row">
         <!-- Compare Products-->
         <div class="span12">
-          <h1 class="heading1"><span class="maintext">Compare Prdoucts</span><span class="subtext"> Compare product from choice</span></h1>
+          <h1 class="heading1"><span class="maintext">So Sánh Sản Phẩm</span><span class="subtext"> So Sánh Sản Phẩm Bạn Chọn</span></h1>
           <div class="cart-info">
             <table class="table table-striped table-bordered compare">
               <tbody>
                 <tr>
-                  <td>Product</td>
-                  <td class="name"><a href="#">Jeans</a></td>
-                  <td class="name"><a href="#">Jeans</a></td>
-                  <td class="name"><a href="#">T-shirts</a></td>
+                  <td>Tên Sản Phẩm</td>
+                  <td>Hình Ảnh</td>
+                  <td>Giá</td>
+                  <td>Mô Tả</td>
+                  <td>Loại</td>
                 </tr>
+                <?php if(!empty($infosp)) { ?> 
+                <?php foreach($infosp as $items) : ?>
                 <tr>
-                  <td>Image</td>
-                  <td><img alt="" src="img/prodcut-40x40.jpg"></td>
-                  <td><img alt="" src="img/prodcut-40x40.jpg"></td>
-                  <td><img alt="" src="img/prodcut-40x40.jpg"></td>
+                  <td class="name"><a href="#"><?php echo $items['name_sp']?></a></td>
+                  <td><img alt="" src="<?php echo $items['hinhanh'] ?>"></td>
+				  <td><?php echo $items['price']?></td>
+                  <td><?php echo $items['note_sp']?></td>
+                  <td><?php echo $items['name_loai']?></td>
                 </tr>
-                <tr>
-                  <td>Price</td>
-                  <td> $105.00 </td>
-                  <td> $40.00 </td>
-                  <td> $200.00 </td>
-                </tr>
-                <tr>
-                  <td>Model</td>
-                  <td>Levis</td>
-                  <td>Levis</td>
-                  <td>Levis</td>
-                </tr>
-                <tr>
-                  <td>Brand</td>
-                  <td>Levis</td>
-                  <td>Levis</td>
-                  <td>Levis</td>
-                </tr>
-                <tr>
-                  <td>Availability</td>
-                  <td>In Stock</td>
-                  <td>Out of Stock</td>
-                  <td>In Stock</td>
-                </tr>
-                <tr>
-                  <td>Rating</td>
-                  <td><ul class="rate">
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="off"></li>
-                    </ul>
-                    <br>
-                    Based on 8 reviews.</td>
-                  <td><ul class="rate">
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="on"></li>
-                    </ul>
-                    <br>
-                    Based on 4 reviews.</td>
-                  <td><ul class="rate">
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="on"></li>
-                      <li class="off"></li>
-                      <li class="off"></li>
-                    </ul>
-                    <br>
-                    Based on 6 reviews.</td>
-                </tr>
-                <tr class="description">
-                  <td>Summary</td>
-                  <td >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                  <td >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                </tr>
+                 <?php endforeach ?>
+                  <?php }else{ ?>
+				<?php } ?>
               </tbody>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><a class="btn btn-orange pull-right " href="#">Add to Cart</a>
-                    <a class="btn btn-orange pull-right mr10" href="#">Remove</a></td>
-                </tr>
               </tbody>
             </table>
+            <a class="btn btn-orange pull-right mr10" href="<?php echo base_url();?>index.php/welcome/huy_sosanh/">Hủy So Sánh</a>
           </div>
         </div>
       </div>

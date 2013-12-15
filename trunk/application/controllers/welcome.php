@@ -6,7 +6,7 @@ class Welcome extends Cpanel{
 	public function __construct(){
 		parent ::__construct();
 		$this->data['k']="";
-		$this->load->library(array('pagination','cart'));
+		$this->load->library(array('pagination','cart','session'));
 		$this->load->helper("url");
         
 	}
@@ -78,11 +78,32 @@ class Welcome extends Cpanel{
 		$this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
 		$this->load->view("thanhtoan",$this->data);
 	}
-	public function sosanh(){
+	//**************************So sánh****************************
+	public function add_sosanh($param){
 		$this->data['title']="So Sánh";
-		$this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
-		$this->load->view("sosanh",$this->data);
+		$sp = $this->Mbase->get_tatca_sp1($param);
+		$infosp = array(
+				'id_sp' => $sp['id_sp'],
+				'name_sp'=> $sp['name_sp'],
+				'hinhanh'=>$sp['img_sp'],
+				'price'=>$sp['price'],
+				'note_sp' => $sp['note_sp'],
+				'name_loai' => $sp['name_loai']
+		);
+		$this->session->set_userdata('ThongTinSP',$infosp);
+		redirect(base_url());
 	}
+	public function view_sosanh(){
+		$data['title'] ="So Sánh";
+		$data['hanglaptop']=$this->Mbase->get_hang_laptop();
+		$data['infosp'] = $this->session->userdata('ThongTinSP');
+		$this->load->view("sosanh",$data);
+	}
+	public function huy_sosanh(){
+		$this->session->unset_userdata('ThongTinSP');
+		redirect(base_url()."index.php/welcome/view_sosanh");
+	}
+	//**************************************************************
 	public function lienhe(){
 		$this->data['title']="Liên Hệ";
 		$this->data['hanglaptop']=$this->Mbase->get_hang_laptop();

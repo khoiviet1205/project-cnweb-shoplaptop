@@ -39,7 +39,7 @@
       <?php if($cart=$this->cart->contents()) { ?> 
         <ul class="nav topcart pull-left">
           <li class="dropdown hover carticon ">
-            <a href="#" class="dropdown-toggle" > Giỏ Hàng  <span class="label label-orange font14"><?php echo $this->cart->total_items(); ?>SP</span><?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?> VNĐ<b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" > Giỏ Hàng  &nbsp &nbsp &nbsp &nbsp &nbsp<span class="label label-orange font14"><?php echo $this->cart->total_items(); ?>SP</span><?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?> VNĐ<b class="caret"></b></a>
             <ul class="dropdown-menu topcartopen ">
             
               <li>
@@ -103,7 +103,7 @@
           </li>
           <li><a href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
           </li>
-          <li><a href="<?php echo base_url();?>index.php/welcome/sosanh/">So Sánh</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/view_sosanh/">So Sánh</a>
           </li>          
           <li><a href="<?php echo base_url();?>index.php/welcome/tintuc/">Tin Tức</a>
           </li>
