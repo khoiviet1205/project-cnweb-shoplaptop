@@ -203,10 +203,10 @@
                    <?php foreach($news as $new) : ?>
                     <li>
                     <div class='post_wrap' style='font:15px arial,sans-serif;'>
-                    <h2><a href="<?php echo base_url();?>index.php/welcome/tintucchitiet/<?php echo $new['page_id'] ?> "><b><?php echo $new['page_title'] ?></b></a></h2>
+                    <h2><a href="<?php echo base_url();?>index.php/welcome/tintucchitiet/<?php echo $new['page_id'] ?> "><b><?php echo "<h2 style='color:#09F'>".$new['page_title']."</h2>" ?></b></a></h2>
                     <p><img src="<?php echo base_url();?>/<?php echo $new['image_url']; ?>" alt="" title="">
                     <p><?php echo $new['full_news'] = substr(($new['full_news']),0,400)?></p>
-                    <p class='readmore'><a href="#">Read more</a></p></p> 
+                    <p class='readmore'><a href="<?php echo base_url();?>index.php/welcome/tintucchitiet/<?php echo $new['page_id'] ?> ">Read more</a></p></p> 
                     <p class='meta'><strong>Posted by: </strong><?php echo $new['duyet_news'] ?> <strong>Posted on: </strong><?php echo $new['date_news']?></p>
                     </div>                    
                     </li>                        
