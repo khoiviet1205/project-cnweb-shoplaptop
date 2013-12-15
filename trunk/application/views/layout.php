@@ -114,6 +114,9 @@
     
 <!-- Footer -->    
     <?php $this->load->view("footer") ?>
+    
+ 
+
     <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -132,6 +135,5 @@
 <script type="text/javascript"  src="publics/js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript"  src="publics/js/jquery.ba-throttle-debounce.min.js"></script>
 <script defer src="publics/js/custom.js"></script>
-
 </body>
 </html>
