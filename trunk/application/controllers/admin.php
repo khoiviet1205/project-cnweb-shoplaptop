@@ -255,4 +255,182 @@ class Admin extends CI_Controller{
             $this->load->view("user_view/dangky_thanhcong",$data);
         }
     }
+    public function qlsanpham(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
+        $this->mbase->setTableName('product');        
+        $this->mbase->getalldatasp();
+        $max = $this->mbase->num_rows();
+        $min = 10;
+        $this->data['num_rows'] = $max;
+        //--- Paging
+        if($max!=0){
+            
+            $this->load->library('pagination');
+            $config['base_url'] = base_url()."index.php/admin/qlsanpham";
+            $config['total_rows'] = $max;
+            $config['per_page'] = $min;
+            $config['num_link'] = 3; 
+            $config['next_link'] = 'Next »'; 
+            $config['prev_link'] = '« Prev';
+            $config['uri_segment'] = 3;
+            $this->pagination->initialize($config);
+            
+            $this->data['link'] = $this->pagination->create_links();
+            $this->data['product'] = $this->mbase->getalldatasp($min,$this->uri->segment($config['uri_segment']));
+            $this->data['title'] = "Quản Lý Sản Phẩm";
+            $this->load->view("admin_view/qlsanpham",$this->data);
+        
+        }else{
+
+            $this->data['report'] = "Không có dữ liệu để hiển thị";
+            $this->my_layout->view("user_view/dangky_thanhcong",$this->data);
+        }
+    }    
+     public function xoasanpham(){
+        $id_sp = $this->uri->segment(3);
+        
+        if(is_numeric($id_sp)){
+            $this->mbase->deletesp($id_sp);
+            redirect(base_url()."index.php/admin/qlsanpham");
+        
+        }else{
+            
+            $data['report'] = "Đường dẫn không hợp lệ";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+    }
+    public function suasanpham(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
+        $id_sp = $this->uri->segment(3);
+        $this->data['info'] = $this->mbase->getProductById($id_sp);
+        $this->data['title'] = "Sửa sản phẩm";
+        if(is_numeric($id_sp) && $this->data['info']!=NULL)
+        {          
+           if(isset($_POST['ok']))
+            {
+                $this->form_validation->set_rules("name_sp","Tên sản phẩm","required");
+                $this->form_validation->set_rules("price","Giá","required|numeric");
+                $this->form_validation->set_rules("soluong","Số lượng","required|numeric");
+                $this->form_validation->set_rules("price_km","Giá khuyến mãi","required|numeric");
+                $this->form_validation->set_rules("note_sp","Chi tiết sản phẩm","required");
+                $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+                $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
+                
+                if($this->form_validation->run()==FALSE){
+                    
+                    $this->load->view("admin_view/suasanpham",$this->data);
+                
+                }else{
+                    if($this->upload_image()==FALSE){
+                        $update = array(
+                        "name_sp"       => $this->input->post("name_sp"),
+                        "price"         => $this->input->post("price"),
+                        "soluong"       => $this->input->post("soluong"),
+                        "price_km"      => $this->input->post("price_km"),
+                        "note_sp"       => $this->input->post("note_sp"),
+                        "id_cate2"      => $_POST['id_cate2'],
+                        "id_loai"       => $_POST['id_loai'],
+                        "mota_sp"       => $this->input->post("mota_sp"),
+                        );
+                    }else{
+                        $update = array(
+                        "name_sp"       => $this->input->post("name_sp"),
+                        "price"         => $this->input->post("price"),
+                        "soluong"       => $this->input->post("soluong"),
+                        "price_km"      => $this->input->post("price_km"),
+                        "note_sp"       => $this->input->post("note_sp"),
+                        "id_cate2"      => $_POST['id_cate2'],
+                        "id_loai"       => $_POST['id_loai'],
+                        "mota_sp"       => $this->input->post("mota_sp"),
+                        'img_sp'        => $this->upload_image(),
+                        );
+                    }
+                    $this->mbase->updatesp($update,$id_sp);
+                    redirect(base_url()."index.php/admin/qlsanpham"); 
+                }
+            }
+            else
+            {
+                $this->load->view("admin_view/suasanpham",$this->data);   
+            }
+            
+        }
+        else
+        {          
+            $data['report'] = "Đường dẫn không hợp lệ";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+    }
+    public function themsanpham(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
+        $this->data['title'] = "Thêm sản phẩm";     
+        $this->data['report']="";    
+           if(isset($_POST['ok']))
+            {
+                $this->form_validation->set_rules("name_sp","Tên sản phẩm","required");
+                $this->form_validation->set_rules("price","Giá","required|numeric");
+                $this->form_validation->set_rules("soluong","Số lượng","required|numeric");
+                $this->form_validation->set_rules("price_km","Giá khuyến mãi","required|numeric");
+                $this->form_validation->set_rules("note_sp","Chi tiết sản phẩm","required");
+                $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+                $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
+                
+                if($this->form_validation->run()==FALSE || $this->upload_image()==FALSE){
+                    $this->data['report']=$this->upload->display_errors();
+                    $this->load->view("admin_view/themsanpham",$this->data);
+                
+                }else{
+                    
+                    $update = array(
+                        "name_sp"       => $this->input->post("name_sp"),
+                        "price"         => $this->input->post("price"),
+                        "soluong"       => $this->input->post("soluong"),
+                        "price_km"      => $this->input->post("price_km"),
+                        "note_sp"       => $this->input->post("note_sp"),
+                        "id_cate2"      => $_POST['id_cate2'],
+                        "id_loai"       => $_POST['id_loai'],
+                        "mota_sp"       => $this->input->post("mota_sp"),
+                        'img_sp'        => $this->upload_image(),
+                        );
+                    
+                    
+                    $this->mbase->addsp($update);
+                    redirect(base_url()."index.php/admin/qlsanpham"); 
+                }
+            }
+            else
+            {
+                $this->load->view("admin_view/themsanpham",$this->data);   
+            }
+        
+    }
+    function upload_image()
+	{
+		$config = array(
+					'upload_path' => './publics/data/',//thư mục để upload vào
+					'allowed_types' => 'gif|jpg|png',
+					'overwrite' => true // ghi đè lên hình đã upload 
+					);
+			//Thư viện upload của C_I
+			$this->load->library('upload', $config);
+			//lấy giá trị $config định nghĩa về file được upload
+			$this->upload->initialize($config);
+			//Kiểm tra upload có thành công hay ko ?
+			
+			if ($this->upload->do_upload('img')) //Tên của input type = file là 'img'
+				{
+					$image_data = $this->upload->data();
+					//print_r($image_data);
+					//echo "Tên hình vừa upload :".$image_data['file_name'];
+					//die;
+                    $luu="publics/data/".$image_data['file_name'];
+					return $luu;
+				}
+			else
+				{
+					return false;
+				}
+	}
 }

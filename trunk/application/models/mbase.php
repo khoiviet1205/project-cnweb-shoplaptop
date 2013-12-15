@@ -289,6 +289,36 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
         $data = $query->result_array();
         return $data;
     }
+    //--- Lay du lieu sp
+    public function getalldatasp($off="",$limit=""){
+        $this->db->select('*');
+        $this->db->limit($off,$limit);
+        $this->db->order_by("id_sp","ASC");
+        $query = $this->db->get("product");
+        $data = $query->result_array();
+        return $data;
+    }
+    //--- Xoa sp
+    public function deletesp($id){        
+        if($id!=1){
+            $this->db->select('*');
+            $this->db->where("id_sp",$id); 
+            $this->db->delete("product");
+        }
+    }
+    //--- Them sp moi
+    function addsp($data){
+        if($this->db->insert("product",$data))
+            return TRUE;
+        else
+            return FALSE;
+    }
+    
+    //--- Cap nhat sp
+    function updatesp($data,$id){
+        $this->db->where("id_sp",$id);
+        $this->db->update("product",$data);
+    }
     // Tong so record
     public function num_rows(){
         return $this->db->count_all($this->getTableName());

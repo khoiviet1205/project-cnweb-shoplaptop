@@ -51,7 +51,7 @@ class muser extends CI_Model{
 
     //--- Xoa user
     function deleteUser($id){
-        if($id!=1){
+        if($id!=34){
             $this->db->where("userid",$id);
             $this->db->delete($this->_table);
         }
