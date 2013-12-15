@@ -7,7 +7,7 @@ class Welcome extends Cpanel{
 		parent ::__construct();
 		$this->data['k']="";
 		$this->load->library(array('pagination','cart'));
-		$this->load->helper("url");
+		$this->load->helper(array('url','string'));
         
 	}
 	public function index(){
@@ -106,6 +106,7 @@ class Welcome extends Cpanel{
 		$data['title'] ="Giỏ hàng";
 		$data['hanglaptop']=$this->Mbase->get_hang_laptop();
 		$data['info'] = $this->cart->contents();
+		$data['MaDH']=random_string('alnum',4);
 		$this->load->view("giohang",$data);
 	}
 	public function update(){

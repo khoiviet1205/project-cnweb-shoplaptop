@@ -91,7 +91,7 @@
                 <td><span class="bold totalamout"><?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?>đ</span></td>
               </tr>
             </table>
-            <a class="btn btn-orange pull-right mr10" href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
+			<a target="_blank" href="https://www.nganluong.vn/button_payment.php?receiver=khoiviet329@gmail.com&product_name=<?php echo $MaDH ?>&price=<?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?>.000&return_url=(URL thanh toán thành công)&comments=Đồ án công nghệ và ứng dụng" ><img src="https://www.nganluong.vn/data/images/buttons/11.gif"  border="0" /></a> 
             <a class="btn btn-orange pull-right mr10" href="<?php echo base_url();?>">Tiếp Tục Mua Hàng</a>
           </div>
         </div>

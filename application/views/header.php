@@ -15,7 +15,7 @@
                   </li>
                   <li><a class="shoppingcart" href="<?php echo base_url();?>index.php/welcome/view_giohang/">Giỏ Hàng</a>
                   </li>
-                  <li><a class="checkout" href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
+                  <li><a class="checkout" href="<?php echo base_url();?>index.php/welcome/view_giohang/">Thanh Toán</a>
                   </li>
                 </ul>
               </div>
@@ -74,7 +74,7 @@
                
                 <div class="well pull-right buttonwrap">
                   <a class="btn btn-orange" href="<?php echo base_url();?>index.php/welcome/view_giohang/">Xem Giỏ</a>
-                  <a class="btn btn-orange" href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
+                  <a class="btn btn-orange" href="<?php echo base_url();?>index.php/welcome/view_giohang/">Thanh Toán</a>
                 </div>
               </li>
             </ul>
@@ -101,7 +101,7 @@
           </li>
           <li><a href="<?php echo base_url();?>index.php/welcome/view_giohang/">Giỏ Hàng</a>
           </li>
-          <li><a href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
+          <li><a href="<?php echo base_url();?>index.php/welcome/view_giohang/">Thanh Toán</a>
           </li>
           <li><a href="#">So Sánh</a>
           </li>          
