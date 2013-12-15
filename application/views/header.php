@@ -11,7 +11,7 @@
                 <ul class="nav" >
                   <li><a class="home active" href="<?php echo base_url();?>">Trang Chủ</a>
                   </li>
-                  <li><a class="myaccount" href="#">Tài Khoản</a>
+                  <li><a class="myaccount" href="<?php echo base_url();?>index.php/user/">Tài Khoản</a>
                   </li>
                   <li><a class="shoppingcart" href="<?php echo base_url();?>index.php/welcome/view_giohang/">Giỏ Hàng</a>
                   </li>
@@ -103,7 +103,7 @@
           </li>
           <li><a href="<?php echo base_url();?>index.php/welcome/thanhtoan/">Thanh Toán</a>
           </li>
-          <li><a href="<?php echo base_url();?>index.php/welcome/sosanh/">So Sánh</a>
+          <li><a href="#">So Sánh</a>
           </li>          
           <li><a href="<?php echo base_url();?>index.php/welcome/tintuc/">Tin Tức</a>
           </li>

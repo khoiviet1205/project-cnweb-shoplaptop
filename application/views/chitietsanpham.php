@@ -72,7 +72,7 @@
                 </div>
               </div>
               <ul class="productpagecart">
-                <li><a class="cart" href="#">Thêm Vào</a>
+                <li><a class="cart" href="<?php echo base_url();?>index.php/welcome/add_giohang/<?php echo $item['id_sp']; ?>">Thêm Vào</a>
                 </li>
                 <li><a class="wish" href="#" >Ưa Thích</a>
                 </li>

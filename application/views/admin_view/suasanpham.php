@@ -176,7 +176,7 @@
                       </div>
                       </div> 
             <div class="control-group">
-                      <label class="control-label"><span class="red">*</span> Ảnh:</label>
+                      <label class="control-label"> Ảnh:</label>
                       <div class="controls">                
                         <?php 
                             echo form_upload('img');

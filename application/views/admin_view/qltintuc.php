@@ -24,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $path_css; ?>flexslider.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $path_css; ?>jquery.fancybox.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $path_css; ?>cloud-zoom.css" />
-
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,20 +43,19 @@
      <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Trang Chủ</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Trang Admin</li>
+        <li class="active">Quản lý tin tức</li>
       </ul>
       <div class="row">
-
         <div id="box_display">
         <div id="list_table">
                   <!-- Paging -->
                   <div id="paging" class="pagination">
                   <?php
                     if($num_rows>0){
-                        echo "<h1 class=\"heading1\"><span class=\"maintext\">Tổng số tin tức</span> : ".$num_rows."</h1>";
+                        echo "<h1 class=\"heading1\"><span class=\"maintext\">Tổng số tin tức</span> : ".$num_rows."</h1>";                        
                         echo "<h2><div style=\"font-size: large;\"> Trang ".$link."</div></h2>";
                     }
                   ?>
@@ -79,13 +77,19 @@
                                     echo '<td>'.$item['full_news'] = substr(($item['full_news']),0,100).'</td>';
                                     echo '<td>'.$item['date_news'].'</td>';
                                     echo '<td>'.$item['duyet_news'].'</td>';                                    
-                                    echo '<td class="total"><a href="#"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
+                                    echo '<td class="total"><a href="'.base_url().'index.php/admin/suatintuc/'.$item['page_id'].'"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
                                     <a onclick="return confirm(\'Bạn có chắc chắn xóa?\');" href="'.base_url().'index.php/admin/xoatintuc/'.$item['page_id'].'"><img class="tooltip-test" data-original-title="Xóa"  src="'.$path_img.'remove.png" alt=""></a></td>';
                                     echo "</tr>"; 
                                 }
-                           ?>
+                           ?>  
+                                                    
                     </tbody>
                    </table>
+                   <div class="control-group">
+                <a href="<?php echo base_url();?>index.php/admin/themtintuc/" class="btn btn-orange">Thêm tin tức</a>
+                <?php echo "&nbsp&nbsp&nbsp&nbsp"?>
+                <a href="<?php echo base_url();?>index.php/user/" class="btn btn-orange">Trở về trang Admin</a>
+            </div>
         </div>
         </div>
     </div>

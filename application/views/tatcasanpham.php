@@ -176,9 +176,11 @@
                  <?php } ?>
                   <div class="pagination pull-right">
                     <ul>
-                      <?php echo $this->pagination->create_links();?>
+                    <h2><div style="font-size: large;"> Trang <?php echo $this->pagination->create_links();?></div></h2>
+                      
                     </ul>
                   </div>
+                  
                 </section>
               </div>
             </div>

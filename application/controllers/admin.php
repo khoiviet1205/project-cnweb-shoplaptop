@@ -153,50 +153,6 @@ class Admin extends CI_Controller{
             $this->load->view("user_view/dangky_thanhcong",$data);
         }
     }
-    public function qltintuc(){
-        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
-        $this->mbase->setTableName('news');        
-        $this->mbase->getalldata();
-        $max = $this->mbase->num_rows();
-        $min = 3;
-        $this->data['num_rows'] = $max;
-        //--- Paging
-        if($max!=0){
-            
-            $this->load->library('pagination');
-            $config['base_url'] = base_url()."index.php/admin/qltintuc";
-            $config['total_rows'] = $max;
-            $config['per_page'] = $min;
-            $config['num_link'] = 3; 
-            $config['next_link'] = 'Next »'; 
-            $config['prev_link'] = '« Prev';
-            $config['uri_segment'] = 3;
-            $this->pagination->initialize($config);
-            
-            $this->data['link'] = $this->pagination->create_links();
-            $this->data['news'] = $this->mbase->getalldata($min,$this->uri->segment($config['uri_segment']));
-            $this->data['title'] = "Quản Lý Tin Tức";
-            $this->load->view("admin_view/qltintuc",$this->data);
-        
-        }else{
-
-            $this->data['report'] = "Không có dữ liệu để hiển thị";
-            $this->my_layout->view("user_view/dangky_thanhcong",$this->data);
-        }
-    }    
-     public function xoatintuc(){
-        $page_id = $this->uri->segment(3);
-        
-        if(is_numeric($page_id)){
-            $this->mbase->deleteNews($page_id);
-            redirect(base_url()."index.php/admin/qltintuc");
-        
-        }else{
-            
-            $data['report'] = "Duong dan khong hop le";
-            $this->load->view("user_view/dangky_thanhcong",$data);
-        }
-    }
     public function suathanhvien(){
         $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $userid = $this->uri->segment(3);
@@ -378,6 +334,7 @@ class Admin extends CI_Controller{
                 $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
                 
                 if($this->form_validation->run()==FALSE || $this->upload_image()==FALSE){
+                    $this->upload_image();
                     $this->data['report']=$this->upload->display_errors();
                     $this->load->view("admin_view/themsanpham",$this->data);
                 
@@ -406,6 +363,113 @@ class Admin extends CI_Controller{
             }
         
     }
+    
+    public function qltintuc(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
+        $this->mbase->setTableName('news');        
+        $this->mbase->getalldata();
+        $max = $this->mbase->num_rows();
+        $min = 3;
+        $this->data['num_rows'] = $max;
+        //--- Paging
+        if($max!=0){
+            
+            $this->load->library('pagination');
+            $config['base_url'] = base_url()."index.php/admin/qltintuc";
+            $config['total_rows'] = $max;
+            $config['per_page'] = $min;
+            $config['num_link'] = 3; 
+            $config['next_link'] = 'Next »'; 
+            $config['prev_link'] = '« Prev';
+            $config['uri_segment'] = 3;
+            $this->pagination->initialize($config);
+            
+            $this->data['link'] = $this->pagination->create_links();
+            $this->data['news'] = $this->mbase->getalldata($min,$this->uri->segment($config['uri_segment']));
+            $this->data['title'] = "Quản Lý Tin Tức";
+            $this->load->view("admin_view/qltintuc",$this->data);
+        
+        }else{
+            $this->data['report'] = "Không có dữ liệu để hiển thị";
+            $this->my_layout->view("user_view/dangky_thanhcong",$this->data);
+        }
+    }    
+     public function xoatintuc(){
+        $page_id = $this->uri->segment(3);
+        
+        if(is_numeric($page_id)){
+            $this->mbase->deleteNews($page_id);
+            redirect(base_url()."index.php/admin/qltintuc");
+        
+        }else{
+            
+            $data['report'] = "Duong dan khong hop le";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+    }
+    public function themtintuc(){
+        $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
+			//$data['path_img'] = base_url().'publics/data/';
+			$result_add = $this->mbase->addNews();
+			if($result_add != false)
+			{
+				redirect(base_url()."index.php/admin/qltintuc");
+			}
+			else
+				{
+					$data['message']= "Có lỗi xãy ra !";
+					$this->load->view('admin_view/themtintuc',$this->data);
+				}	
+		}
+    public function suatintuc()
+		{
+		  $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
+            $page_id = $this->uri->segment(3);
+            $this->data['info'] = $this->mbase->getNewById($page_id);
+            if(is_numeric($page_id) && $this->data['info']!=NULL)
+                {          
+                if(isset($_POST['ok']))
+                {
+                $this->form_validation->set_rules("page_title","Tiêu đề tin","required");
+                $this->form_validation->set_rules("info_news","Trích dẫn","required");
+                $this->form_validation->set_rules("full_news","Nội dung","required");
+                $this->form_validation->set_rules("date_news","Ngày đăng","required");
+                $this->form_validation->set_rules("duyet_news","Người đăng","required");
+                $this->form_validation->set_message('required', 'Bạn chưa điền %s !');
+                $this->form_validation->set_message('min_length','%s có tối thiểu %s ký tự !');
+                $this->form_validation->set_message('numeric','%s chỉ được nhập số !');
+                
+                if($this->form_validation->run()==FALSE){
+                    
+                    $this->load->view("admin_view/suatintuc",$this->data);
+                
+                }else{
+                    
+                    $update = array(
+                        "page_title"       => $this->input->post("page_title"),
+                        "info_news"         => $this->input->post("info_news"),
+                        "date_news"      => $this->input->post("date_news"),
+                        "duyet_news"       => $this->input->post("duyet_news"),                        
+                        "full_news"       => $this->input->post("full_news")
+                        );
+                    
+                    
+                    $this->mbase->updateNews($update,$page_id);
+                    redirect(base_url()."index.php/admin/qltintuc"); 
+                }
+            }
+            else
+            {
+                $this->load->view("admin_view/suatintuc",$this->data);   
+            }
+            
+        }
+        else
+        {          
+            $data['report'] = "Đường dẫn không hợp lệ";
+            $this->load->view("user_view/dangky_thanhcong",$data);
+        }
+		}
     function upload_image()
 	{
 		$config = array(
