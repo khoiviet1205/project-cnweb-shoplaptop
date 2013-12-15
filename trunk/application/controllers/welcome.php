@@ -81,14 +81,14 @@ class Welcome extends Cpanel{
 	//**************************So sánh****************************
 	public function add_sosanh($param){
 		$this->data['title']="So Sánh";
-		$sp = $this->Mbase->get_tatca_sp1($param);
+		$sp = $this->Mbase->getProductById($param);
+		$tl=$this->Mbase->getLoaiByID($param);
 		$infosp = array(
-				'id_sp' => $sp['id_sp'],
-				'name_sp'=> $sp['name_sp'],
+				'name'=> $sp['name_sp'],
 				'hinhanh'=>$sp['img_sp'],
 				'price'=>$sp['price'],
 				'note_sp' => $sp['note_sp'],
-				'name_loai' => $sp['name_loai']
+				'name_loai' => $tl['name_loai']
 		);
 		$this->session->set_userdata('ThongTinSP',$infosp);
 		redirect(base_url());

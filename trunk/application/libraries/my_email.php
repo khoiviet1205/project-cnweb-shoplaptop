@@ -15,7 +15,7 @@ class MY_Email extends CI_Email {
      
      function config($data){
         $this->_mail=array(
-                            "from_sender"       => "lta1292@gmail.com",
+                            "from_sender"       => "admin@cnwebnhom2.freevnn.com",
                             "name_sender"       => "AnhPC",
                             "subject_sender"    => "Shoplaptop !",
                          );
@@ -31,8 +31,8 @@ class MY_Email extends CI_Email {
             $config['smtp_host']    = 'ssl://smtp.gmail.com';
             $config['smtp_port']    = '465';
             $config['smtp_timeout'] = '7';
-            $config['smtp_user']    = 'lta1292@gmail.com'; // địa chỉ gmail
-            $config['smtp_pass']    = 'letuananh12'; // pass gmail
+            $config['smtp_user']    = 'admin@cnwebnhom2.freevnn.com'; // địa chỉ gmail
+            $config['smtp_pass']    = 'lynhutrau1205'; // pass gmail
             $config['charset']    = 'utf-8';
             $config['newline']    = "\r\n";
             $config['mailtype'] = 'html'; // or html

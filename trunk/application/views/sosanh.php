@@ -59,18 +59,15 @@
                   <td>Mô Tả</td>
                   <td>Loại</td>
                 </tr>
-                <?php if(!empty($infosp)) { ?> 
-                <?php foreach($infosp as $items) : ?>
+
                 <tr>
-                  <td class="name"><a href="#"><?php echo $items['name_sp']?></a></td>
-                  <td><img alt="" src="<?php echo $items['hinhanh'] ?>"></td>
-				  <td><?php echo $items['price']?></td>
-                  <td><?php echo $items['note_sp']?></td>
-                  <td><?php echo $items['name_loai']?></td>
+                  <td class="name"><a href="#"></a></td>
+                  <td><img alt="" src=""></td>
+				  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
-                 <?php endforeach ?>
-                  <?php }else{ ?>
-				<?php } ?>
+
               </tbody>
               <tbody>
               </tbody>
