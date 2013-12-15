@@ -1,4 +1,4 @@
- <?php
+<?php
 	//Css file path :
 		$path_css=base_url().'publics/css/';
 	//Js file path :
@@ -22,7 +22,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $path_css; ?>flexslider.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $path_css; ?>jquery.fancybox.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $path_css; ?>cloud-zoom.css" />
-
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,7 +35,6 @@
     $this->load->view("header");
 ?>
 <!-- Header End -->
-
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -50,149 +48,46 @@
       </ul>
       <div class="row">
         <!-- Sidebar Start-->
-        <aside  class="span3">  
-         <!-- Category-->    
+        <aside class="span3">
+         <!-- Category-->  
           <div class="sidewidt">
-            <h2 class="heading2"><span>Blog Categories</span></h2>
+            <h2 class="heading2"><span>Hãng Laptop</span></h2>
             <ul class="nav nav-list categories">
+            <?php foreach($hanglaptop as $item) : ?>
               <li>
-                <a href="category.html">Women </a>
+                <a href="<?php echo base_url();?>index.php/welcome/lay_sp_theohang/<?php echo $item['id_cate2'];?>"><?php echo $item['name_cate2'] ?></a>
+              </li>
+               <?php endforeach ?>
+            </ul>
+          </div>
+         <!--  Mua Nhiều -->  
+          <div class="sidewidt">
+            <h2 class="heading2"><span>Mua Nhiều</span></h2>
+            <ul class="bestseller">
+            <?php foreach($sp_muanhieu as $item) : ?>
+              <li>
+                <img width="50" height="50" src="<?php echo base_url();?>/<?php echo $item['img_sp']; ?>" alt="product" title="product">
+                <a class="productname" href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id_sp'];?>"><?php echo $item['name_sp'] ?></a>
+                <span class="procategory"><?php echo $item['name_loai'] ?></span>
+                <span class="price"><?php echo number_format(($item['price']-(($item['price']*$item['price_km'])/100)),0,',','.');?> đ</span>
+              </li>
+              <?php endforeach ?>
+            </ul>
+          </div>
+          
+          <!--  Must have -->  
+          <div class="sidewidt">
+          <h2 class="heading2"><span>Nên Mua</span></h2>
+          <div class="flexslider" id="mainslider">
+            <ul class="slides">
+              <li>
+                <img src="<?php echo base_url();?>/publics/img/product1.jpg" alt="" />
               </li>
               <li>
-                <a href="category.html">Men </a>
-              </li>
-              <li>
-                <a href="category.html">Children </a>
-              </li>
-              <li>
-                <a href="category.html">Electronics </a>
-                <ul>
-                  <li><a href="product.html">Mobile </a>
-                  </li>
-                  <li><a href="product.html">Laptop</a>
-                  </li>
-                 
-                </ul>
-              </li>
-              <li>
-                <a href="category.html">Computers</a>
-              </li>
-              <li>
-                <a href="category.html">Jewellery </a>
+                <img src="<?php echo base_url();?>/publics/img/product2.jpg" alt="" />
               </li>
             </ul>
           </div>
-           <!-- Other-->
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Others</span></h2>
-            <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#popular">Popular</a>
-              </li>
-              <li><a href="#recent">Recent</a>
-              </li>
-              <li><a href="#comments">Comments</a>
-              </li>
-            </ul>
-            <div class="tab-content sideblog">
-              <div id="popular" class="tab-pane active">
-                <ul>
-                  <li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">My Blog Title will appear here  </a>
-                    <div>                      
-                      <span class="mr10"><i class="icon-calendar"></i> January 10, 2013 </span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 8 Comments</a> </span>
-                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
-                      </div>
-                  </li>
-                  <li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">My Blog Title will appear here  </a>
-                    <div>                      
-                      <span class="mr10"><i class="icon-calendar"></i> August 26, 2012 </span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 15 Comments</a> </span>
-                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
-                      </div>
-                  </li>
-                  
-                  
-                </ul>
-              </div>
-              <div id="recent" class="tab-pane">
-                <ul>
-                  <li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">Lorem Ipsum Title appear here  </a>
-                    <div>                      
-                      <span class="mr10"><i class="icon-calendar"></i> February 03, 2012</span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 3 Comments</a> </span>
-                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
-                      </div>
-                  </li>
-                  <li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a class="blogtitle" href="product.html">My Blog Title will appear here  </a>
-                    <div>                      
-                      <span class="mr10"><i class="icon-calendar"></i> January 3, 2013 </span>
-                      <span class="mr10"><a href="#"><i class="icon-comment"></i> 6 Comments</a> </span>
-                      <span class="mr10"> <a href="#"><i class="icon-tag"></i> css3, html5, responsive</a> </span>
-                      </div>
-                  </li>
-                  
-                  
-                </ul>
-              </div>
-              <div id="comments" class="tab-pane">
-                <ul>
-                  <li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a href="product.html">Your recent comment will appear here...</a>
-                    <a class="usercomment" href="enavato.html"><i class="icon-edit"></i> User 1</a>
-                  </li>
-                  <li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a href="product.html">Your recent comment will appear here...</a>
-                    <a class="usercomment" href="enavato.html"><i class="icon-edit"></i> User 2</a>
-                  </li><li>
-                    <img class="sideblogimage" width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                    <a href="product.html">Your recent comment will appear here...</a>
-                    <a class="usercomment" href="enavato.html"><i class="icon-edit"></i> User 3</a>
-                  </li>
-                  
-                 
-                </ul>
-              </div>
-            </div>
-          </div>
-           <!-- Tags-->
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Tags</span></h2>
-            <ul class="tags">
-              <li><a href="#"><i class="icon-tag"></i> Webdesign</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> html</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> html</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> css</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> jquery</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> css</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> jquery</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> Webdesign</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> css</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> jquery</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> Webdesign</a>
-              </li>
-              <li><a href="#"><i class="icon-tag"></i> html</a>
-              </li>
-            </ul>
           </div>
         </aside>
         <!-- Sidebar End--> 
@@ -230,7 +125,6 @@
     </div>
   </section>
 </div>
-
 <!-- Footer -->
 <?php $this->load->view("footer") ?>
 <!-- javascript

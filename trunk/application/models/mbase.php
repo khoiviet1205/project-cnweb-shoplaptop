@@ -361,6 +361,68 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
         $num_rows = $this->db->count_all_results('product');
 		return $num_rows;
     }
+    
+    public function addNews()
+		{
+			if($this->input->post('submit'))
+			{				
+			$content = $this->input->post('editor');			
+			$data = array('page_id' => '',
+						  'page_title' => $this->input->post('txtTieuDeTin'),
+						 'info_news' => $this->input->post('txtTrichDan'),
+						 'image_url' => $this->upload_image_news(),
+						 'date_news' => $this->input->post('txtNgayDangTin'),
+						 'duyet_news' => $this->input->post('txtNguoiDangTin'),
+						 'full_news' => $content
+						 );
+					$this->db->insert('news',$data);
+					return true;
+			}
+			return false;          
+		}
+    public function getNewById($param){
+		$this->db->where("page_id",$param);
+		return $this->db->get("news")->row_array();
+	}
+     public function updateNews($data,$id)
+		{
+		  $this->db->where("page_id",$id);			
+          $this->db->update('news',$data);  
+		}
+    //upload hình news
+    public function upload_image_news()
+	{
+		$config = array(
+					'upload_path' => './publics/data/',//thư mục để upload vào
+					'allowed_types' => 'gif|jpg|png',
+					'overwrite' => true // ghi đè lên hình đã upload 
+					);
+			//Thư viện upload của C_I
+			$this->load->library('upload', $config);
+			//lấy giá trị $config định nghĩa về file được upload
+			$this->upload->initialize($config);
+			//Kiểm tra upload có thành công hay ko ?
+			
+			if($this->input->post('submit'))
+			{
+			
+			if ($this->upload->do_upload('img')) //Tên của input type = file là 'img'(add_gallery.php)
+				{
+					$image_data = $this->upload->data();
+					//print_r($image_data);
+					//echo "Tên hình vừa upload :".$image_data['file_name'];
+					//die;
+                    $luu="publics/data/".$image_data['file_name'];
+					return $luu;
+				}
+			else
+				{
+					print_r($this->upload->display_errors());
+					die;
+				}
+			}//end if()
+	}
+    
 }
 
 

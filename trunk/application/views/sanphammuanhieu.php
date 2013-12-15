@@ -1,4 +1,4 @@
- <!-- San pham cao cap-->
+ <!-- San pham mua nhieu-->
   <section id="latest" class="row">
    <?php if(!empty($sp_muanhieu)) { ?> 
     <div class="container">
