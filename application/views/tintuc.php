@@ -41,10 +41,10 @@
        <!--  breadcrumb -->   
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Blog</li>
+        <li class="active">Tin Tức</li>
       </ul>
       <div class="row">
         <!-- Sidebar Start-->

@@ -40,19 +40,19 @@
      <!--  breadcrumb --> 
       <ul class="breadcrumb">
         <li>
-          <a href="#">Trang Chủ</a>
+          <a href="<?php echo base_url();?>">Trang Chủ</a>
           <span class="divider">/</span>
         </li>
         <li class="active">Liên Hệ</li>
       </ul>  
       <!-- Contact Us-->
-      <h1 class="heading1"><span class="maintext">Contact</span><span class="subtext"> Contact Us for more</span></h1>
+      <h1 class="heading1"><span class="maintext">Liên Hệ</span><span class="subtext"> Liên hệ với chúng tôi để biết thêm chi tiết</span></h1>
       <div class="row">
         <div class="span9">
           <form class="form-horizontal contactform"  method="post">
             <fieldset>
               <div class="control-group">
-                <label for="name" class="control-label">Name <span class="required">*</span></label>
+                <label for="name" class="control-label">Họ tên <span class="required">*</span></label>
                 <div class="controls">
                   <input type="text"  class="required" id="name" value="" name="name">
                 </div>
@@ -64,14 +64,14 @@
                 </div>
               </div>
               <div class="control-group">
-                <label for="message" class="control-label">Message</label>
+                <label for="message" class="control-label">Tin nhắn</label>
                 <div class="controls">
                   <textarea  class="required" rows="6" cols="40" id="message" name="messagee"></textarea>
                 </div>
               </div>
               <div class="form-actions">
-                <input class="btn btn-orange" type="submit" value="Submit" id="submit_id">
-                <input class="btn" type="reset" value="Reset">
+                <input class="btn btn-orange" type="submit" value="Gửi" id="submit_id">
+                <input class="btn" type="reset" value="Nhập lại">
               </div>
             </fieldset>
           </form>
@@ -81,16 +81,8 @@
         <div class="span3">
           <aside>
             <div class="sidewidt">
-              <h2 class="heading2"><span>Contact Info</span></h2>
-              <p> Lorem Ipsum is simply<br>
-                Lorem Ipsum is simply<br>
-               Lorem Ipsum is simply<br>
-                <br>
-                Phone: (012) 333-7890<br>
-                Fax: (123) 444-7890<br>
-                Email: test@contactus.com<br>
-                Web: yourcompanyname.com<br>
-              </p>
+              <h2 class="heading2"><span>Liên hệ qua Yahoo</span></h2>
+              <a href="ymsgr:sendim?anonymous_it329@ymail.com" mce_href="ymsgr:sendim?anonymous_it329@ymail.com" border="0"><img src="http://opi.yahoo.com/online?u=anonymous_it329@ymail.com&t=14" mce_src="http://opi.yahoo.com/online?u=anonymous_it329@ymail.com&t=14"></a>
             </div>
           </aside>
         </div>
