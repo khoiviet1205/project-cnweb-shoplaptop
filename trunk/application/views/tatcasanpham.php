@@ -147,7 +147,6 @@
                       <div class="thumbnail">
                         <div class="row">
                           <div class="span3">
-                            <span class="offer tooltip-test" >Offer</span>
                             <a href="#"><img alt="" src="<?php echo base_url();?>/<?php echo $item['img_sp']; ?>"></a>
                           </div>
                           <div class="span6">

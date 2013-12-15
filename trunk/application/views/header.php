@@ -11,7 +11,7 @@
                 <ul class="nav" >
                   <li><a class="home active" href="<?php echo base_url();?>">Trang Chủ</a>
                   </li>
-                  <li><a class="myaccount" href="#">Tài Khoản</a>
+                  <li><a class="myaccount" href="<?php echo base_url();?>index.php/user/">Tài Khoản</a>
                   </li>
                   <li><a class="shoppingcart" href="<?php echo base_url();?>index.php/welcome/view_giohang/">Giỏ Hàng</a>
                   </li>
@@ -39,7 +39,7 @@
       <?php if($cart=$this->cart->contents()) { ?> 
         <ul class="nav topcart pull-left">
           <li class="dropdown hover carticon ">
-            <a href="#" class="dropdown-toggle" > Giỏ Hàng Bự Lên <span class="label label-orange font14"><?php echo $this->cart->total_items(); ?>SP</span><?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?> VNĐ<b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" > Giỏ Hàng  <span class="label label-orange font14"><?php echo $this->cart->total_items(); ?>SP</span><?php echo number_format((($this->cart->total())+(($this->cart->total()*10)/100)),0,',','.');?> VNĐ<b class="caret"></b></a>
             <ul class="dropdown-menu topcartopen ">
             
               <li>
@@ -47,7 +47,7 @@
                 <table>
                   <tbody>
                     <tr>
-                      <td class="image"><a href="product.html"><img width="50" height="50" src="publics/img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
+                      <td class="image"><a href="#"><img width="50" height="50" src="publics/img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
                       <td class="name"><a href="<?php echo base_url();?>index.php/welcome/chitietsanpham/<?php echo $item['id'];?>"><?php echo $item['name'] ?></a></td>
                       <td class="quantity">x<?php echo $item['qty']; ?></td>
                       <td class="total"><?php echo number_format(($item['price']),0,',','.');?> đ</td>
