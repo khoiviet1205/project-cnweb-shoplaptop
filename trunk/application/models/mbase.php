@@ -198,20 +198,10 @@ class Mbase extends CI_Model{
 	function get_detail_product($param)
 	{
 		$this->db->select("*");
+		//$this->db->join("news","news.new_id = new_details.new_id_detail");
 		$this->db->where("id_sp",$param);
+		//$this->db->where("news.new_type = new_details.new_detail_type");
 		$query=$this->db->get("product");
-		return $query->result_array();	
-	}
-	public function getProductById($param){
-		$this->db->where("id_sp",$param);
-		return $this->db->get("product")->row_array();
-	}	
-	//Get san pham theo hang
-	function get_sp_theohang($param,$number,$offset)
-	{
-		$this->db->select("*");
-		$this->db->where("id_cate2",$param);
-		$query=$this->db->get("product",$number,$offset);
 		return $query->result_array();	
 	}
 	
@@ -224,11 +214,13 @@ class Mbase extends CI_Model{
 	//Get tat ca san pham theo loai
 	function get_tatca_sp($param,$number,$offset)
 	{
-		//$this->db->select("*");
+		$this->db->select("*");
 		$this->db->where("id_loai",$param);
-		$query=$this->db->get('product',$number,$offset);
+		$query=$this->db->get("product",$number,$offset);
 		return $query->result_array();	
 	}
+<<<<<<< .mine
+=======
 	//Get tat ca san pham 
 	function get_tatca_sp1($param)
 	{
@@ -253,6 +245,7 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
 		return $result->result_array();
 	}
 	
+>>>>>>> .r98
     //Tất cả của phần tin tuc
     	//Get tat ca tin tuc
 	public function get_news(){	   
@@ -306,6 +299,83 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
             $this->db->delete("news");
         }
     }
+    //upload hình news
+    public function upload_image_news()
+	{
+		$config = array(
+					'upload_path' => './publics/data/',//thư mục để upload vào
+					'allowed_types' => 'gif|jpg|png',
+					'overwrite' => true // ghi đè lên hình đã upload 
+					);
+			//Thư viện upload của C_I
+			$this->load->library('upload', $config);
+			//lấy giá trị $config định nghĩa về file được upload
+			$this->upload->initialize($config);
+			//Kiểm tra upload có thành công hay ko ?
+			
+			if($this->input->post('submit'))
+			{
+			
+			if ($this->upload->do_upload('img')) //Tên của input type = file là 'img'(add_gallery.php)
+				{
+					$image_data = $this->upload->data();
+					//print_r($image_data);
+					//echo "Tên hình vừa upload :".$image_data['file_name'];
+					//die;
+                    $luu="publics/data/".$image_data['file_name'];
+					return $luu;
+				}
+			else
+				{
+					print_r($this->upload->display_errors());
+					die;
+				}
+			}//end if()
+	}
+    public function addNews()
+		{
+			if($this->input->post('submit'))
+			{				
+			$content = $this->input->post('editor');			
+			$data = array('page_id' => '',
+						  'page_title' => $this->input->post('txtTieuDeTin'),
+						 'info_news' => $this->input->post('txtTrichDan'),
+						 'image_url' => $this->upload_image_news(),
+						 'date_news' => $this->input->post('txtNgayDangTin'),
+						 'duyet_news' => $this->input->post('txtNguoiDangTin'),
+						 'full_news' => $content
+						 );
+					$this->db->insert('news',$data);
+					return true;
+			}
+			return false;          
+		}
+     public function update_news($param)
+		{
+			$tham_so = $param;
+			if($this->input->post('submit'))
+			{
+		      $content = $this->input->post('editor');
+              $query = $this->db->query("UPDATE news SET full_news ='$content' WHERE page_id ='$tham_so'");
+		
+		      if($query)
+			         return true;
+	           	else
+			         return false;
+			}
+		}
+	//Get tat ca san pham 
+	function get_tatca_sp1($param)
+	{
+$result=$this->db->query("select * from product as p,loai as l where l.id_loai=p.id_loai and p.id_loai=$param order by id_sp ");
+		return $result->result_array();	
+	}
+	// Get hãng laptop
+	function get_hang_laptop()
+	{
+		$result =$this->db->query("select * from cate2");
+		return $result->result_array();
+	}
 	// ***************Phân trang**********************//
 	// Tổng số laptop theo điều kiện
 	function count_laptop($param)
@@ -315,6 +385,9 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
   	    $query = $this->db->get('product');
     	return $query->row()->numrows;
 	}
+<<<<<<< .mine
+    
+=======
 	// Tổng số laptop theo hang
 	function count_laptop_theohang($param)
 	{
@@ -336,6 +409,7 @@ $result=$this->db->query("select * from product as p,loai as l where l.id_loai=p
         $num_rows = $this->db->count_all_results('product');
 		return $num_rows;
     }
+>>>>>>> .r98
 }
 
 
