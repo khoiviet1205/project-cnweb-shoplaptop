@@ -57,7 +57,7 @@
                   <div id="paging" class="pagination">
                   <?php
                     if($num_rows>0){
-                        echo "<h1 class=\"heading1\"><span class=\"maintext\">Tổng số tin tức</span> : ".$num_rows."</h1>";
+                        echo "<h1 class=\"heading1\"><span class=\"maintext\">Tổng số tin tức</span> : ".$num_rows."</h1>";                        
                         echo "<h2><div style=\"font-size: large;\"> Trang ".$link."</div></h2>";
                     }
                   ?>
@@ -79,11 +79,14 @@
                                     echo '<td>'.$item['full_news'] = substr(($item['full_news']),0,100).'</td>';
                                     echo '<td>'.$item['date_news'].'</td>';
                                     echo '<td>'.$item['duyet_news'].'</td>';                                    
-                                    echo '<td class="total"><a href="#"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
+                                    echo '<td class="total"><a href="'.base_url().'index.php/admin/suatintuc/'.$item['page_id'].'"><img class="tooltip-test" data-original-title="Chỉnh Sửa" src="'.$path_img.'edit.png" alt=""></a>
                                     <a onclick="return confirm(\'Bạn có chắc chắn xóa?\');" href="'.base_url().'index.php/admin/xoatintuc/'.$item['page_id'].'"><img class="tooltip-test" data-original-title="Xóa"  src="'.$path_img.'remove.png" alt=""></a></td>';
                                     echo "</tr>"; 
                                 }
-                           ?>
+                           ?>  
+                           <div class='post_wrap' style='font:15px arial,sans-serif;'>
+                           <h4><a href="<?php echo base_url();?>index.php/admin/themtintuc/"><b><?php echo "Thêm Tin Tức"  ?></b></a></h4>
+                           </div>                         
                     </tbody>
                    </table>
         </div>
