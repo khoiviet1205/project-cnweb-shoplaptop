@@ -152,7 +152,7 @@ class Admin extends CI_Controller{
             $data['report'] = "Duong dan khong hop le";
             $this->load->view("user_view/dangky_thanhcong",$data);
         }
-    }
+    }    
     public function qltintuc(){
         $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $this->mbase->setTableName('news');        
@@ -197,6 +197,36 @@ class Admin extends CI_Controller{
             $this->load->view("user_view/dangky_thanhcong",$data);
         }
     }
+    public function themtintuc(){
+			$data['path_img'] = base_url().'publics/data/';
+			$result_add = $this->mbase->addNews();
+			if($result_add != false)
+			{
+				redirect(base_url()."index.php/admin/qltintuc");
+			}
+			else
+				{
+					$data['message']= "Có lỗi xãy ra !";
+					$this->load->view('admin_view/themtintuc',$data);
+				}	
+		}
+    public function suatintuc($param)
+		{
+			$page_id = $this->uri->segment(3);
+			
+			$data['path_img'] = base_url().'publics/data/';
+			
+			$data['new_detail'] = $this->mbase->get_detail_new($param);
+
+			$this->load->view('admin_view/suatintuc',$data);
+			
+			$query=$this->mbase->update_news($param);
+			if($query==true)
+				{
+					//$this->load->view('backend/new_update',$data);
+					redirect(base_url()."index.php/admin/qltintuc");
+				}
+		}
     public function suathanhvien(){
         $this->data['hanglaptop']=$this->Mbase->get_hang_laptop();
         $userid = $this->uri->segment(3);
